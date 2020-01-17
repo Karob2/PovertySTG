@@ -74,6 +74,7 @@ namespace PovertySTG.Factories
             NewScene(gs, name, out Scene scene, out SystemReferences sys);
 
             scene.AddUpdateSystem(new PlayerControlSystem(sys));
+            scene.AddUpdateSystem(new EnemyControlSystem(sys));
             scene.AddUpdateSystem(new MotionSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 

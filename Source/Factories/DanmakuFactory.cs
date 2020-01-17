@@ -25,5 +25,14 @@ namespace PovertySTG.Factories
             entity.AddComponent(new BulletComponent(type, x, y, dx, dy));
             entity.Enable();
         }
+
+        public static void MakeEnemy(GameServices gs, Scene scene, int type, float x, float y, float targetX, float targetY)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(1, 0));
+            entity.AddComponent(new SpriteComponent(gs, "letty", "walk_down"));
+            entity.AddComponent(new EnemyComponent(type, x, y, targetX, targetY));
+            entity.Enable();
+        }
     }
 }
