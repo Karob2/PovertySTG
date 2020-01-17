@@ -17,9 +17,14 @@ namespace PovertySTG
         //public static float SoundVolume { get; set; }
         public static bool Fullscreen { get; set; }
         public static int Zoom { get; set; }
-        public static float LevelWidth => 1080;
-        public static float LevelHeight => 1080;
-        public static List<float> GameScales => new List<float> { 600f / 1080f, 720f / 1080f, 1};
+        //public static List<float> GameScales => new List<float> { 600f / 1080f, 720f / 1080f, 1 };
+        public static List<float> GameScales => new List<float> { 600f / 720f, 720f / 720f, 1080f / 720f };
+        public const int defaultZoom = 1;
+        public const bool defaultFullscreen = false;
+        public const int defaultWidth = 720 * 4 / 3;
+        public const int defaultHeight = 720;
+        public static float LevelWidth => defaultHeight;
+        public static float LevelHeight => defaultHeight;
 
         static Dictionary<GameCommand, string> commandName;
 
@@ -46,8 +51,10 @@ namespace PovertySTG
 
         public static void Default()
         {
-            //SoundManager.MusicVolume = 0.75f;
-            //SoundManager.SoundVolume = 0.75f;
+            SoundManager.MusicVolume = 0.75f;
+            SoundManager.SoundVolume = 0.75f;
+            Fullscreen = defaultFullscreen;
+            Zoom = defaultZoom;
             //Fullscreen = false;
             //Zoom = 3;
         }

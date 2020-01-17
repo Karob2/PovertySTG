@@ -16,8 +16,8 @@ namespace PovertySTG
         const string gameName = "PovertySTG";
         const string companyName = "Lantern House";
         // Game resolution.
-        const int gameWidth = 1440;
-        const int gameHeight = 1080;
+        //const int gameWidth = 1440;
+        //const int gameHeight = 1080;
         //int screenMode = 0; //0 = windowed, 1 = fullscreen
         bool screenModeJustChanged;
         //int screenZoomMode = 1; //0 = 1080p (1x), 1 = 720p (0.67x), 2 = 600p (0.56x)
@@ -43,15 +43,14 @@ namespace PovertySTG
 
         protected override void Initialize()
         {
-            Config.Fullscreen = false;
-            Config.Zoom = 1; //0 = 1080p (1x), 1 = 720p (0.67x), 2 = 600p (0.56x)
+            Config.Default();
             //gs.Initialize(gameWidth, gameHeight, screenZoomMode, screenMode == 1);
-            gs.Initialize(gameWidth, gameHeight, Config.GameScales[Config.Zoom], Config.Fullscreen);
+            gs.Initialize(Config.defaultWidth, Config.defaultHeight, Config.GameScales[Config.Zoom], Config.Fullscreen);
             InputManager.Initialize(gs, gs.ResourceManager.GetSaveDirectory("inputconfig.json"));
             //TextHandler.Start(gs);
             SoundManager.Initialize(gs);
-            SoundManager.MusicVolume = 0.75f;
-            SoundManager.SoundVolume = 0.75f;
+            //SoundManager.MusicVolume = 0.75f;
+            //SoundManager.SoundVolume = 0.75f;
             Config.Initialize(gs, gs.ResourceManager.GetSaveDirectory("config.json"));
 
             base.Initialize();
@@ -141,7 +140,7 @@ namespace PovertySTG
             {
                 if (screenZoomModeJustChanged) return;
                 InputManager.StickMouse();
-                if (Config.Zoom < 2) Config.Zoom++;
+                if (Config.Zoom < Config.GameScales.Count - 1) Config.Zoom++;
                 else Config.Zoom = 0;
                 gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
                 screenZoomModeJustChanged = true; // Wait until key release before screen mode can be changed again.

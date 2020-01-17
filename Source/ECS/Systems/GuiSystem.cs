@@ -268,14 +268,14 @@ namespace PovertySTG.ECS.Systems
                         break;
                     case "zoom-up":
                         InputManager.StickMouse();
-                        if (Config.Zoom < 2) Config.Zoom++;
+                        if (Config.Zoom < Config.GameScales.Count - 1) Config.Zoom++;
                         else Config.Zoom = 0;
                         gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
                         break;
                     case "zoom-dn":
                         InputManager.StickMouse();
                         if (Config.Zoom > 0) Config.Zoom--;
-                        else Config.Zoom = 2;
+                        else Config.Zoom = Config.GameScales.Count - 1;
                         gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
                         break;
                     case "controls":
