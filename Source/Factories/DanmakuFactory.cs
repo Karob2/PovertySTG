@@ -1,6 +1,7 @@
 ﻿using Engine;
 using Engine.ECS;
 using Engine.Resource;
+using Microsoft.Xna.Framework;
 using PovertySTG.ECS.Components;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace PovertySTG.Factories
         public static void MakePlayer(Scene scene, float x, float y)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(1, 0));
+            entity.AddComponent(new RenderComponent(20, 0));
             SpriteComponent sc = new SpriteComponent(scene.GS, "s_sanny");
             /*
             Frame frame = sc.Sprite.DefaultAnimationObject.Frames[0];
@@ -27,14 +28,26 @@ namespace PovertySTG.Factories
             entity.Enable();
         }
 
+        public static void MakeBullet(Scene scene, int type, float x, float y, float targetX, float targetY, float speed)
+        {
+            Vector2 d = new Vector2(targetX - x, targetY - y);
+            if (d.X != 0 || d.Y != 0)
+            {
+                d.Normalize();
+                d *= speed;
+            }
+            MakeBullet(scene, type, x, y, d.X, d.Y);
+        }
+
         public static void MakeBullet(Scene scene, int type, float x, float y, float dx, float dy)
         {
-            int layer = 1;
+            int layer = 21;
             string sprite = "s_shot";
             string animation = null;
             if (type < 0) layer = 100;
             if (type < 0) sprite = "pixel";
             if (type == 0) sprite = "s_pshot";
+            if (type > 0) layer = 19;
 
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, layer, 0));
@@ -48,7 +61,7 @@ namespace PovertySTG.Factories
         public static void MakeEnemy(Scene scene, int type, float x, float y, float targetX, float targetY)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 1, 0));
+            entity.AddComponent(new RenderComponent(x, y, 30, 0));
             if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
             if (type == 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_glowy"));
             entity.AddComponent(new EnemyComponent(type, targetX, targetY));
@@ -60,9 +73,10 @@ namespace PovertySTG.Factories
         {
             float alpha = 0.5f;
             float scale = 0.5f;
+            if (type == 1) scale = 1f;
             float lifespan = 0.4f;
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 1, 0));
+            entity.AddComponent(new RenderComponent(x, y, 5, 0f));
             SpriteComponent sprite = new SpriteComponent(scene.GS, "s_slash");
             sprite.Rotation = (float)(new Random().NextDouble() * Math.PI);
             sprite.Alpha = alpha;

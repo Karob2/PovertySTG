@@ -21,20 +21,20 @@ namespace PovertySTG.ECS.Components
 
         public RenderComponent() { }
 
-        public RenderComponent(int layer, int depth)
+        public RenderComponent(int layer, float depth)
         {
             Layer = layer;
             Depth = depth;
         }
 
-        public RenderComponent(CameraComponent camera, int layer, int depth)
+        public RenderComponent(CameraComponent camera, int layer, float depth)
         {
             Camera = camera;
             Layer = layer;
             Depth = depth;
         }
 
-        public RenderComponent(float x, float y, int layer, int depth)
+        public RenderComponent(float x, float y, int layer, float depth)
         {
             X = x;
             Y = y;
@@ -42,7 +42,7 @@ namespace PovertySTG.ECS.Components
             Depth = depth;
         }
 
-        public RenderComponent(CameraComponent camera, float x, float y, int layer, int depth)
+        public RenderComponent(CameraComponent camera, float x, float y, int layer, float depth)
         {
             Camera = camera;
             X = x;

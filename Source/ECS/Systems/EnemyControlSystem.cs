@@ -18,6 +18,9 @@ namespace PovertySTG.ECS.Systems
 
         public override void Update(GameTime gameTime)
         {
+            sys.PlayerComponents.TryGetFirstEnabled(out PlayerComponent player);
+            BodyComponent playerBody = sys.BodyComponents.GetByOwner(player.Owner);
+
             foreach (EnemyComponent component in sys.EnemyComponents.EnabledList)
             {
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
@@ -47,7 +50,7 @@ namespace PovertySTG.ECS.Systems
                     if (component.Timer > 1)
                     {
                         component.Timer -= 1;
-                        DanmakuFactory.MakeBullet(scene, 1, body.X, body.Y, 0, 3);
+                        DanmakuFactory.MakeBullet(scene, 1, body.X, body.Y, playerBody.X, playerBody.Y, 3f);
                         component.Phase++;
                     }
                 }
