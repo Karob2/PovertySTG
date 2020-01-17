@@ -86,11 +86,11 @@ namespace Engine.Input
             Set(GameCommand.Down, Keys.S, GamepadInput.Down, GamepadInput.LDown);
             Set(GameCommand.Left, Keys.A, GamepadInput.Left, GamepadInput.LLeft);
             Set(GameCommand.Right, Keys.D, GamepadInput.Right, GamepadInput.LRight);
-            Set(GameCommand.Action1, Keys.J, Keys.Z, GamepadInput.A, MouseInput.LButton);
-            Set(GameCommand.Action2, Keys.K, Keys.X, GamepadInput.B, MouseInput.RButton);
-            Set(GameCommand.Action3, Keys.L, Keys.C, GamepadInput.X, MouseInput.MButton);
+            Set(GameCommand.Action1, Keys.J, Keys.Z, GamepadInput.A);
+            Set(GameCommand.Action2, Keys.K, Keys.X, GamepadInput.B);
+            Set(GameCommand.Action3, Keys.L, Keys.C, GamepadInput.X);
             //Set(GameCommand.Action4, Keys.OemSemicolon, Keys.V, GamepadInput.Y);
-            Set(GameCommand.Skip, Keys.Back, GamepadInput.LB, GamepadInput.RB, MouseInput.X1Button);
+            Set(GameCommand.Skip, Keys.Back, GamepadInput.LB, GamepadInput.RB);
             // Menu controls that shouldn't be configurable in-game (at least the first values):
             Set(GameCommand.MenuUp, Keys.Up, GamepadInput.Up);
             Set(GameCommand.MenuDown, Keys.Down, GamepadInput.Down);

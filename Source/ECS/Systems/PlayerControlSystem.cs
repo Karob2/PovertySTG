@@ -36,9 +36,15 @@ namespace PovertySTG.ECS.Systems
                 body.DX = d.X;
                 body.DY = d.Y;
 
-                if (InputManager.JustPressed(GameCommand.Action1))
+                if (component.Timer > 0)
+                {
+                    component.Timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+
+                if (InputManager.Held(GameCommand.Action1) && component.Timer <= 0)
                 {
                     DanmakuFactory.MakeBullet(scene, 0, body.X, body.Y - 30, 0, -7);
+                    component.Timer = 0.16f;
                 }
             }
         }
