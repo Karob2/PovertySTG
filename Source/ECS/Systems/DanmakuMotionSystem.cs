@@ -7,6 +7,7 @@ using PovertySTG.Factories;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace PovertySTG.ECS.Systems
 {
@@ -15,8 +16,21 @@ namespace PovertySTG.ECS.Systems
         SystemReferences sys;
         public MotionSystem(SystemReferences sys) { this.sys = sys; }
 
+        double timer = 0;
+        double timer2 = 0;
+        Random r = new Random();
+
         public override void Update(GameTime gameTime)
         {
+            timer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (timer > 0.2)
+            {
+                timer -= 0.2;
+                float x = (float)r.NextDouble() * gs.DisplayManager.GameWidth;
+                float dy = (float)r.NextDouble() * 3 + 1;
+                DanmakuFactory.MakeBullet(gs, scene, -1, x, 0, 0, dy);
+            }
+
             foreach (PlayerComponent component in sys.PlayerComponents.EnabledList)
             {
                 component.X += component.DX;

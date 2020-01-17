@@ -14,6 +14,8 @@ namespace PovertySTG.Factories
             int layer = 1;
             string sprite = "projectiles";
             string animation = null;
+            if (type < 0) layer = 100;
+            if (type < 0) sprite = "pixel";
             if (type == 0) animation = "shard1";
             if (type == 1) animation = "diamond1";
 

@@ -77,7 +77,7 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new MotionSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
-            MakePlayer(90, 90);
+            MakePlayer(gs.DisplayManager.GameWidth / 2, gs.DisplayManager.GameHeight * 3 / 4);
 
             return scene;
         }
