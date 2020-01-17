@@ -76,6 +76,7 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new PlayerControlSystem(sys));
             scene.AddUpdateSystem(new EnemyControlSystem(sys));
             scene.AddUpdateSystem(new MotionSystem(sys));
+            scene.AddUpdateSystem(new VfxSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);

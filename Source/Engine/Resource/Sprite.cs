@@ -128,17 +128,23 @@ namespace Engine.Resource
         {
             Render(x, y, animation, currentFrame, Color.White);
         }
-        public void Render(float x, float y, Animation animation, int currentFrame, Color color, float rotation = 0f)
+        public void Render(float x, float y, Animation animation, int currentFrame, Color color, float rotation = 0f, float scale = 1f)
         {
             if (color == null) color = Color.White;
             Frame frame = animation.Frames[currentFrame];
+            if (scale != 1f)
+            {
+                RenderStretched(x, y, frame.Width * scale, frame.Height * scale, animation, currentFrame, color, rotation);
+                return;
+            }
+            //Vector2 position = gs.DisplayManager.ToPixel(x - frame.AnchorX, y - frame.AnchorY);
             spriteBatch.Draw(
                 frame.Texture,
-                gs.DisplayManager.ToPixel(x - frame.AnchorX, y - frame.AnchorY),
+                new Vector2(x, y),
                 new Rectangle(frame.X, frame.Y, frame.Width, frame.Height),
                 color,
                 rotation,
-                Vector2.Zero,
+                new Vector2(frame.AnchorX, frame.AnchorY),
                 1f,
                 SpriteEffects.None,
                 0f
@@ -151,17 +157,18 @@ namespace Engine.Resource
             RenderStretched(x, y, width, height, animation, 0, color);
         }
 
-        public void RenderStretched(float x, float y, float width, float height, Animation animation, int currentFrame, Color color)
+        public void RenderStretched(float x, float y, float width, float height, Animation animation, int currentFrame, Color color, float rotation = 0f)
         {
             if (color == null) color = Color.White;
             Frame frame = animation.Frames[currentFrame];
             spriteBatch.Draw(
                 frame.Texture,
-                gs.DisplayManager.ToPixel(x - frame.AnchorX, y - frame.AnchorY, width, height), // TODO: The anchor point does not take scaling into account.
+                //gs.DisplayManager.ToPixel(x - frame.AnchorX, y - frame.AnchorY, width, height), // TODO: The anchor point does not take scaling into account.
+                gs.DisplayManager.ToPixel(x, y, width, height),
                 new Rectangle(frame.X, frame.Y, frame.Width, frame.Height),
                 color,
-                0f,
-                Vector2.Zero,
+                rotation,
+                new Vector2(frame.AnchorX, frame.AnchorY),
                 SpriteEffects.None,
                 0f
                 );

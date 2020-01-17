@@ -38,7 +38,7 @@ namespace PovertySTG.ECS.Systems
 
                 if (InputManager.JustPressed(GameCommand.Action1))
                 {
-                    DanmakuFactory.MakeBullet(scene, 0, body.X, body.Y, 0, -3);
+                    DanmakuFactory.MakeBullet(scene, 0, body.X, body.Y, 0, -7);
                 }
             }
         }

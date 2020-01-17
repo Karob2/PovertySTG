@@ -23,7 +23,7 @@ namespace PovertySTG.ECS.Systems
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
                 if (component.Phase == 0)
                 {
-                    float speed = 2.2f;
+                    float speed = 3.8f;
                     float dx = component.TargetX - body.X;
                     float dy = component.TargetY - body.Y;
                     Vector2 d = new Vector2(dx, dy);
@@ -39,7 +39,7 @@ namespace PovertySTG.ECS.Systems
                     body.DX = d.X;
                     body.DY = d.Y;
                 }
-                else if (component.Phase > 0 && component.Phase < 5)
+                else if (component.Phase > 0 && component.Phase < 6)
                 {
                     body.DX = 0;
                     body.DY = 0;

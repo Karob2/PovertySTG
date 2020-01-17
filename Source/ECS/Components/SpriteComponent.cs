@@ -45,6 +45,8 @@ namespace PovertySTG.ECS.Components
         public float CurrentTime { get; set; }
         public Color Color { get; set; } = Color.White;
         public float Rotation { get; set; } = 0f;
+        public float Scale { get; set; } = 1f;
+        public float Alpha { get; set; } = 1f;
         // TODO: Would it be acceptible to use public fields for components?
 
         public float X { get; set; }

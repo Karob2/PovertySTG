@@ -93,6 +93,7 @@ namespace PovertySTG.ECS.Systems
                             float distanceSquared = dx * dx + dy * dy;
                             if (distanceSquared < dd * dd)
                             {
+                                DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
                                 component.Owner.Delete();
                                 enemy.Health -= component.Power;
                                 if (enemy.Health <= 0) enemy.Owner.Delete();

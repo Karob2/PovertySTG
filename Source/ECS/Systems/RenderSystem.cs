@@ -210,17 +210,22 @@ namespace PovertySTG.ECS.Systems
             Animation animation = component.CurrentAnimationObject;
             if (component.CurrentFrame >= animation.Frames.Count) component.CurrentFrame %= animation.Frames.Count;
 
-            if (component.Stretched)
+            if (component.Alpha > 0 && component.Scale > 0)
             {
-                sprite.RenderStretched(renderComponent.DisplayX, renderComponent.DisplayY, component.Width, component.Height, animation, component.CurrentFrame, component.Color);
-            }
-            else if (component.Tiled)
-            {
-                sprite.RenderTiled(renderComponent.DisplayX, renderComponent.DisplayY, component.Width, component.Height, animation, component.CurrentFrame, component.Color);
-            }
-            else
-            {
-                sprite.Render(renderComponent.DisplayX, renderComponent.DisplayY, animation, component.CurrentFrame, component.Color, component.Rotation);
+                Color color = component.Color * component.Alpha;
+
+                if (component.Stretched)
+                {
+                    sprite.RenderStretched(renderComponent.DisplayX, renderComponent.DisplayY, component.Width, component.Height, animation, component.CurrentFrame, color, component.Rotation);
+                }
+                else if (component.Tiled)
+                {
+                    sprite.RenderTiled(renderComponent.DisplayX, renderComponent.DisplayY, component.Width, component.Height, animation, component.CurrentFrame, color);
+                }
+                else
+                {
+                    sprite.Render(renderComponent.DisplayX, renderComponent.DisplayY, animation, component.CurrentFrame, color, component.Rotation, component.Scale);
+                }
             }
 
             if (animation.Frames.Count > 1)
