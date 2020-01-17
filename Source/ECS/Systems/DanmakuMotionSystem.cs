@@ -58,8 +58,8 @@ namespace PovertySTG.ECS.Systems
                 component.Y += component.DY;
 
                 int margin = 200;
-                if (component.X < -margin || component.X > gs.DisplayManager.GameWidth + margin
-                    || component.Y < -margin || component.Y > gs.DisplayManager.GameHeight + margin)
+                if (component.X < -margin || component.X > Config.LevelWidth + margin
+                    || component.Y < -margin || component.Y > Config.LevelHeight + margin)
                 {
                     component.Owner.Delete();
                 }
@@ -78,13 +78,53 @@ namespace PovertySTG.ECS.Systems
 
                 // destroy bullet if far outside of game area
                 int margin = 200;
-                if (component.X < -margin || component.X > gs.DisplayManager.GameWidth + margin
-                    || component.Y < -margin || component.Y > gs.DisplayManager.GameHeight + margin)
+                if (component.X < -margin || component.X > Config.LevelWidth + margin
+                    || component.Y < -margin || component.Y > Config.LevelHeight + margin)
                 {
                     component.Owner.Delete();
+                    continue;
+                }
+                // Check for collisions.
+                float radius = sys.SpriteComponents.GetByOwner(component.Owner).Sprite.CollisionBox.Radius;
+                if (component.X > -radius && component.X < Config.LevelWidth + radius
+                    && component.Y > -radius && component.Y < Config.LevelHeight + radius)
+                {
+                    if (component.Type == 0)
+                    {
+                        foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+                        {
+                            float targetRadius = sys.SpriteComponents.GetByOwner(enemy.Owner).Sprite.CollisionBox.Radius;
+                            float dx = enemy.X - component.X;
+                            float dy = enemy.Y - component.Y;
+                            float dd = radius + targetRadius;
+                            float distanceSquared = dx * dx + dy * dy;
+                            if (distanceSquared < dd * dd)
+                            {
+                                component.Owner.Delete();
+                                //enemy.Owner.Delete();
+                                continue;
+                            }
+                        }
+                    }
+                    if (component.Type == 1)
+                    {
+                        foreach (PlayerComponent enemy in sys.PlayerComponents.EnabledList)
+                        {
+                            float targetRadius = sys.SpriteComponents.GetByOwner(enemy.Owner).Sprite.CollisionBox.Radius;
+                            float dx = enemy.X - component.X;
+                            float dy = enemy.Y - component.Y;
+                            float dd = radius + targetRadius;
+                            float distanceSquared = dx * dx + dy * dy;
+                            if (distanceSquared < dd * dd)
+                            {
+                                component.Owner.Delete();
+                                continue;
+                            }
+                        }
+                    }
                 }
                 // sync render location
-                else if (sys.RenderComponents.TryGetEnabled(component.Owner, out RenderComponent renderComponent))
+                if (sys.RenderComponents.TryGetEnabled(component.Owner, out RenderComponent renderComponent))
                 {
                     renderComponent.X = component.X;
                     renderComponent.Y = component.Y;

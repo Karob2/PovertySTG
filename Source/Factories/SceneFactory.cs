@@ -96,7 +96,7 @@ namespace PovertySTG.Factories
         public static void MakeRect(float x, float y, float x2, float y2, Color color)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 199, 0));
+            entity.AddComponent(new RenderComponent(x, y, 0, 0));
             SpriteComponent sc = new SpriteComponent(gs, "pixel");
             sc.Color = color;
             sc.Width = x2 - x;

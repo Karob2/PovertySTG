@@ -53,6 +53,10 @@ namespace Engine.Resource
             animation.CalculateBounds();
 
             Animations = new Dictionary<string, Animation> { { DefaultAnimation, animation } };
+
+            CollisionBox = new CollisionBox();
+            CollisionBox.Radius = 8;
+            DetectCollisionShape();
         }
 
         /// <summary>
@@ -68,6 +72,7 @@ namespace Engine.Resource
             _sprite.Finalize(Path.GetDirectoryName(path), textureLibrary);
             _sprite.Solidify(this);
             //TODO: Will _sprite be automatically garbage collected?
+            DetectCollisionShape();
         }
 
         /*
@@ -79,6 +84,23 @@ namespace Engine.Resource
             return sprite;
         }
         */
+
+        public void DetectCollisionShape()
+        {
+            CollisionBox.Shape = CollisionShape.None;
+            if (CollisionBox.Radius != 0)
+            {
+                CollisionBox.Shape = CollisionShape.Circle;
+            }
+            else if (CollisionBox.Left == CollisionBox.Right && CollisionBox.Top == CollisionBox.Bottom)
+            {
+                CollisionBox.Shape = CollisionShape.Pixel;
+            }
+            else
+            {
+                CollisionBox.Shape = CollisionShape.Box;
+            }
+        }
 
         /// <summary>
         /// Render the sprite without animation.
@@ -175,6 +197,10 @@ namespace Engine.Resource
     [JsonObject]
     public class CollisionBox
     {
+        [JsonIgnore]
+        public CollisionShape Shape { get; set; }
+        [JsonProperty]
+        public float Radius { get ; set; }
         [JsonProperty]
         public float Left { get; set; }
         [JsonProperty]
@@ -183,6 +209,14 @@ namespace Engine.Resource
         public float Top { get; set; }
         [JsonProperty]
         public float Bottom { get; set; }
+    }
+
+    public enum CollisionShape
+    {
+        None,
+        Pixel,
+        Box,
+        Circle
     }
 
     /// <summary>
