@@ -16,8 +16,8 @@ namespace PovertySTG
         const string gameName = "PovertySTG";
         const string companyName = "Lantern House";
         // Game resolution.
-        const int gameWidth = 320;
-        const int gameHeight = 240;
+        const int gameWidth = 640;
+        const int gameHeight = 480;
         int screenMode = 0; //0 = windowed, 1 = fullscreen
         bool screenModeJustChanged;
         int screenZoomMode = 2; //2 = 2x, 3 = 3x

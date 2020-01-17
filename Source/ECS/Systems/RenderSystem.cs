@@ -16,11 +16,12 @@ namespace PovertySTG.ECS.Systems
         SystemReferences sys;
         public RenderSystem(SystemReferences sys) { this.sys = sys; }
         Vector2 cameraPos = Vector2.Zero;
+        List<RenderItem> renderList = new List<RenderItem>();
 
         public override void Update(GameTime gameTime)
         {
-            List<RenderItem> renderList = new List<RenderItem>();
             int index = 0;
+            renderList.Clear();
 
             if (sys.CameraComponents.TryGetFirstEnabled(out CameraComponent camera))
             {
@@ -70,7 +71,7 @@ namespace PovertySTG.ECS.Systems
                 }
             }
 
-            //RenderDebugInfo();
+            RenderDebugInfo();
         }
 
         public bool OutOfScreen(RenderComponent renderComponent, SpriteComponent spriteComponent)
@@ -235,6 +236,29 @@ namespace PovertySTG.ECS.Systems
                 }
                 component.CurrentTime = frameTime;
             }
+        }
+
+        public void RenderDebugInfo()
+        {
+            int entities = scene.EntityList.Count;
+            int activeEntities = 0;
+            int components = 0;
+            int activeComponents = 0;
+            int bulletComponents = sys.BulletComponents.List.Count;
+            int activeBulletComponents = sys.BulletComponents.EnabledList.Count();
+            foreach (Entity entity in scene.EntityList)
+            {
+                if (entity.Enabled) activeEntities++;
+                components += entity.ComponentReferences.Count;
+                foreach (Component component in entity.ComponentReferences)
+                {
+                    if (component.Enabled) activeComponents++;
+                }
+            }
+            string text = "Entities: " + activeEntities + "/" + entities + " Free: " + scene.FreeEntities.Count + " Visible: " + renderList.Count;
+            text += "\nComponents: " + activeComponents + "/" + components;
+            text += "\nBullets: " + activeBulletComponents + "/" + bulletComponents;
+            sys.GlobalFont.Render(text, 0, 0, Color.White);
         }
     }
 
