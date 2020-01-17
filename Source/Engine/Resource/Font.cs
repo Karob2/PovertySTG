@@ -15,6 +15,8 @@ namespace Engine.Resource
         [JsonProperty]
         public string FontFile { get; set; }
         [JsonProperty]
+        public int LineSpacing { get; set; }
+        [JsonProperty]
         public float Scale { get; set; }
 
         SpriteFont spriteFont;
@@ -39,6 +41,7 @@ namespace Engine.Resource
         /// </summary>
         public void Render(string message, float x, float y, Color color, float scale = 1f, float depth = 1f)
         {
+            SpriteFont.LineSpacing = LineSpacing;
             gs.DisplayManager.SpriteBatch.DrawString(spriteFont, message, gs.DisplayManager.ToPixel(x, y),
                 color, 0f, new Vector2(0f, 0f), Scale * scale, SpriteEffects.None, depth);
         }
@@ -48,6 +51,7 @@ namespace Engine.Resource
         /// </summary>
         public void RenderCentered(string message, float x, float y, Color color, float scale = 1f, float depth = 1f)
         {
+            SpriteFont.LineSpacing = LineSpacing;
             Vector2 size = spriteFont.MeasureString(message) * Scale * scale;
             gs.DisplayManager.SpriteBatch.DrawString(spriteFont, message, gs.DisplayManager.ToPixel(x - size.X / 2, y - size.Y / 2),
                 color, 0f, new Vector2(0f, 0f), Scale * scale, SpriteEffects.None, depth);
@@ -58,6 +62,7 @@ namespace Engine.Resource
         /// </summary>
         public Vector2 MeasureString(string message)
         {
+            SpriteFont.LineSpacing = LineSpacing;
             Vector2 result = spriteFont.MeasureString(message) * Scale;
             return result;
         }

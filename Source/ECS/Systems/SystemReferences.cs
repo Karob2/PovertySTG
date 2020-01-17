@@ -38,8 +38,6 @@ namespace PovertySTG.ECS.Systems
             PlayerComponents = scene.GetComponentGroup<PlayerComponent>();
             EnemyComponents = scene.GetComponentGroup<EnemyComponent>();
             BulletComponents = scene.GetComponentGroup<BulletComponent>();
-
-            GlobalFont = gs.ResourceManager.Fonts.Get("pcsenior");
         }
 
         public GameStateComponent GetGameState()

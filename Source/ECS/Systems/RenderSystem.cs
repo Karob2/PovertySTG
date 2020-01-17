@@ -71,7 +71,9 @@ namespace PovertySTG.ECS.Systems
                 }
             }
 
+#if DEBUG
             RenderDebugInfo();
+#endif
         }
 
         public bool OutOfScreen(RenderComponent renderComponent, SpriteComponent spriteComponent)
@@ -89,8 +91,8 @@ namespace PovertySTG.ECS.Systems
             if (component.Text == null) return;
 
             Font font = component.Font;
-            int oldLineSpacing = font.SpriteFont.LineSpacing;
-            if (component.LineSpacing != 0) font.SpriteFont.LineSpacing = component.LineSpacing;
+            int oldLineSpacing = font.LineSpacing;
+            if (component.LineSpacing != 0) font.LineSpacing = component.LineSpacing;
 
             if (component.Width > 0)
             {
@@ -108,7 +110,7 @@ namespace PovertySTG.ECS.Systems
                 font.Render(component.Text, renderComponent.DisplayX, renderComponent.DisplayY, component.Color);
             }
 
-            if (component.LineSpacing != 0) font.SpriteFont.LineSpacing = oldLineSpacing;
+            if (component.LineSpacing != 0) font.LineSpacing = oldLineSpacing;
         }
 
         /*
@@ -238,6 +240,7 @@ namespace PovertySTG.ECS.Systems
             }
         }
 
+#if DEBUG
         public void RenderDebugInfo()
         {
             int entities = scene.EntityList.Count;
@@ -258,8 +261,9 @@ namespace PovertySTG.ECS.Systems
             string text = "Entities: " + activeEntities + "/" + entities + " Free: " + scene.FreeEntities.Count + " Visible: " + renderList.Count;
             text += "\nComponents: " + activeComponents + "/" + components;
             text += "\nBullets: " + activeBulletComponents + "/" + bulletComponents;
-            sys.GlobalFont.Render(text, 0, 0, Color.White);
+            gs.ResourceManager.Fonts.Get("sysfont").Render(text, 0, 0, Color.White);
         }
+#endif
     }
 
     /*

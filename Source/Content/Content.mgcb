@@ -13,3 +13,23 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin fonts/bitter license.txt
+/copy:fonts/bitter license.txt
+
+#begin fonts/bitter-bold.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/bitter-bold.spritefont
+
+#begin fonts/nunito license.txt
+/copy:fonts/nunito license.txt
+
+#begin fonts/nunito-exbold.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/nunito-exbold.spritefont
+

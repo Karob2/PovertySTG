@@ -27,8 +27,8 @@ namespace PovertySTG.Factories
 
             StartButtonList(true);
             MakeButton(64, 64, "Start", "start");
-            MakeButton(64, 84, "Options", "options");
-            MakeButton(64, 104, "Quit", "quit");
+            MakeButton(64, 104, "Options", "options");
+            MakeButton(64, 144, "Quit", "quit");
 
             return scene;
         }
@@ -43,12 +43,12 @@ namespace PovertySTG.Factories
             //MakeCursor();
 
             StartButtonList(true);
-            MakeButton(64, 44, "Music Volume:", null, "m-dn", "m-up");
-            MakeButton(64, 64, "Sound Volume:", null, "s-dn", "s-up");
-            MakeButton(64, 84, "Fullscreen:", "fs", "fs", "fs");
-            MakeButton(64, 104, "Zoom:", "zoom-up", "zoom-dn", "zoom-up");
-            MakeButton(64, 124, "Configure Controls", "controls");
-            MakeButton(74, 144, "Save and Return", "return");
+            MakeButton(64, 64, "Music Volume:", null, "m-dn", "m-up");
+            MakeButton(64, 104, "Sound Volume:", null, "s-dn", "s-up");
+            MakeButton(64, 144, "Fullscreen:", "fs", "fs", "fs");
+            MakeButton(64, 184, "Zoom:", "zoom-up", "zoom-dn", "zoom-up");
+            MakeButton(64, 224, "Configure Controls", "controls");
+            MakeButton(74, 264, "Save and Return", "return");
 
             return scene;
         }
@@ -110,7 +110,7 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 0, 0));
-            entity.AddComponent(new TextComponent(gs, "pcsenior", text, Color.White));
+            entity.AddComponent(new TextComponent(gs, "menufont", text, Color.White));
             entity.Enable();
             return entity;
         }
@@ -125,7 +125,7 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 0, 0));
-            entity.AddComponent(new TextComponent(gs, "pcsenior", text, Color.White));
+            entity.AddComponent(new TextComponent(gs, "menufont", text, Color.White));
             ButtonComponent button = new ButtonComponent(entity, command, leftCommand, rightCommand);
             button.X = x; button.Y = y;
             entity.AddComponent(button);

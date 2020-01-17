@@ -71,8 +71,6 @@ namespace PovertySTG
 
         void LoadContent3()
         {
-            gs.ResourceManager.Fonts.Get("pcsenior").SpriteFont.LineSpacing = 22;
-
             gs.RootScene.AddUpdateSystem(new GameStateSystem());
             gs.RootScene.NewEntity().AddComponent(new GameStateComponent()).Enable();
             gs.RootScene.AddScene(SceneFactory.NewMenuScene(gs, "menu")).Enable();
