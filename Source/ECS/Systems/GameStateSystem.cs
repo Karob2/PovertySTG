@@ -24,7 +24,7 @@ namespace PovertySTG.ECS.Systems
             if (request == null) return;
             if (request == "danmaku")
             {
-                //scene.AddScene(SceneFactory.NewDanmakuScene(gs, "danmaku")).Enable();
+                scene.AddScene(SceneFactory.NewDanmakuScene(gs, "danmaku")).Enable();
             }
             if (request == "options")
             {

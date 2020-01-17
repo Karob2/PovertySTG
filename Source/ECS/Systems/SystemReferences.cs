@@ -19,6 +19,7 @@ namespace PovertySTG.ECS.Systems
         public ComponentGroup<SpriteComponent> SpriteComponents { get; private set; }
         public ComponentGroup<TextComponent> TextComponents { get; private set; }
         public ComponentGroup<ButtonComponent> ButtonComponents { get; private set; }
+        public ComponentGroup<PlayerComponent> PlayerComponents { get; private set; }
 
         public Font GlobalFont { get; private set; }
 
@@ -32,6 +33,7 @@ namespace PovertySTG.ECS.Systems
             SpriteComponents = scene.GetComponentGroup<SpriteComponent>();
             TextComponents = scene.GetComponentGroup<TextComponent>();
             ButtonComponents = scene.GetComponentGroup<ButtonComponent>();
+            PlayerComponents = scene.GetComponentGroup<PlayerComponent>();
 
             GlobalFont = gs.ResourceManager.Fonts.Get("pcsenior");
         }

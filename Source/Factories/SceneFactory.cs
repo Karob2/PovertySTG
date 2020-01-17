@@ -69,6 +69,28 @@ namespace PovertySTG.Factories
             return scene;
         }
 
+        public static Scene NewDanmakuScene(GameServices gs, string name)
+        {
+            NewScene(gs, name, out Scene scene, out SystemReferences sys);
+
+            scene.AddUpdateSystem(new PlayerControlSystem(sys));
+            scene.AddUpdateSystem(new MotionSystem(sys));
+            scene.AddRenderSystem(new RenderSystem(sys));
+
+            MakePlayer(90, 90);
+
+            return scene;
+        }
+
+        public static void MakePlayer(float x, float y)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(1, 0));
+            entity.AddComponent(new SpriteComponent(gs, "cirno", "walk_up"));
+            entity.AddComponent(new PlayerComponent(x, y));
+            entity.Enable();
+        }
+
         public static void MakeCursor()
         {
             Entity entity = scene.NewEntity();

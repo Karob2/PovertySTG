@@ -1,0 +1,6 @@
+Applies to: All image files (*.png, *.jpg) in this directory.
+
+Copyright (c) 2019 minute
+These files are licensed under CC BY-SA 3.0 US
+License text: https://creativecommons.org/licenses/by-sa/3.0/us/legalcode
+License summary: https://creativecommons.org/licenses/by-sa/3.0/us/
