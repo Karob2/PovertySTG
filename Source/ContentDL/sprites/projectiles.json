@@ -1,0 +1,314 @@
+{
+    "CollisionBox": {
+        "Left": 6,
+        "Right": 26,
+        "Top": 6,
+        "Bottom": 25
+    },
+    "DefaultFrame": {
+        "Spritesheet": "projectiles.png",
+        "Width": 16,
+        "Height": 16,
+        "AnchorX": -8,
+        "AnchorY": -8
+    },
+    "Animations": [
+        {
+            "Name": "icerock",
+            "FrameRanges": [
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "X": 0,
+                    "Y": 0,
+                    "AnchorX": 0,
+                    "AnchorY": 0
+                }
+            ]
+        },
+        {
+            "Name": "iceshadow",
+            "FrameRanges": [
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "X": 32,
+                    "Y": 0,
+                    "AnchorX": 0,
+                    "AnchorY": 0
+                }
+            ]
+        },
+        {
+            "Name": "icevolley",
+            "FrameRanges": [
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "X": 64,
+                    "Y": 0,
+                    "AnchorX": 0,
+                    "AnchorY": 0
+                }
+            ]
+        },
+        {
+            "Name": "shard1",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "shard2",
+            "FrameRanges": [
+                {
+                    "X": 16,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "shard3",
+            "FrameRanges": [
+                {
+                    "X": 32,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "diamond1",
+            "FrameRanges": [
+                {
+                    "X": 48,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "diamond2",
+            "FrameRanges": [
+                {
+                    "X": 64,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "snowflake",
+            "FrameRanges": [
+                {
+                    "X": 48,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "snowdiamond",
+            "FrameRanges": [
+                {
+                    "X": 64,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "tear1",
+            "FrameRanges": [
+                {
+                    "X": 80,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "tear2",
+            "FrameRanges": [
+                {
+                    "X": 96,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "shard1_left",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "shard2_left",
+            "FrameRanges": [
+                {
+                    "X": 16,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "shard3_left",
+            "FrameRanges": [
+                {
+                    "X": 32,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "tear1_left",
+            "FrameRanges": [
+                {
+                    "X": 80,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "tear2_left",
+            "FrameRanges": [
+                {
+                    "X": 96,
+                    "Y": 48
+                }
+            ]
+        },
+        {
+            "Name": "fan",
+            "Speed": 20,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 64,
+                    "AnchorX": -8,
+                    "AnchorY": 0
+                },
+                {
+                    "X": 16,
+                    "Y": 64,
+                    "AnchorX": -14,
+                    "AnchorY": -2
+                },
+                {
+                    "X": 32,
+                    "Y": 64,
+                    "AnchorX": -16,
+                    "AnchorY": -8
+                },
+                {
+                    "X": 48,
+                    "Y": 64,
+                    "AnchorX": -14,
+                    "AnchorY": -14
+                },
+                {
+                    "X": 64,
+                    "Y": 64,
+                    "AnchorX": -8,
+                    "AnchorY": -16
+                },
+                {
+                    "X": 80,
+                    "Y": 64,
+                    "AnchorX": -2,
+                    "AnchorY": -14
+                },
+                {
+                    "X": 96,
+                    "Y": 64,
+                    "AnchorX": 0,
+                    "AnchorY": -8
+                },
+                {
+                    "X": 112,
+                    "Y": 64,
+                    "AnchorX": -2,
+                    "AnchorY": -2
+                }
+            ]
+        },
+        {
+            "Name": "flare",
+            "Speed": 10,
+            "FrameRanges": [
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "AnchorX": 0,
+                    "AnchorY": 0,
+                    "X": 128,
+                    "Y": 0
+                },
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "AnchorX": 0,
+                    "AnchorY": 0,
+                    "X": 128,
+                    "Y": 32
+                },
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "AnchorX": 0,
+                    "AnchorY": 0,
+                    "X": 128,
+                    "Y": 64
+                }
+            ]
+        },
+        {
+            "Name": "flare2",
+            "Speed": 10,
+            "FrameRanges": [
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "AnchorX": 0,
+                    "AnchorY": 0,
+                    "X": 160,
+                    "Y": 0
+                },
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "AnchorX": 0,
+                    "AnchorY": 0,
+                    "X": 160,
+                    "Y": 32
+                },
+                {
+                    "Width": 32,
+                    "Height": 32,
+                    "AnchorX": 0,
+                    "AnchorY": 0,
+                    "X": 160,
+                    "Y": 64
+                }
+            ]
+        },
+        {
+            "Name": "fragment1",
+            "FrameRanges": [
+                {
+                    "X": 112,
+                    "Y": 32
+                }
+            ]
+        },
+        {
+            "Name": "fragment2",
+            "FrameRanges": [
+                {
+                    "X": 112,
+                    "Y": 48
+                }
+            ]
+        }
+    ]
+}
