@@ -15,8 +15,11 @@ namespace PovertySTG
         static string path;
         //public static float MusicVolume { get; set; }
         //public static float SoundVolume { get; set; }
-        //public static bool Fullscreen { get; set; }
-        //public static int Zoom { get; set; }
+        public static bool Fullscreen { get; set; }
+        public static int Zoom { get; set; }
+        public static float LevelWidth => 1080;
+        public static float LevelHeight => 1080;
+        public static List<float> GameScales => new List<float> { 600f / 1080f, 720f / 1080f, 1};
 
         static Dictionary<GameCommand, string> commandName;
 
@@ -30,7 +33,9 @@ namespace PovertySTG
             //commandName.Add(GameCommand.Action2, "Bomb");
             //commandName.Add(GameCommand.Action3, "Talk");
 
+#if !DEBUG
             LoadConfig();
+#endif
         }
 
         public static string GetCommandName(GameCommand command)
@@ -67,8 +72,10 @@ namespace PovertySTG
 
             SoundManager.MusicVolume = options.MusicVolume;
             SoundManager.SoundVolume = options.SoundVolume;
-            gs.DisplayManager.SetFullscreen(options.Fullscreen);
-            gs.DisplayManager.SetZoom(options.Zoom);
+            Config.Fullscreen = options.Fullscreen;
+            gs.DisplayManager.SetFullscreen(Config.Fullscreen);
+            Config.Zoom = options.Zoom;
+            gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
         }
 
         public static void SaveConfig()
@@ -77,8 +84,8 @@ namespace PovertySTG
             options.Version = configVersion;
             options.MusicVolume = SoundManager.MusicVolume;
             options.SoundVolume = SoundManager.SoundVolume;
-            options.Fullscreen = gs.DisplayManager.Fullscreen;
-            options.Zoom = (int)gs.DisplayManager.GameScale;
+            options.Fullscreen = Config.Fullscreen;
+            options.Zoom = Config.Zoom;
             JsonHelper<ConfigOptions>.Save(path, options);
         }
     }

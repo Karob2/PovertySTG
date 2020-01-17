@@ -13,7 +13,7 @@ namespace PovertySTG.ECS.Systems
     {
         SystemReferences sys;
         public bool HoldFocus { get; set; } = false;
-        public bool MouseEnabled { get; set; } = true;
+        public bool MouseEnabled { get; set; } = false;
         public bool KeyboardEnabled { get; set; } = true;
         ButtonComponent focusedButton;
 
@@ -268,13 +268,15 @@ namespace PovertySTG.ECS.Systems
                         break;
                     case "zoom-up":
                         InputManager.StickMouse();
-                        if (gs.DisplayManager.GameScale < 3) gs.DisplayManager.SetZoom(gs.DisplayManager.GameScale + 1);
-                        else gs.DisplayManager.SetZoom(1);
+                        if (Config.Zoom < 2) Config.Zoom++;
+                        else Config.Zoom = 0;
+                        gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
                         break;
                     case "zoom-dn":
                         InputManager.StickMouse();
-                        if (gs.DisplayManager.GameScale > 1) gs.DisplayManager.SetZoom(gs.DisplayManager.GameScale - 1);
-                        else gs.DisplayManager.SetZoom(3);
+                        if (Config.Zoom > 0) Config.Zoom--;
+                        else Config.Zoom = 2;
+                        gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
                         break;
                     case "controls":
                         gameState.Request("controls");

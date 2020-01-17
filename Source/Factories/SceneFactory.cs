@@ -23,7 +23,7 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new GuiSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
-            MakeCursor();
+            //MakeCursor();
 
             StartButtonList(true);
             MakeButton(64, 64, "Start", "start");
@@ -40,7 +40,7 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new GuiSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
-            MakeCursor();
+            //MakeCursor();
 
             StartButtonList(true);
             MakeButton(64, 44, "Music Volume:", null, "m-dn", "m-up");
@@ -78,18 +78,10 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new MotionSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
-            MakePlayer(gs.DisplayManager.GameWidth / 2, gs.DisplayManager.GameHeight * 3 / 4);
+            DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
+            MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
 
             return scene;
-        }
-
-        public static void MakePlayer(float x, float y)
-        {
-            Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(1, 0));
-            entity.AddComponent(new SpriteComponent(gs, "cirno", "walk_up"));
-            entity.AddComponent(new PlayerComponent(x, y));
-            entity.Enable();
         }
 
         public static void MakeCursor()
@@ -98,6 +90,19 @@ namespace PovertySTG.Factories
             entity.AddComponent(new RenderComponent(-99, 0));
             entity.AddComponent(new SpriteComponent(gs, "pointer"));
             entity.AddComponent(new PointerComponent());
+            entity.Enable();
+        }
+
+        public static void MakeRect(float x, float y, float x2, float y2, Color color)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(x, y, 199, 0));
+            SpriteComponent sc = new SpriteComponent(gs, "pixel");
+            sc.Color = color;
+            sc.Width = x2 - x;
+            sc.Height = y2 - y;
+            sc.Stretched = true;
+            entity.AddComponent(sc);
             entity.Enable();
         }
 

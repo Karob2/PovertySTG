@@ -196,11 +196,11 @@ namespace Engine
         /// <summary>
         /// Begin the global SpriteBatch.
         /// </summary>
-        public void StartDrawing()//GameTime gameTime)
+        public void StartDrawing(Color color)//GameTime gameTime)
         {
             Game.GraphicsDevice.SetRenderTarget(renderTarget);
             //DeltaDrawSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            Game.GraphicsDevice.Clear(Color.Black);
+            Game.GraphicsDevice.Clear(color);
             //SpriteBatch.Begin(blendState: BlendState.NonPremultiplied);
             //SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, DisplayManager.ScaleMatrix);
             SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
@@ -223,7 +223,7 @@ namespace Engine
 
             Game.GraphicsDevice.SetRenderTarget(null);
             Game.GraphicsDevice.Viewport = new Viewport(viewX, viewY, viewWidth, viewHeight);
-            SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, this.ScaleMatrix);
+            SpriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.LinearClamp, null, null, null, this.ScaleMatrix);
             SpriteBatch.Draw(renderTarget, Vector2.Zero, Color.White);
             SpriteBatch.End();
         }

@@ -26,18 +26,18 @@ namespace PovertySTG.ECS.Systems
             if (timer > 0.2)
             {
                 timer -= 0.2;
-                float x = (float)r.NextDouble() * gs.DisplayManager.GameWidth;
+                float x = (float)r.NextDouble() * Config.LevelWidth;
                 float dy = (float)r.NextDouble() * 3 + 1;
-                DanmakuFactory.MakeBullet(gs, scene, -1, x, 0, 0, dy);
+                DanmakuFactory.MakeBullet(scene, -1, x, 0, 0, dy);
             }
 
             timer2 += gameTime.ElapsedGameTime.TotalSeconds;
             if (timer2 > 2)
             {
                 timer2 -= 2;
-                float x = (float)r.NextDouble() * gs.DisplayManager.GameWidth;
-                float y = (float)r.NextDouble() * gs.DisplayManager.GameWidth / 2 + 20;
-                DanmakuFactory.MakeEnemy(gs, scene, 0, x * 1.5f, -32, x * 0.8f, y);
+                float x = (float)r.NextDouble() * Config.LevelWidth;
+                float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
+                DanmakuFactory.MakeEnemy(scene, 0, x * 1.5f, -32, x * 0.8f, y);
             }
 
             foreach (PlayerComponent component in sys.PlayerComponents.EnabledList)

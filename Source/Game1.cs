@@ -16,11 +16,11 @@ namespace PovertySTG
         const string gameName = "PovertySTG";
         const string companyName = "Lantern House";
         // Game resolution.
-        const int gameWidth = 640;
-        const int gameHeight = 480;
-        int screenMode = 0; //0 = windowed, 1 = fullscreen
+        const int gameWidth = 1440;
+        const int gameHeight = 1080;
+        //int screenMode = 0; //0 = windowed, 1 = fullscreen
         bool screenModeJustChanged;
-        int screenZoomMode = 2; //2 = 2x, 3 = 3x
+        //int screenZoomMode = 1; //0 = 1080p (1x), 1 = 720p (0.67x), 2 = 600p (0.56x)
         bool screenZoomModeJustChanged;
 
         GameServices gs;
@@ -43,7 +43,10 @@ namespace PovertySTG
 
         protected override void Initialize()
         {
-            gs.Initialize(gameWidth, gameHeight, screenZoomMode, screenMode == 1);
+            Config.Fullscreen = false;
+            Config.Zoom = 1; //0 = 1080p (1x), 1 = 720p (0.67x), 2 = 600p (0.56x)
+            //gs.Initialize(gameWidth, gameHeight, screenZoomMode, screenMode == 1);
+            gs.Initialize(gameWidth, gameHeight, Config.GameScales[Config.Zoom], Config.Fullscreen);
             InputManager.Initialize(gs, gs.ResourceManager.GetSaveDirectory("inputconfig.json"));
             //TextHandler.Start(gs);
             SoundManager.Initialize(gs);
@@ -98,8 +101,8 @@ namespace PovertySTG
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-            gs.DisplayManager.StartDrawing();
+            //GraphicsDevice.Clear(new Color(5, 5, 20));
+            gs.DisplayManager.StartDrawing(new Color(5, 5, 20));
 
             /*
             Sprite sprite;
@@ -123,8 +126,8 @@ namespace PovertySTG
             {
                 if (screenModeJustChanged) return;
                 InputManager.StickMouse();
-                if (gs.DisplayManager.Fullscreen) gs.DisplayManager.SetFullscreen(false);
-                else gs.DisplayManager.SetFullscreen(true);
+                Config.Fullscreen = !Config.Fullscreen;
+                gs.DisplayManager.SetFullscreen(Config.Fullscreen);
                 screenModeJustChanged = true; // Wait until key release before screen mode can be changed again.
                 Config.SaveConfig();
             }
@@ -134,12 +137,13 @@ namespace PovertySTG
             }
 
             // F10 will change window size/zoom.
-            if (Keyboard.GetState().IsKeyDown(Keys.F10) && screenMode == 0)
+            if (Keyboard.GetState().IsKeyDown(Keys.F10))
             {
                 if (screenZoomModeJustChanged) return;
                 InputManager.StickMouse();
-                if (gs.DisplayManager.GameScale < 3) gs.DisplayManager.SetZoom(gs.DisplayManager.GameScale + 1);
-                else gs.DisplayManager.SetZoom(1);
+                if (Config.Zoom < 2) Config.Zoom++;
+                else Config.Zoom = 0;
+                gs.DisplayManager.SetZoom(Config.GameScales[Config.Zoom]);
                 screenZoomModeJustChanged = true; // Wait until key release before screen mode can be changed again.
                 Config.SaveConfig();
             }

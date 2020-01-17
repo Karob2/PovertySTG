@@ -46,7 +46,7 @@ namespace PovertySTG.ECS.Systems
                     if (component.Timer > 1)
                     {
                         component.Timer -= 1;
-                        DanmakuFactory.MakeBullet(gs, scene, 1, component.X, component.Y, 0, 3);
+                        DanmakuFactory.MakeBullet(scene, 1, component.X, component.Y, 0, 3);
                         component.Phase++;
                     }
                 }

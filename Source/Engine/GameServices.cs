@@ -28,7 +28,7 @@ namespace Engine
             RootScene.Enable();
         }
 
-        public void Initialize(int gameWidth, int gameHeight, int zoomMode, bool fullscreen)
+        public void Initialize(int gameWidth, int gameHeight, float zoomMode, bool fullscreen)
         {
             ResourceManager.Initialize();
             Error.StartLog();

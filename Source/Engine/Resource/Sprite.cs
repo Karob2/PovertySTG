@@ -18,6 +18,7 @@ namespace Engine.Resource
         public CollisionBox CollisionBox { get; set; }
         //public Frame DefaultFrame { get; set; }
         public string DefaultAnimation { get; set; }
+        public Animation DefaultAnimationObject => Animations[DefaultAnimation];
         public Dictionary<string, Animation> Animations { get; set; }
 
         //public Sprite() { }

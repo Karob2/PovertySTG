@@ -16,6 +16,7 @@ namespace Engine.ECS
     {
         GameServices gs;
         //ResourceManager rm;
+        public GameServices GS => gs;
 
         enum ChildrenMode
         {
