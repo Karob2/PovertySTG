@@ -20,11 +20,12 @@ namespace PovertySTG.ECS.Systems
         {
             foreach (EnemyComponent component in sys.EnemyComponents.EnabledList)
             {
+                BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
                 if (component.Phase == 0)
                 {
                     float speed = 2.2f;
-                    float dx = component.TargetX - component.X;
-                    float dy = component.TargetY - component.Y;
+                    float dx = component.TargetX - body.X;
+                    float dy = component.TargetY - body.Y;
                     Vector2 d = new Vector2(dx, dy);
                     if (d.LengthSquared() > speed * speed)
                     {
@@ -35,24 +36,24 @@ namespace PovertySTG.ECS.Systems
                     {
                         component.Phase = 1;
                     }
-                    component.DX = d.X;
-                    component.DY = d.Y;
+                    body.DX = d.X;
+                    body.DY = d.Y;
                 }
                 else if (component.Phase > 0 && component.Phase < 5)
                 {
-                    component.DX = 0;
-                    component.DY = 0;
+                    body.DX = 0;
+                    body.DY = 0;
                     component.Timer += gameTime.ElapsedGameTime.TotalSeconds;
                     if (component.Timer > 1)
                     {
                         component.Timer -= 1;
-                        DanmakuFactory.MakeBullet(scene, 1, component.X, component.Y, 0, 3);
+                        DanmakuFactory.MakeBullet(scene, 1, body.X, body.Y, 0, 3);
                         component.Phase++;
                     }
                 }
                 else if (component.Phase >= 5)
                 {
-                    component.DY = -2.2f;
+                    body.DY = -2.2f;
                 }
             }
         }

@@ -128,7 +128,7 @@ namespace Engine.Resource
         {
             Render(x, y, animation, currentFrame, Color.White);
         }
-        public void Render(float x, float y, Animation animation, int currentFrame, Color color)
+        public void Render(float x, float y, Animation animation, int currentFrame, Color color, float rotation = 0f)
         {
             if (color == null) color = Color.White;
             Frame frame = animation.Frames[currentFrame];
@@ -137,7 +137,7 @@ namespace Engine.Resource
                 gs.DisplayManager.ToPixel(x - frame.AnchorX, y - frame.AnchorY),
                 new Rectangle(frame.X, frame.Y, frame.Width, frame.Height),
                 color,
-                0f,
+                rotation,
                 Vector2.Zero,
                 1f,
                 SpriteEffects.None,

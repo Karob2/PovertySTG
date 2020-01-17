@@ -18,43 +18,28 @@ namespace PovertySTG.ECS.Systems
 
         public override void Update(GameTime gameTime)
         {
-            if (scene.Name == "danmaku") DanmakuUpdate(gameTime);
-            else PlatformerUpdate(gameTime);
+            DanmakuUpdate(gameTime);
         }
 
         void DanmakuUpdate(GameTime gameTime)
         {
             foreach (PlayerComponent component in sys.PlayerComponents.EnabledList)
             {
+                BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
                 Vector2 d = new Vector2(0, 0);
                 if (InputManager.Held(GameCommand.Up)) d.Y -= 1;
                 if (InputManager.Held(GameCommand.Down)) d.Y += 1;
                 if (InputManager.Held(GameCommand.Left)) d.X -= 1;
                 if (InputManager.Held(GameCommand.Right)) d.X += 1;
                 if (d.Y != 0 || d.X != 0) d.Normalize();
-                d *= 2.2f;
-                component.DX = d.X;
-                component.DY = d.Y;
+                d *= 6f;
+                body.DX = d.X;
+                body.DY = d.Y;
 
                 if (InputManager.JustPressed(GameCommand.Action1))
                 {
-                    DanmakuFactory.MakeBullet(scene, 0, component.X, component.Y, 0, -3);
+                    DanmakuFactory.MakeBullet(scene, 0, body.X, body.Y, 0, -3);
                 }
-            }
-        }
-
-        void PlatformerUpdate(GameTime gameTime)
-        {
-            foreach (PlayerComponent component in sys.PlayerComponents.EnabledList)
-            {
-                float dx = 0;
-                if (InputManager.Held(GameCommand.Left)) dx -= 1;
-                if (InputManager.Held(GameCommand.Right)) dx += 1;
-                dx *= 2.2f;
-                float dy = component.DY;
-                if (InputManager.Held(GameCommand.Action2)) dy = -4;
-                component.DX = dx;
-                component.DY = dy;
             }
         }
     }

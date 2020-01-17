@@ -5,35 +5,31 @@ using System.Text;
 
 namespace PovertySTG.ECS.Components
 {
-    public class BulletComponent : Component
+    public class BodyComponent : Component
     {
-        public int Type { get; set; }
-        /*
         public float X { get; set; }
         public float Y { get; set; }
         public float DX { get; set; }
         public float DY { get; set; }
-        */
-        public float Power { get; set; }
+        public float Lifespan { get; set; }
+        public float Age { get; set; }
+        public float DeathMargin { get; set; } = 100f;
 
-        public BulletComponent() { }
+        public BodyComponent() { }
 
-        public BulletComponent(int type, float power = 10f)
+        public BodyComponent(float x, float y)
         {
-            Type = type;
-            Power = power;
+            X = x;
+            Y = y;
         }
 
-        /*
-        public BulletComponent(int type, float x, float y, float dx, float dy)
+        public BodyComponent(float x, float y, float dx, float dy)
         {
-            Type = type;
             X = x;
             Y = y;
             DX = dx;
             DY = dy;
         }
-        */
 
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
         public override void Remove() { Owner.RemoveComponent(this); }

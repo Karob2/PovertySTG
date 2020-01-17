@@ -7,6 +7,7 @@ namespace PovertySTG.ECS.Components
 {
     public class PlayerComponent : Component
     {
+        /*
         public float X { get; set; }
         public float Y { get; set; }
         public float DX { get; set; }
@@ -19,6 +20,7 @@ namespace PovertySTG.ECS.Components
             X = x;
             Y = y;
         }
+        */
 
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
         public override void Remove() { Owner.RemoveComponent(this); }

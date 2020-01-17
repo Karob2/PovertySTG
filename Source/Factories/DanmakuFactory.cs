@@ -22,7 +22,8 @@ namespace PovertySTG.Factories
             sc.Stretched = true;
             */
             entity.AddComponent(sc);
-            entity.AddComponent(new PlayerComponent(x, y));
+            entity.AddComponent(new PlayerComponent());
+            entity.AddComponent(new BodyComponent(x, y));
             entity.Enable();
         }
 
@@ -39,7 +40,8 @@ namespace PovertySTG.Factories
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(layer, 0));
             entity.AddComponent(new SpriteComponent(scene.GS, sprite, animation));
-            entity.AddComponent(new BulletComponent(type, x, y, dx, dy));
+            entity.AddComponent(new BulletComponent(type));
+            entity.AddComponent(new BodyComponent(x, y, dx, dy));
             entity.Enable();
         }
 
@@ -49,7 +51,8 @@ namespace PovertySTG.Factories
             entity.AddComponent(new RenderComponent(1, 0));
             if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
             if (type == 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_glowy"));
-            entity.AddComponent(new EnemyComponent(type, x, y, targetX, targetY));
+            entity.AddComponent(new EnemyComponent(type, targetX, targetY));
+            entity.AddComponent(new BodyComponent(x, y));
             entity.Enable();
         }
     }

@@ -220,7 +220,7 @@ namespace PovertySTG.ECS.Systems
             }
             else
             {
-                sprite.Render(renderComponent.DisplayX, renderComponent.DisplayY, animation, component.CurrentFrame, component.Color);
+                sprite.Render(renderComponent.DisplayX, renderComponent.DisplayY, animation, component.CurrentFrame, component.Color, component.Rotation);
             }
 
             if (animation.Frames.Count > 1)

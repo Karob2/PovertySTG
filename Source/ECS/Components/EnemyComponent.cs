@@ -12,13 +12,24 @@ namespace PovertySTG.ECS.Components
         public float TargetY { get; set; }
         public double Timer { get; set; }
         public int Phase { get; set; }
+        /*
         public float X { get; set; }
         public float Y { get; set; }
         public float DX { get; set; }
         public float DY { get; set; }
+        */
+        public float Health { get; set; } = 100f;
 
         public EnemyComponent() { }
 
+        public EnemyComponent(int type, float targetX, float targetY)
+        {
+            Type = type;
+            TargetX = targetX;
+            TargetY = targetY;
+        }
+
+        /*
         public EnemyComponent(int type, float x, float y, float targetX, float targetY)
         {
             Type = type;
@@ -27,6 +38,7 @@ namespace PovertySTG.ECS.Components
             TargetX = targetX;
             TargetY = targetY;
         }
+        */
 
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
         public override void Remove() { Owner.RemoveComponent(this); }
