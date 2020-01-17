@@ -94,17 +94,35 @@ namespace Engine
             LoadResources("bgm", Songs);
             LoadResources("sfx", SoundEffects);
             LoadResources("stories", Stories);
-            LoadResources("sprites", Sprites.TextureLibrary);
+            LoadResources("sprites", Sprites.TextureLibrary); // Gather loose textures for autosprites.
             LoadResources("sprites", Sprites);
             LoadResources("textures", Textures);
 
-            // Automatically generate sprites for all the textures.
+            LoadAutosprites();
+        }
+
+        // Automatically generates sprites from loose textures in the sprite library's texture library.
+        void LoadAutosprites()
+        {
             foreach (string key in Sprites.TextureLibrary.List.Keys)
             {
                 //Sprites.List.Add("texture_" + key, new Sprite(gs, key, Textures.List[key]));
                 if (!Sprites.List.ContainsKey(key))
                 {
-                    Sprites.List.Add(key, new Sprite(gs, key, Sprites.TextureLibrary.List[key]));
+                    Sprite sprite = new Sprite(gs, key, Sprites.TextureLibrary.List[key]);
+                    // Center anchor for autosprites starting with "s_".
+                    if (key.Length > 2 && key.Substring(0, 2) == "s_")
+                    {
+                        foreach (Animation animation in sprite.Animations.Values)
+                        {
+                            foreach (Frame frame in animation.Frames)
+                            {
+                                frame.AnchorX = frame.Width / 2;
+                                frame.AnchorY = frame.Height / 2;
+                            }
+                        }
+                    }
+                    Sprites.List.Add(key, sprite);
                 }
             }
         }
@@ -127,20 +145,12 @@ namespace Engine
                     return false;
                 case 3:
                     LoadResources("textures", Textures);
-                    LoadResources("sprites", Sprites.TextureLibrary);
+                    LoadResources("sprites", Sprites.TextureLibrary); // Gather loose textures for autosprites.
                     message = "sprites";
                     return false;
                 case 4:
                     LoadResources("sprites", Sprites);
-                    // Automatically generate sprites for all the textures.
-                    foreach (string key in Sprites.TextureLibrary.List.Keys)
-                    {
-                        //Sprites.List.Add("texture_" + key, new Sprite(gs, key, Textures.List[key]));
-                        if (!Sprites.List.ContainsKey(key))
-                        {
-                            Sprites.List.Add(key, new Sprite(gs, key, Sprites.TextureLibrary.List[key]));
-                        }
-                    }
+                    LoadAutosprites();
                     message = "levels";
                     return false;
                 case 5:

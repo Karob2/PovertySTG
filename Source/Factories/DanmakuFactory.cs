@@ -14,7 +14,7 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(1, 0));
-            SpriteComponent sc = new SpriteComponent(scene.GS, "sanny");
+            SpriteComponent sc = new SpriteComponent(scene.GS, "s_sanny");
             /*
             Frame frame = sc.Sprite.DefaultAnimationObject.Frames[0];
             sc.Width = frame.Width / 2;
@@ -29,7 +29,7 @@ namespace PovertySTG.Factories
         public static void MakeBullet(Scene scene, int type, float x, float y, float dx, float dy)
         {
             int layer = 1;
-            string sprite = "shot";
+            string sprite = "s_shot";
             string animation = null;
             if (type < 0) layer = 100;
             if (type < 0) sprite = "pixel";
@@ -47,7 +47,8 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(1, 0));
-            entity.AddComponent(new SpriteComponent(scene.GS, "fair"));
+            if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
+            if (type == 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_glowy"));
             entity.AddComponent(new EnemyComponent(type, x, y, targetX, targetY));
             entity.Enable();
         }
