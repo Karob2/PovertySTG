@@ -22,6 +22,9 @@ namespace PovertySTG.ECS.Systems
 
         public override void Update(GameTime gameTime)
         {
+            sys.PlayerComponents.TryGetFirstEnabled(out PlayerComponent player);
+            //BodyComponent playerBody = sys.BodyComponents.GetByOwner(player.Owner);
+
             timer += gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 0.2)
             {
@@ -96,7 +99,15 @@ namespace PovertySTG.ECS.Systems
                                 DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
                                 component.Owner.Delete();
                                 enemy.Health -= component.Power;
-                                if (enemy.Health <= 0) enemy.Owner.Delete();
+                                if (enemy.Health <= 0)
+                                {
+                                    enemy.Owner.Delete();
+                                    player.Score += 50;
+                                }
+                                else
+                                {
+                                    player.Score += 1;
+                                }
                                 continue;
                             }
                         }
@@ -115,6 +126,7 @@ namespace PovertySTG.ECS.Systems
                             {
                                 DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
                                 component.Owner.Delete();
+                                player.Lives--;
                                 continue;
                             }
                         }

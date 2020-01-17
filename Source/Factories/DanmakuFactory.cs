@@ -23,7 +23,7 @@ namespace PovertySTG.Factories
             sc.Stretched = true;
             */
             entity.AddComponent(sc);
-            entity.AddComponent(new PlayerComponent());
+            entity.AddComponent(new PlayerComponent() { Lives = 5, Bombs = 2});
             entity.AddComponent(new BodyComponent(x, y));
             entity.Enable();
         }

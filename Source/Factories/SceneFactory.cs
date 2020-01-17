@@ -77,10 +77,18 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new EnemyControlSystem(sys));
             scene.AddUpdateSystem(new MotionSystem(sys));
             scene.AddUpdateSystem(new VfxSystem(sys));
+
+            scene.AddRenderSystem(new DanmakuGuiSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
             MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
+            int sideMargin = (int)Config.LevelWidth + 40;
+            int topMargin = 150;
+            int topSpacing = 60;
+            MakeText(sideMargin, topMargin, "Score").AddToGroup("score");
+            MakeText(sideMargin, topMargin + topSpacing, "Lives").AddToGroup("lives");
+            MakeText(sideMargin, topMargin + topSpacing * 2, "Bombs").AddToGroup("bombs");
 
             return scene;
         }
@@ -109,9 +117,14 @@ namespace PovertySTG.Factories
 
         public static Entity MakeText(int x, int y, string text)
         {
+            return MakeText(x, y, text, Color.White);
+        }
+
+        public static Entity MakeText(int x, int y, string text, Color color, string font = "menufont")
+        {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 0, 0));
-            entity.AddComponent(new TextComponent(gs, "menufont", text, Color.White));
+            entity.AddComponent(new RenderComponent(x, y, -1, 0));
+            entity.AddComponent(new TextComponent(gs, font, text, color));
             entity.Enable();
             return entity;
         }
