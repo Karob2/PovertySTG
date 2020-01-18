@@ -64,6 +64,7 @@ namespace PovertySTG.ECS.Systems
                         component.TargetY = (float)r.NextDouble() * Config.LevelHeight;
                         component.Phase = 0;
                     }
+                    UpdateSprite(ed);
                 }
             }
         }
@@ -109,6 +110,27 @@ namespace PovertySTG.ECS.Systems
                 DanmakuFactory.MakeBullet(scene, 1, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
                 ed.component.Phase++;
             }
+        }
+
+        void UpdateSprite(EnemyData ed)
+        {
+            int type = ed.component.Type;
+            float dx = ed.body.DX;
+            float dy = ed.body.DY;
+            string name;
+            if (type == 100) name = "yoshika";
+            else if (type == 101) name = "fuyu";
+            else if (type == 102) name = "joon";
+            else name = "";
+            if (dx < 0) ed.component.Direction = Direction.Left;
+            if (dx > 0) ed.component.Direction = Direction.Right;
+            string direction;
+            if (ed.component.Direction == Direction.Left) direction = "_left";
+            else direction = "_right";
+            string motion = "";
+            if (dx != 0 || dy != 0) motion = "_move";
+
+            sys.SpriteComponents.GetByOwner(ed.component.Owner).CurrentAnimation = name + motion + direction;
         }
     }
 

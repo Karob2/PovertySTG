@@ -20,4 +20,10 @@ namespace PovertySTG
         Center,
         Right
     }
+
+    public enum Direction
+    {
+        Left,
+        Right
+    }
 }
