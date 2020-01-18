@@ -2,9 +2,12 @@
   "Lines": [
     {
       "Left": "sanae_annoyed",
-      "Right": "yoshika_chillin",
-      "LeftMessage": "Bacon!",
+      "Right": "sanae_wut",
       "RightMessage": "Just chillin'"
+    },
+    {
+      "Left": "sanae_annoyed",
+      "LeftMessage": "Bacon!"
     }
   ]
 }
