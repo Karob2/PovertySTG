@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PovertySTG.Engine.Util;
 
 namespace PovertySTG.Factories
 {
@@ -90,12 +91,28 @@ namespace PovertySTG.Factories
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
             //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
             MakeDummy("overlay", 0, 0, 0, 0);
-            int sideMargin = (int)Config.LevelWidth + 40;
-            int topMargin = 150;
-            int topSpacing = 60;
-            MakeText(sideMargin, topMargin, "Score").AddToGroup("score");
-            MakeText(sideMargin, topMargin + topSpacing, "Lives").AddToGroup("lives");
-            MakeText(sideMargin, topMargin + topSpacing * 2, "Bombs").AddToGroup("bombs");
+            int sideMargin = 604;
+            int sideMargin2 = 794;
+            Color color1 = ColorHelper.FromHex("#fff3e5");
+            Color color2 = ColorHelper.FromHex("#a3e0bd");
+            Color color3 = ColorHelper.FromHex("#4bc5d6");
+            int topMargin = 54;
+            int topSpacing = 34;
+            MakeText(sideMargin, topMargin, "HiScore:", color1, "scorefont").AddToGroup("hiscore");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Score:", color1, "scorefont").AddToGroup("score");
+            topMargin += topSpacing;
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Life:", color2, "scorefont").AddToGroup("lives");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Bomb:", color2, "scorefont").AddToGroup("bombs");
+            topMargin += topSpacing;
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Power:", color3, "scorefont").AddToGroup("power");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Graze:", color3, "scorefont").AddToGroup("graze");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Point:", color3, "scorefont").AddToGroup("point");
 
             return scene;
         }
