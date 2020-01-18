@@ -93,6 +93,7 @@ namespace PovertySTG.Factories
             MakeGraphic("overlay", 0, 0, 0, 0);
             int sideMargin = 604;
             int sideMargin2 = 792;
+            int sideMargin3 = sideMargin + 64;
             Color color1 = ColorHelper.FromHex("#fff3e5");
             Color color2 = ColorHelper.FromHex("#a3e0bd");
             Color color3 = ColorHelper.FromHex("#4bc5d6");
@@ -107,17 +108,19 @@ namespace PovertySTG.Factories
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Life:", color2, "scorefont");
             //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("lives");
-            MakeGraphicRow("life", 4, 28, sideMargin + 64, topMargin - 4, -1, 0, "lives");
-            MakeGraphicRow("life", 4, 28, sideMargin + 64 + 10, topMargin, -1, 0, "lives");
+            MakeGraphicRow("life", 4, 28, sideMargin3, topMargin - 4, -1, 0, "lives");
+            MakeGraphicRow("life", 4, 28, sideMargin3 + 10, topMargin, -1, 0, "lives");
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Bomb:", color2, "scorefont");
             //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("bombs");
-            MakeGraphicRow("bomb", 4, 28, sideMargin + 64, topMargin - 4, -1, 0, "bombs");
-            MakeGraphicRow("bomb", 4, 28, sideMargin + 64 + 10, topMargin, -1, 0, "bombs");
+            MakeGraphicRow("bomb", 4, 28, sideMargin3, topMargin - 4, -1, 0, "bombs");
+            MakeGraphicRow("bomb", 4, 28, sideMargin3 + 10, topMargin, -1, 0, "bombs");
             topMargin += topSpacing;
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Power:", color3, "scorefont");
-            MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("power");
+            //MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("power");
+            MakeGraphic("power", sideMargin3, topMargin + 4, -1, 0);
+            MakeRect(sideMargin3 + 2, topMargin + 4 + 2, sideMargin3 + 122, topMargin + 4 + 20, new Color(0, 0, 0), -2).AddToGroup("power");
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Graze:", color3, "scorefont");
             MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("graze");
@@ -137,10 +140,10 @@ namespace PovertySTG.Factories
             entity.Enable();
         }
 
-        public static void MakeRect(float x, float y, float x2, float y2, Color color)
+        public static Entity MakeRect(float x, float y, float x2, float y2, Color color, int layer = 0)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 0, 0));
+            entity.AddComponent(new RenderComponent(x, y, layer, 0));
             SpriteComponent sc = new SpriteComponent(gs, "pixel");
             sc.Color = color;
             sc.Width = x2 - x;
@@ -148,6 +151,7 @@ namespace PovertySTG.Factories
             sc.Stretched = true;
             entity.AddComponent(sc);
             entity.Enable();
+            return entity;
         }
 
         public static Entity MakeGraphic(string image, float x, float y, int layer, float depth)

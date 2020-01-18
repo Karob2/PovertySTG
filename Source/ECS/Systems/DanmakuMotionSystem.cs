@@ -121,6 +121,7 @@ namespace PovertySTG.ECS.Systems
                                 else
                                 {
                                     player.Score += 1;
+                                    player.Power += 0.1f;
                                 }
                                 continue;
                             }
@@ -141,6 +142,7 @@ namespace PovertySTG.ECS.Systems
                                 DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
                                 component.Owner.Delete();
                                 player.Lives--;
+                                player.Power -= 0.1f;
                                 if (player.Lives < 0) player.Lives = 8;
                                 continue;
                             }
@@ -148,6 +150,8 @@ namespace PovertySTG.ECS.Systems
                     }
                 }
             }
+
+            player.Power = Math.Min(Math.Max(player.Power, 0), 1);
         }
     }
 }
