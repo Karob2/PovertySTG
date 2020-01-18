@@ -30,7 +30,8 @@ namespace Engine
 
         //public List<LibraryType> LibraryTypes { get; set; }
         public FontLibrary Fonts { get; private set; }
-        public LevelMapLibrary LevelMaps { get; private set; }
+        //public LevelMapLibrary LevelMaps { get; private set; }
+        public LevelScriptLibrary LevelScripts { get; private set; }
         public SongLibrary Songs { get; private set; }
         public SoundEffectLibrary SoundEffects { get; private set; }
         public TextureLibrary Textures { get; private set; }
@@ -76,7 +77,8 @@ namespace Engine
         public void Initialize()
         {
             Fonts = new FontLibrary(gs);
-            LevelMaps = new LevelMapLibrary(gs);
+            //LevelMaps = new LevelMapLibrary(gs);
+            LevelScripts = new LevelScriptLibrary(gs);
             Songs = new SongLibrary(gs);
             SoundEffects = new SoundEffectLibrary(gs);
             Textures = new TextureLibrary(gs);
@@ -90,7 +92,7 @@ namespace Engine
         public void LoadContent()
         {
             LoadResources("fonts", Fonts);
-            LoadResources("levels", LevelMaps);
+            LoadResources("levels", LevelScripts);
             LoadResources("bgm", Songs);
             LoadResources("sfx", SoundEffects);
             LoadResources("stories", Stories);
@@ -154,7 +156,7 @@ namespace Engine
                     message = "levels";
                     return false;
                 case 5:
-                    LoadResources("levels", LevelMaps);
+                    LoadResources("levels", LevelScripts);
                     message = "music";
                     return false;
                 case 6:

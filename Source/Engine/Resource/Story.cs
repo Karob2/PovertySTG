@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Engine.Resource
 {
     /// <summary>
-    /// JSON-serializable font class. Can configure and render fonts.
+    /// JSON-serializable story script class.
     /// </summary>
     [JsonObject]
     public class Story

@@ -24,6 +24,7 @@ namespace PovertySTG.ECS.Systems
         public ComponentGroup<BulletComponent> BulletComponents { get; private set; }
         public ComponentGroup<BodyComponent> BodyComponents { get; private set; }
         public ComponentGroup<VfxComponent> VfxComponents { get; private set; }
+        public ComponentGroup<LevelScriptComponent> LevelScriptComponents { get; private set; }
 
         public Font GlobalFont { get; private set; }
 
@@ -42,6 +43,7 @@ namespace PovertySTG.ECS.Systems
             BulletComponents = scene.GetComponentGroup<BulletComponent>();
             BodyComponents = scene.GetComponentGroup<BodyComponent>();
             VfxComponents = scene.GetComponentGroup<VfxComponent>();
+            LevelScriptComponents = scene.GetComponentGroup<LevelScriptComponent>();
         }
 
         public GameStateComponent GetGameState()

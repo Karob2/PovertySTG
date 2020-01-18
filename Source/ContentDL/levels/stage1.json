@@ -1,0 +1,15 @@
+{
+    "Lines": [
+        "loop",
+        "summon dork",
+        "wait 0.5",
+        "summon dork",
+        "wait 0.5",
+        "summon dork",
+        "wait 0.5",
+        "summon dork",
+        "wait 0.5",
+        "summon dork",
+        "wait clear"
+    ]
+}

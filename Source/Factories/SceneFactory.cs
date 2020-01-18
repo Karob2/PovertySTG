@@ -73,6 +73,9 @@ namespace PovertySTG.Factories
         {
             NewScene(gs, name, out Scene scene, out SystemReferences sys);
 
+            scene.NewEntity().AddComponent(new LevelScriptComponent(scene, "stage1")).Enable();
+
+            scene.AddUpdateSystem(new LevelScriptSystem(sys));
             scene.AddUpdateSystem(new PlayerControlSystem(sys));
             scene.AddUpdateSystem(new EnemyControlSystem(sys));
             scene.AddUpdateSystem(new MotionSystem(sys));

@@ -34,6 +34,7 @@ namespace PovertySTG.ECS.Systems
                 DanmakuFactory.MakeBullet(scene, -1, x, 0, 0, dy);
             }
 
+            /*
             timer2 += gameTime.ElapsedGameTime.TotalSeconds;
             if (timer2 > 2)
             {
@@ -42,6 +43,7 @@ namespace PovertySTG.ECS.Systems
                 float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
                 DanmakuFactory.MakeEnemy(scene, 0, x * 1.5f, -32, x * 0.8f, y);
             }
+            */
 
             foreach (BodyComponent component in sys.BodyComponents.EnabledList)
             {
