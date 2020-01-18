@@ -32,6 +32,26 @@ namespace PovertySTG.Factories
             entity.AddTag("player");
         }
 
+        public static void MakeEnemy(Scene scene, int type, float x, float y, float targetX, float targetY)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(x, y, 30, 0, true));
+            if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
+            if (type >= 100)
+            {
+                string animationName = null;
+                if (type == 100) animationName = "yoshika_left";
+                if (type == 101) animationName = "fuyu_left";
+                if (type == 102) animationName = "joon_left";
+                entity.AddComponent(new SpriteComponent(scene.GS, "bosses", animationName));
+            }
+            entity.AddComponent(new EnemyComponent(type, targetX, targetY));
+            BodyComponent body = new BodyComponent(x, y);
+            if (type < 100) body.DeathMargin = 100f;
+            entity.AddComponent(body);
+            entity.Enable();
+        }
+
         public static void MakeBullet(Scene scene, int type, float x, float y, float targetX, float targetY, float speed)
         {
             Vector2 d = new Vector2(targetX - x, targetY - y);
@@ -61,19 +81,6 @@ namespace PovertySTG.Factories
             body.DeathMargin = 100f;
             entity.AddComponent(body);
             if (type == 0) entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
-            entity.Enable();
-        }
-
-        public static void MakeEnemy(Scene scene, int type, float x, float y, float targetX, float targetY)
-        {
-            Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 30, 0, true));
-            if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
-            if (type == 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_glowy"));
-            entity.AddComponent(new EnemyComponent(type, targetX, targetY));
-            BodyComponent body = new BodyComponent(x, y);
-            body.DeathMargin = 100f;
-            entity.AddComponent(body);
             entity.Enable();
         }
 

@@ -89,44 +89,17 @@ namespace PovertySTG.Factories
             scene.AddRenderSystem(new RenderSystem(sys));
 
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
+            float spawnX = 100;
+            float spawnY = 0;
+            float targetY = Config.LevelHeight / 2;
+            DanmakuFactory.MakeEnemy(scene, 100, spawnX, spawnY, spawnX, targetY);
+            spawnX = Config.LevelWidth / 2;
+            DanmakuFactory.MakeEnemy(scene, 101, spawnX, spawnY, spawnX, targetY);
+            spawnX = Config.LevelWidth - 100;
+            DanmakuFactory.MakeEnemy(scene, 102, spawnX, spawnY, spawnX, targetY);
+
             //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
-            MakeGraphic("overlay", 0, 0, 0, 0);
-            int sideMargin = 604;
-            int sideMargin2 = 792;
-            int sideMargin3 = sideMargin + 64;
-            Color color1 = ColorHelper.FromHex("#fff3e5");
-            Color color2 = ColorHelper.FromHex("#a3e0bd");
-            Color color3 = ColorHelper.FromHex("#4bc5d6");
-            int topMargin = 54;
-            int topSpacing = 34;
-            MakeText(sideMargin, topMargin, "HiScore:", color1, "scorefont");
-            MakeText(sideMargin2, topMargin, "", color1, "scorefont", Alignment.Right).AddToGroup("hiscore");
-            topMargin += topSpacing;
-            MakeText(sideMargin, topMargin, "Score:", color1, "scorefont");
-            MakeText(sideMargin2, topMargin, "", color1, "scorefont", Alignment.Right).AddToGroup("score");
-            topMargin += topSpacing;
-            topMargin += topSpacing;
-            MakeText(sideMargin, topMargin, "Life:", color2, "scorefont");
-            //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("lives");
-            MakeGraphicRow("life", 4, 28, sideMargin3, topMargin - 4, -1, 0, "lives");
-            MakeGraphicRow("life", 4, 28, sideMargin3 + 10, topMargin, -1, 0, "lives");
-            topMargin += topSpacing;
-            MakeText(sideMargin, topMargin, "Bomb:", color2, "scorefont");
-            //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("bombs");
-            MakeGraphicRow("bomb", 4, 28, sideMargin3, topMargin - 4, -1, 0, "bombs");
-            MakeGraphicRow("bomb", 4, 28, sideMargin3 + 10, topMargin, -1, 0, "bombs");
-            topMargin += topSpacing;
-            topMargin += topSpacing;
-            MakeText(sideMargin, topMargin, "Power:", color3, "scorefont");
-            //MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("power");
-            MakeGraphic("power", sideMargin3, topMargin + 4, -1, 0);
-            MakeRect(sideMargin3 + 2, topMargin + 4 + 2, sideMargin3 + 122, topMargin + 4 + 20, new Color(0, 0, 0), -2).AddToGroup("power");
-            topMargin += topSpacing;
-            MakeText(sideMargin, topMargin, "Graze:", color3, "scorefont");
-            MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("graze");
-            topMargin += topSpacing;
-            MakeText(sideMargin, topMargin, "Point:", color3, "scorefont");
-            MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("point");
+            MakeLevelGui();
 
             return scene;
         }
@@ -248,6 +221,47 @@ namespace PovertySTG.Factories
                 }
             }
             buttons.Add(button);
+        }
+
+        static void MakeLevelGui()
+        {
+            MakeGraphic("overlay", 0, 0, 0, 0);
+            int sideMargin = 604;
+            int sideMargin2 = 792;
+            int sideMargin3 = sideMargin + 64;
+            Color color1 = ColorHelper.FromHex("#fff3e5");
+            Color color2 = ColorHelper.FromHex("#a3e0bd");
+            Color color3 = ColorHelper.FromHex("#4bc5d6");
+            int topMargin = 54;
+            int topSpacing = 34;
+            MakeText(sideMargin, topMargin, "HiScore:", color1, "scorefont");
+            MakeText(sideMargin2, topMargin, "", color1, "scorefont", Alignment.Right).AddToGroup("hiscore");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Score:", color1, "scorefont");
+            MakeText(sideMargin2, topMargin, "", color1, "scorefont", Alignment.Right).AddToGroup("score");
+            topMargin += topSpacing;
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Life:", color2, "scorefont");
+            //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("lives");
+            MakeGraphicRow("life", 4, 28, sideMargin3, topMargin - 4, -1, 0, "lives");
+            MakeGraphicRow("life", 4, 28, sideMargin3 + 10, topMargin, -1, 0, "lives");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Bomb:", color2, "scorefont");
+            //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("bombs");
+            MakeGraphicRow("bomb", 4, 28, sideMargin3, topMargin - 4, -1, 0, "bombs");
+            MakeGraphicRow("bomb", 4, 28, sideMargin3 + 10, topMargin, -1, 0, "bombs");
+            topMargin += topSpacing;
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Power:", color3, "scorefont");
+            //MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("power");
+            MakeGraphic("power", sideMargin3, topMargin + 4, -1, 0);
+            MakeRect(sideMargin3 + 2, topMargin + 4 + 2, sideMargin3 + 122, topMargin + 4 + 20, new Color(0, 0, 0), -2).AddToGroup("power");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Graze:", color3, "scorefont");
+            MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("graze");
+            topMargin += topSpacing;
+            MakeText(sideMargin, topMargin, "Point:", color3, "scorefont");
+            MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("point");
         }
 
         public static void NewScene(GameServices gs, string name, out Scene scene, out SystemReferences sys)

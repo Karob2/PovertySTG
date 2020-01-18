@@ -32,7 +32,8 @@ namespace PovertySTG.ECS.Systems
                 if (InputManager.Held(GameCommand.Left)) d.X -= 1;
                 if (InputManager.Held(GameCommand.Right)) d.X += 1;
                 if (d.Y != 0 || d.X != 0) d.Normalize();
-                d *= 6f;
+                if (InputManager.Held(GameCommand.Action3)) d *= 2f;
+                else d *= 6f;
                 body.DX = d.X;
                 body.DY = d.Y;
                 SpriteComponent sprite = sys.SpriteComponents.GetByOwner(component.Owner);
@@ -46,7 +47,7 @@ namespace PovertySTG.ECS.Systems
                 }
                 else
                 {
-                    sprite.CurrentAnimation = "up";
+                    sprite.CurrentAnimation = "still";
                 }
 
                 if (component.Timer > 0)

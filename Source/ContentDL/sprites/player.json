@@ -11,7 +11,7 @@
     },
     "Animations": [
         {
-            "Name": "up",
+            "Name": "still",
             "Speed": 12,
             "FrameRanges": [
                 {

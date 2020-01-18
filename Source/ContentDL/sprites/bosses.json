@@ -1,0 +1,236 @@
+{
+    "CollisionBox": {
+        "Radius": 8
+    },
+    "DefaultFrame": {
+        "Spritesheet": "bosses.png",
+        "Width": 125,
+        "Height": 174
+    },
+    "Animations": [
+        {
+            "Name": "yoshika_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "AnchorX": 58,
+                    "AnchorY": 84,
+                    "Frametime": 22
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "AnchorX": 58,
+                    "AnchorY": 84,
+                    "Frametime": 22,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_move_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 174,
+                    "AnchorX": 58,
+                    "AnchorY": 84,
+                    "Frametime": 22
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_move_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 174,
+                    "AnchorX": 58,
+                    "AnchorY": 84,
+                    "Frametime": 22,
+                    "FlipX": true
+                }
+            ]
+        },
+
+        {
+            "Name": "fuyu_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 250,
+                    "Y": 0,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 22
+                },
+                {
+                    "X": 375,
+                    "Y": 0,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 1
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 250,
+                    "Y": 0,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 22,
+                    "FlipX": true
+                },
+                {
+                    "X": 375,
+                    "Y": 0,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 1,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_move_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 250,
+                    "Y": 174,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 22
+                },
+                {
+                    "X": 375,
+                    "Y": 174,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 1
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_move_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 250,
+                    "Y": 174,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 22,
+                    "FlipX": true
+                },
+                {
+                    "X": 375,
+                    "Y": 174,
+                    "AnchorX": 45,
+                    "AnchorY": 90,
+                    "Frametime": 1,
+                    "FlipX": true
+                }
+            ]
+        },
+
+        {
+            "Name": "joon_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 500,
+                    "Y": 0,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 22
+                },
+                {
+                    "X": 625,
+                    "Y": 0,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 1
+                }
+            ]
+        },
+        {
+            "Name": "joon_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 500,
+                    "Y": 0,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 22,
+                    "FlipX": true
+                },
+                {
+                    "X": 625,
+                    "Y": 0,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 1,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "joon_move_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 500,
+                    "Y": 174,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 22
+                },
+                {
+                    "X": 625,
+                    "Y": 174,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 1
+                }
+            ]
+        },
+        {
+            "Name": "joon_move_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 500,
+                    "Y": 174,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 22,
+                    "FlipX": true
+                },
+                {
+                    "X": 625,
+                    "Y": 174,
+                    "AnchorX": 50,
+                    "AnchorY": 94,
+                    "Frametime": 1,
+                    "FlipX": true
+                }
+            ]
+        }
+    ]
+}

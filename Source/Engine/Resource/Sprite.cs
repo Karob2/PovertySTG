@@ -137,6 +137,18 @@ namespace Engine.Resource
                 RenderStretched(x, y, frame.Width * scale, frame.Height * scale, animation, currentFrame, color, rotation);
                 return;
             }
+            SpriteEffects sfx = SpriteEffects.None;
+            Vector2 anchor = new Vector2(frame.AnchorX, frame.AnchorY);
+            if (frame.FlipX)
+            {
+                sfx |= SpriteEffects.FlipHorizontally;
+                anchor.X = frame.Width - anchor.X;
+            }
+            if (frame.FlipY)
+            {
+                sfx |= SpriteEffects.FlipVertically;
+                anchor.Y = frame.Height - anchor.Y;
+            }
             //Vector2 position = gs.DisplayManager.ToPixel(x - frame.AnchorX, y - frame.AnchorY);
             spriteBatch.Draw(
                 frame.Texture,
@@ -144,9 +156,9 @@ namespace Engine.Resource
                 new Rectangle(frame.X, frame.Y, frame.Width, frame.Height),
                 color,
                 rotation,
-                new Vector2(frame.AnchorX, frame.AnchorY),
+                anchor,
                 1f,
-                SpriteEffects.None,
+                sfx,
                 0f
                 );
         }
@@ -207,7 +219,7 @@ namespace Engine.Resource
         [JsonIgnore]
         public CollisionShape Shape { get; set; }
         [JsonProperty]
-        public float Radius { get ; set; }
+        public float Radius { get; set; }
         [JsonProperty]
         public float Left { get; set; }
         [JsonProperty]
@@ -240,6 +252,8 @@ namespace Engine.Resource
         public float AnchorX { get; set; } = -2e38f;
         public float AnchorY { get; set; } = -2e38f;
         public float Frametime { get; set; } = 1f;
+        public bool FlipX { get; set; }
+        public bool FlipY { get; set; }
         //public int Count { get; set; } = -1;
 
         public Texture2D Texture { get; set; }
@@ -330,6 +344,8 @@ namespace Engine.Resource
             if (DefaultFrame.AnchorY == null) DefaultFrame.AnchorY = 0f;
             if (DefaultFrame.Count == null) DefaultFrame.Count = 1;
             if (DefaultFrame.Frametime == null) DefaultFrame.Frametime = 1f;
+            if (DefaultFrame.FlipX == null) DefaultFrame.FlipX = false;
+            if (DefaultFrame.FlipY == null) DefaultFrame.FlipY = false;
 
             if (Animations == null)
             {
@@ -366,6 +382,8 @@ namespace Engine.Resource
                         if (frame.AnchorY == null) frame.AnchorY = DefaultFrame.AnchorY;
                         if (frame.Count == null) frame.Count = DefaultFrame.Count;
                         if (frame.Frametime == null) frame.Frametime = 1f; // Do not inherit this from DefaultFrame.
+                        if (frame.FlipX == null) frame.FlipX = false; // Do not inherit this from DefaultFrame.
+                        if (frame.FlipY == null) frame.FlipY = false; // Do not inherit this from DefaultFrame.
                     }
                 }
 
@@ -425,6 +443,10 @@ namespace Engine.Resource
         [JsonProperty]
         public float? Frametime { get; set; }
         [JsonProperty]
+        public bool? FlipX { get; set; }
+        [JsonProperty]
+        public bool? FlipY { get; set; }
+        [JsonProperty]
         public int? Count { get; set; }
 
         [JsonIgnore]
@@ -441,6 +463,8 @@ namespace Engine.Resource
             frame.AnchorX = AnchorX.Value;
             frame.AnchorY = AnchorY.Value;
             frame.Frametime = Frametime.Value;
+            frame.FlipX = FlipX.Value;
+            frame.FlipY = FlipY.Value;
             frame.Texture = Texture;
 
             List<Frame> frames = new List<Frame>();

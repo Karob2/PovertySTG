@@ -61,7 +61,7 @@ namespace PovertySTG.ECS.Systems
                         if (component.X < x || component.X > x2)
                         {
                             sys.SpriteComponents.TryGetByOwner(component.Owner, out SpriteComponent sprite);
-                            sprite.CurrentAnimation = "up";
+                            sprite.CurrentAnimation = "still";
                         }
                     }
                     if (component.X < x) component.X = x;
