@@ -35,10 +35,30 @@ namespace PovertySTG.ECS.Systems
                     }
                     break;
                 case LevelWaitMode.Leave:
+                    if (CheckLeave()) ProgressLevel(level, levelScript);
+                    break;
                 case LevelWaitMode.Clear:
-                    ProgressLevel(level, levelScript);
+                    if (CheckClear()) ProgressLevel(level, levelScript);
                     break;
             }
+        }
+
+        bool CheckClear()
+        {
+            foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        bool CheckLeave()
+        {
+            foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+            {
+                if (enemy.Phase >= 0) return false;
+            }
+            return true;
         }
 
         void ProgressLevel(LevelScriptComponent level, LevelScript levelScript)
@@ -61,16 +81,25 @@ namespace PovertySTG.ECS.Systems
                     case "repeat":
                         level.Progress = level.LoopPoint - 1;
                         continue;
-                    case "summon":
-                        Random r = new Random();
-                        float x = (float)r.NextDouble() * Config.LevelWidth;
-                        float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
-                        DanmakuFactory.MakeEnemy(scene, 0, x, 0, x, y);
-                        break;
                 }
                 if (line.Length < 2) continue;
                 switch (line[0])
                 {
+                    case "summon":
+                        Random r = new Random();
+                        float x = (float)r.NextDouble() * Config.LevelWidth;
+                        float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
+                        if (line[1] == "cute")
+                            DanmakuFactory.MakeEnemy(scene, 0, x, 0, x, y);
+                        else if (line[1] == "dork")
+                            DanmakuFactory.MakeEnemy(scene, 1, x, 0, x, y);
+                        else if (line[1] == "yoshika")
+                            DanmakuFactory.MakeEnemy(scene, 100, x, 0, x, y);
+                        else if (line[1] == "fuyu")
+                            DanmakuFactory.MakeEnemy(scene, 101, x, 0, x, y);
+                        else if (line[1] == "joon")
+                            DanmakuFactory.MakeEnemy(scene, 102, x, 0, x, y);
+                        break;
                     case "wait":
                         if (line[1] == "clear")
                         {

@@ -1,17 +1,28 @@
 {
     "Lines": [
         "loop",
-        "summon dork",
+        "summon cute",
         "wait 0.5",
-        "summon dork",
+        "summon cute",
         "wait 0.5",
-        "summon dork",
+        "summon cute",
+        "wait 0.5",
+        "summon cute",
+        "wait 0.5",
+        "summon cute",
+        "wait 0.5",
+        "wait leave",
+
+        "summon cute",
         "wait 0.5",
         "summon dork",
         "wait 0.5",
         "summon dork",
         "wait 0.5",
         "wait clear",
-        "repeat"
+
+        "summon yoshika",
+        "summon fuyu",
+        "summon joon"
     ]
 }

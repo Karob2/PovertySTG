@@ -89,6 +89,7 @@ namespace PovertySTG.Factories
             scene.AddRenderSystem(new RenderSystem(sys));
 
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
+            /*
             float spawnX = 100;
             float spawnY = 0;
             float targetY = Config.LevelHeight / 2;
@@ -97,6 +98,7 @@ namespace PovertySTG.Factories
             DanmakuFactory.MakeEnemy(scene, 101, spawnX, spawnY, spawnX, targetY);
             spawnX = Config.LevelWidth - 100;
             DanmakuFactory.MakeEnemy(scene, 102, spawnX, spawnY, spawnX, targetY);
+            */
 
             //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
             MakeLevelGui();

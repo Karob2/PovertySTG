@@ -39,6 +39,11 @@ namespace PovertySTG.ECS.Systems
                     }
                     else if (component.Phase >= 5)
                     {
+                        if (component.Type == 0) component.Phase = -1;
+                        else component.Phase = 1;
+                    }
+                    else
+                    {
                         body.DY = -2.2f;
                     }
                 }

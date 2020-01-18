@@ -36,7 +36,7 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 30, 0, true));
-            if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
+            if (type < 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
             if (type >= 100)
             {
                 string animationName = null;
