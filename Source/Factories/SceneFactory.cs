@@ -73,7 +73,10 @@ namespace PovertySTG.Factories
         {
             NewScene(gs, name, out Scene scene, out SystemReferences sys);
 
-            scene.NewEntity().AddComponent(new LevelScriptComponent(scene, "stage1")).Enable();
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new LevelScriptComponent(scene, "stage1"));
+            entity.AddComponent(new CameraComponent(-Config.LevelX, -Config.LevelY));
+            entity.Enable();
 
             scene.AddUpdateSystem(new LevelScriptSystem(sys));
             scene.AddUpdateSystem(new PlayerControlSystem(sys));
@@ -85,7 +88,8 @@ namespace PovertySTG.Factories
             scene.AddRenderSystem(new RenderSystem(sys));
 
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
-            MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
+            //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
+            MakeDummy("overlay", 0, 0, 0, 0);
             int sideMargin = (int)Config.LevelWidth + 40;
             int topMargin = 150;
             int topSpacing = 60;
@@ -115,6 +119,14 @@ namespace PovertySTG.Factories
             sc.Height = y2 - y;
             sc.Stretched = true;
             entity.AddComponent(sc);
+            entity.Enable();
+        }
+
+        public static void MakeDummy(string image, float x, float y, int layer, float depth)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(x, y, layer, depth));
+            entity.AddComponent(new SpriteComponent(gs, image));
             entity.Enable();
         }
 

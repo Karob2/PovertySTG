@@ -15,7 +15,7 @@ namespace PovertySTG.ECS.Systems
     {
         SystemReferences sys;
         public RenderSystem(SystemReferences sys) { this.sys = sys; }
-        Vector2 cameraPos = Vector2.Zero;
+        Vector2 camera = Vector2.Zero;
         List<RenderItem> renderList = new List<RenderItem>();
 
         public override void Update(GameTime gameTime)
@@ -23,24 +23,29 @@ namespace PovertySTG.ECS.Systems
             int index = 0;
             renderList.Clear();
 
-            if (sys.CameraComponents.TryGetFirstEnabled(out CameraComponent camera))
+            if (sys.CameraComponents.TryGetFirstEnabled(out CameraComponent cameraComponent))
             {
-                cameraPos = new Vector2(camera.X, camera.Y);
+                camera = new Vector2(cameraComponent.X, cameraComponent.Y);
             }
 
             foreach (RenderComponent renderComponent in sys.RenderComponents.EnabledList)
             {
                 renderComponent.DisplayX = renderComponent.X;
                 renderComponent.DisplayY = renderComponent.Y;
-                if (renderComponent.Camera != null)
+                if (renderComponent.Camera)
                 {
-                    renderComponent.DisplayX += gs.DisplayManager.GameWidth / 2 - renderComponent.Camera.X;
-                    renderComponent.DisplayY += gs.DisplayManager.GameHeight / 2 - renderComponent.Camera.Y;
+                    /*
+                    renderComponent.DisplayX += gs.DisplayManager.GameWidth / 2 - camera.X;
+                    renderComponent.DisplayY += gs.DisplayManager.GameHeight / 2 - camera.Y;
+                    */
+                    renderComponent.DisplayX -= camera.X;
+                    renderComponent.DisplayY -= camera.Y;
                 }
                 if (sys.SpriteComponents.TryGetEnabled(renderComponent.Owner, out SpriteComponent spriteComponent))
                 {
                     //RenderSpriteComponent(gameTime, scene, renderComponent, spriteComponent);
-                    if (!OutOfScreen(renderComponent, spriteComponent))
+                    // TODO: OutOfScreen check is offset somehow. Disabling for now.
+                    //if (!OutOfScreen(renderComponent, spriteComponent))
                     {
                         renderList.Add(new RenderItem(renderComponent, spriteComponent, index));
                         index++;

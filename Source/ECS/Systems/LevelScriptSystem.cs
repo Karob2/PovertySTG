@@ -58,14 +58,20 @@ namespace PovertySTG.ECS.Systems
                     case "loop":
                         level.LoopPoint = level.Progress + 1;
                         break;
+                    case "repeat":
+                        level.Progress = level.LoopPoint - 1;
+                        continue;
                     case "summon":
                         Random r = new Random();
                         float x = (float)r.NextDouble() * Config.LevelWidth;
                         float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
                         DanmakuFactory.MakeEnemy(scene, 0, x, 0, x, y);
                         break;
+                }
+                if (line.Length < 2) continue;
+                switch (line[0])
+                {
                     case "wait":
-                        if (line.Length < 2) continue;
                         if (line[1] == "clear")
                         {
                             level.WaitMode = LevelWaitMode.Clear;

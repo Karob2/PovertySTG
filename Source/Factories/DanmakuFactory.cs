@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using PovertySTG.ECS.Components;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace PovertySTG.Factories
@@ -14,7 +15,7 @@ namespace PovertySTG.Factories
         public static void MakePlayer(Scene scene, float x, float y)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(20, 0));
+            entity.AddComponent(new RenderComponent(20, 0, true));
             SpriteComponent sc = new SpriteComponent(scene.GS, "s_sanny");
             /*
             Frame frame = sc.Sprite.DefaultAnimationObject.Frames[0];
@@ -24,7 +25,9 @@ namespace PovertySTG.Factories
             */
             entity.AddComponent(sc);
             entity.AddComponent(new PlayerComponent() { Lives = 5, Bombs = 2});
-            entity.AddComponent(new BodyComponent(x, y));
+            BodyComponent body = new BodyComponent(x, y);
+            body.Pen = new Vector4(0, 0, 1, 1);
+            entity.AddComponent(body);
             entity.Enable();
         }
 
@@ -50,10 +53,12 @@ namespace PovertySTG.Factories
             if (type > 0) layer = 19;
 
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, layer, 0));
+            entity.AddComponent(new RenderComponent(x, y, layer, 0, true));
             entity.AddComponent(new SpriteComponent(scene.GS, sprite, animation));
             entity.AddComponent(new BulletComponent(type));
-            entity.AddComponent(new BodyComponent(x, y, dx, dy));
+            BodyComponent body = new BodyComponent(x, y, dx, dy);
+            body.DeathMargin = 100f;
+            entity.AddComponent(body);
             if (type == 0) entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
             entity.Enable();
         }
@@ -61,11 +66,13 @@ namespace PovertySTG.Factories
         public static void MakeEnemy(Scene scene, int type, float x, float y, float targetX, float targetY)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 30, 0));
+            entity.AddComponent(new RenderComponent(x, y, 30, 0, true));
             if (type == 0) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
             if (type == 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_glowy"));
             entity.AddComponent(new EnemyComponent(type, targetX, targetY));
-            entity.AddComponent(new BodyComponent(x, y));
+            BodyComponent body = new BodyComponent(x, y);
+            body.DeathMargin = 100f;
+            entity.AddComponent(body);
             entity.Enable();
         }
 
@@ -76,7 +83,7 @@ namespace PovertySTG.Factories
             if (type == 1) scale = 1f;
             float lifespan = 0.4f;
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, 5, 0f));
+            entity.AddComponent(new RenderComponent(x, y, 5, 0f, true));
             SpriteComponent sprite = new SpriteComponent(scene.GS, "s_slash");
             sprite.Rotation = (float)(new Random().NextDouble() * Math.PI);
             sprite.Alpha = alpha;

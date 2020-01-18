@@ -10,6 +10,8 @@
         "summon dork",
         "wait 0.5",
         "summon dork",
-        "wait clear"
+        "wait 0.5",
+        "wait clear",
+        "repeat"
     ]
 }

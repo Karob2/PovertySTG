@@ -11,7 +11,7 @@ namespace PovertySTG.ECS.Components
         public float Y { get; set; }
         public int Layer { get; set; }
         public float Depth { get; set; }
-        public CameraComponent Camera { get; set; }
+        public bool Camera { get; set; }
         public float DisplayX { get; set; }
         public float DisplayY { get; set; }
         // render bounding box?
@@ -21,28 +21,14 @@ namespace PovertySTG.ECS.Components
 
         public RenderComponent() { }
 
-        public RenderComponent(int layer, float depth)
-        {
-            Layer = layer;
-            Depth = depth;
-        }
-
-        public RenderComponent(CameraComponent camera, int layer, float depth)
+        public RenderComponent(int layer, float depth, bool camera = false)
         {
             Camera = camera;
             Layer = layer;
             Depth = depth;
         }
 
-        public RenderComponent(float x, float y, int layer, float depth)
-        {
-            X = x;
-            Y = y;
-            Layer = layer;
-            Depth = depth;
-        }
-
-        public RenderComponent(CameraComponent camera, float x, float y, int layer, float depth)
+        public RenderComponent(float x, float y, int layer, float depth, bool camera = false)
         {
             Camera = camera;
             X = x;

@@ -23,6 +23,12 @@ namespace PovertySTG.ECS.Components
             Y = target.Y;
         }
 
+        public CameraComponent(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
+
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
         public override void Remove() { Owner.RemoveComponent(this); }
     }

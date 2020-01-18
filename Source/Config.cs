@@ -18,13 +18,17 @@ namespace PovertySTG
         public static bool Fullscreen { get; set; }
         public static int Zoom { get; set; }
         //public static List<float> GameScales => new List<float> { 600f / 1080f, 720f / 1080f, 1 };
-        public static List<float> GameScales => new List<float> { 600f / 720f, 720f / 720f, 1080f / 720f };
-        public const int defaultZoom = 1;
+        //public static List<float> GameScales => new List<float> { 600f / 720f, 720f / 720f, 1080f / 720f };
+        public static List<float> GameScales => new List<float> { 600f / 600f, 720f / 600f, 1080f / 600f };
+        public const int defaultZoom = 0;
         public const bool defaultFullscreen = false;
-        public const int defaultWidth = 720 * 4 / 3;
-        public const int defaultHeight = 720;
-        public static float LevelWidth => defaultHeight;
-        public static float LevelHeight => defaultHeight;
+        //public const int defaultWidth = 720 * 4 / 3;
+        public const int defaultWidth = 800;
+        public const int defaultHeight = 600;
+        public static float LevelX => 16;
+        public static float LevelY => 16;
+        public static float LevelWidth => 580;
+        public static float LevelHeight => 572;
 
         static Dictionary<GameCommand, string> commandName;
 

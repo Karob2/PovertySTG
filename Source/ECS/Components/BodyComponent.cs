@@ -1,4 +1,5 @@
 ﻿using Engine.ECS;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,8 @@ namespace PovertySTG.ECS.Components
         public float DY { get; set; }
         public float Lifespan { get; set; }
         public float Age { get; set; }
-        public float DeathMargin { get; set; } = 100f;
+        public float DeathMargin { get; set; }
+        public Vector4 Pen { get; set; }
 
         public BodyComponent() { }
 

@@ -50,6 +50,18 @@ namespace PovertySTG.ECS.Systems
                 component.X += component.DX;
                 component.Y += component.DY;
 
+                if (component.Pen != Vector4.Zero)
+                {
+                    float x = component.Pen.X * Config.LevelWidth;
+                    float y = component.Pen.Y * Config.LevelHeight;
+                    float x2 = component.Pen.Z * Config.LevelWidth;
+                    float y2 = component.Pen.W * Config.LevelHeight;
+                    if (component.X < x) component.X = x;
+                    if (component.X > x2) component.X = x2;
+                    if (component.Y < y) component.Y = y;
+                    if (component.Y > y2) component.Y = y2;
+                }
+
                 float margin = component.DeathMargin;
                 if (margin > 0)
                 {
