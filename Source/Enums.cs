@@ -13,4 +13,11 @@ namespace PovertySTG
         Leave,
         Loop
     }
+
+    public enum Alignment
+    {
+        Left,
+        Center,
+        Right
+    }
 }

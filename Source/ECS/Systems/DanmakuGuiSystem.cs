@@ -21,7 +21,7 @@ namespace PovertySTG.ECS.Systems
             TextComponent lives = sys.TextComponents.GetByOwner("lives");
             TextComponent bombs = sys.TextComponents.GetByOwner("bombs");
 
-            score.Text = "Score: " + player.Score;
+            score.Text = player.Score.ToString();
             lives.Text = "Lives: " + player.Lives;
             bombs.Text = "Bombs: " + player.Bombs;
         }

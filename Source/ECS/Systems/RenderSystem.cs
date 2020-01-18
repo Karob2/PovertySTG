@@ -102,7 +102,7 @@ namespace PovertySTG.ECS.Systems
             if (component.Width > 0)
             {
                 string text2 = BuildString(component);
-                Vector2 size = font.MeasureString(text2);
+                //Vector2 size = font.MeasureString(text2);
                 //Vector2 position = GetDisplayPosition(size);
                 //font.Render(text2, position.X, position.Y, component.Color);
                 //font.Render(text2, renderComponent.DisplayX, renderComponent.DisplayY, component.Color);
@@ -110,7 +110,7 @@ namespace PovertySTG.ECS.Systems
             }
             else
             {
-                Vector2 size = font.MeasureString(component.Text);
+                //Vector2 size = font.MeasureString(component.Text);
                 //Vector2 position = GetDisplayPosition(size);
                 //font.Render(component.Text, position.X, position.Y, component.Color);
                 //font.Render(component.Text, renderComponent.DisplayX, renderComponent.DisplayY, component.Color);
@@ -123,16 +123,28 @@ namespace PovertySTG.ECS.Systems
         void RenderText(string text, TextComponent textComponent, RenderComponent renderComponent)
         {
             Font font = textComponent.Font;
+            float x = renderComponent.DisplayX;
+            float y = renderComponent.DisplayY;
+            if (textComponent.Align == Alignment.Right)
+            {
+                Vector2 size = textComponent.Font.MeasureString(text);
+                x -= size.X;
+            }
+            if (textComponent.Align == Alignment.Center)
+            {
+                Vector2 size = textComponent.Font.MeasureString(text);
+                x -= size.X / 2;
+            }
             if (textComponent.Border > 0f)
             {
                 Color borderAlpha = new Color(0f, 0f, 0f, textComponent.Border);
                 float width = 2f;
-                font.Render(text, renderComponent.DisplayX + width, renderComponent.DisplayY, borderAlpha);
-                font.Render(text, renderComponent.DisplayX - width, renderComponent.DisplayY, borderAlpha);
-                font.Render(text, renderComponent.DisplayX, renderComponent.DisplayY + width, borderAlpha);
-                font.Render(text, renderComponent.DisplayX, renderComponent.DisplayY - width, borderAlpha);
+                font.Render(text, x + width, y, borderAlpha);
+                font.Render(text, x - width, y, borderAlpha);
+                font.Render(text, x, y + width, borderAlpha);
+                font.Render(text, x, y - width, borderAlpha);
             }
-            font.Render(text, renderComponent.DisplayX, renderComponent.DisplayY, textComponent.Color);
+            font.Render(text, x, y, textComponent.Color);
         }
 
         /*

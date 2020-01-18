@@ -17,14 +17,16 @@ namespace PovertySTG.ECS.Components
         public int Height { get; set; }
         public Color Color { get; set; }
         public float Border { get; set; } = 0.8f;
+        public Alignment Align { get; set; }
 
         public TextComponent() { }
 
-        public TextComponent(GameServices gs, string fontName, string text, Color color)
+        public TextComponent(GameServices gs, string fontName, string text, Color color, Alignment align = Alignment.Left)
         {
             Font = gs.ResourceManager.Fonts.Get(fontName);
             Text = text;
             Color = color;
+            Align = align;
         }
 
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
