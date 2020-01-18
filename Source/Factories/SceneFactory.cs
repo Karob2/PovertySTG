@@ -103,10 +103,13 @@ namespace PovertySTG.Factories
             //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
             MakeLevelGui();
 
-            MakeGraphic("textbox", 90, 144, 0, 1).AddToGroup("talk_box");
-            MakeGraphic("textbox2", 117, 155, 0, 1).AddToGroup("talk_box2");
-            MakeGraphic("talk_sanae", 2, 258, 0, 1).AddToGroup("talk");
-            MakeGraphic("talk_sanae", 338, 260, 0, 1).AddToGroup("talk2");
+            MakeGraphic("textbox", 90, 144, 0, 5).AddToGroup("talk_box");
+            MakeGraphic("textbox2", 117, 155, 0, 6).AddToGroup("talk_box2");
+            MakeGraphic("talk_sanae", 2, 258, 0, 10).AddToGroup("talk");
+            MakeGraphic("talk_sanae", 338, 260, 0, 10).AddToGroup("talk2");
+            Color color1 = ColorHelper.FromHex("#fff3e5");
+            MakeTalkText(110, 169, "This is the place where they took your sisters and the others?", color1, 330, 4.5f);
+            MakeTalkText(110 + 27, 169 + 11, "Yes, I can feel the misfortune.", color1, 330, 5.5f);
 
             return scene;
         }
@@ -204,6 +207,15 @@ namespace PovertySTG.Factories
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, -1, 0));
             entity.AddComponent(new TextComponent(gs, font, text, color, align));
+            entity.Enable();
+            return entity;
+        }
+
+        public static Entity MakeTalkText(int x, int y, string text, Color color, int width, float depth)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(x, y, 0, depth));
+            entity.AddComponent(new TextComponent(gs, "talkfont", text, color) { Width = width, Border = 0f });
             entity.Enable();
             return entity;
         }
