@@ -141,6 +141,7 @@ namespace PovertySTG.ECS.Systems
                                 DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
                                 component.Owner.Delete();
                                 player.Lives--;
+                                if (player.Lives < 0) player.Lives = 8;
                                 continue;
                             }
                         }

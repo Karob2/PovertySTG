@@ -90,7 +90,7 @@ namespace PovertySTG.Factories
 
             DanmakuFactory.MakePlayer(scene, Config.LevelWidth / 2, Config.LevelHeight * 3 / 4);
             //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
-            MakeDummy("overlay", 0, 0, 0, 0);
+            MakeGraphic("overlay", 0, 0, 0, 0);
             int sideMargin = 604;
             int sideMargin2 = 792;
             Color color1 = ColorHelper.FromHex("#fff3e5");
@@ -106,10 +106,14 @@ namespace PovertySTG.Factories
             topMargin += topSpacing;
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Life:", color2, "scorefont");
-            MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("lives");
+            //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("lives");
+            MakeGraphicRow("life", 4, 28, sideMargin + 64, topMargin - 4, -1, 0, "lives");
+            MakeGraphicRow("life", 4, 28, sideMargin + 64 + 10, topMargin, -1, 0, "lives");
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Bomb:", color2, "scorefont");
-            MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("bombs");
+            //MakeText(sideMargin2, topMargin, "", color2, "scorefont", Alignment.Right).AddToGroup("bombs");
+            MakeGraphicRow("bomb", 4, 28, sideMargin + 64, topMargin - 4, -1, 0, "bombs");
+            MakeGraphicRow("bomb", 4, 28, sideMargin + 64 + 10, topMargin, -1, 0, "bombs");
             topMargin += topSpacing;
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Power:", color3, "scorefont");
@@ -146,13 +150,39 @@ namespace PovertySTG.Factories
             entity.Enable();
         }
 
-        public static void MakeDummy(string image, float x, float y, int layer, float depth)
+        public static Entity MakeGraphic(string image, float x, float y, int layer, float depth)
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, layer, depth));
             entity.AddComponent(new SpriteComponent(gs, image));
             entity.Enable();
+            return entity;
         }
+
+        public static void MakeGraphicRow(string image, float count, float spacing, float x, float y, int layer, float depth, string group = null)
+        {
+            Entity entity;
+            for (int i = 0; i < count; i++)
+            {
+                entity = scene.NewEntity();
+                entity.AddComponent(new RenderComponent(x, y, layer, depth));
+                entity.AddComponent(new SpriteComponent(gs, image));
+                entity.Enable();
+                if (group != null) entity.AddToGroup(group);
+                x += spacing;
+            }
+        }
+
+        /*
+        public static Entity MakeCounter(string image, float x, float y)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(x, y, -1, 0));
+            entity.AddComponent(new SpriteComponent(gs, image) { Tiled = true, Width = 32, Height = 32 });
+            entity.Enable();
+            return entity;
+        }
+        */
 
         public static Entity MakeText(int x, int y, string text)
         {
