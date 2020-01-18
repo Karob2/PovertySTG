@@ -56,6 +56,14 @@ namespace PovertySTG.ECS.Systems
                     float y = component.Pen.Y * Config.LevelHeight;
                     float x2 = component.Pen.Z * Config.LevelWidth;
                     float y2 = component.Pen.W * Config.LevelHeight;
+                    if (component.Owner.HasTag("player"))
+                    {
+                        if (component.X < x || component.X > x2)
+                        {
+                            sys.SpriteComponents.TryGetByOwner(component.Owner, out SpriteComponent sprite);
+                            sprite.CurrentAnimation = "up";
+                        }
+                    }
                     if (component.X < x) component.X = x;
                     if (component.X > x2) component.X = x2;
                     if (component.Y < y) component.Y = y;

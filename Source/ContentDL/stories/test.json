@@ -1,0 +1,158 @@
+{
+  "Lines": [
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "..."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "blushing",
+      "ActiveSpeaker": "right",
+      "Message": "..."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "blushing",
+      "ActiveSpeaker": "right",
+      "Message": "Are you lost?"
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "blushing",
+      "ActiveSpeaker": "left",
+      "Message": "..."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "annoyed",
+      "ActiveSpeaker": "right",
+      "Message": "..."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "annoyed",
+      "ActiveSpeaker": "right",
+      "Message": "Not gonna answer, huh?"
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "left",
+      "Message": "..."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "annoyed",
+      "ActiveSpeaker": "right",
+      "Message": "If you won't answer, I can't help you."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "left",
+      "Message": "...I'm lost."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "Glad you admit it."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "Some people like to pretend they aren't lost."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "I like people who are honest with themselves."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "left",
+      "Message": "..."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "What's your name?"
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "left",
+      "Message": "I'm Hata no Kokoro, the Menreiki Dancer."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "I'm Nagai Fuyu, the Lantern of the Lost."
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "Would you like me to guide you out of this blizzard?"
+    },
+    {
+      "LeftSpeaker": "kokoro",
+      "LeftExpression": "neutral",
+      "RightSpeaker": "fuyu",
+      "RightExpression": "neutral",
+      "ActiveSpeaker": "right",
+      "Message": "Would you like me to guide you out of this blizzard?",
+      "Actions": [
+        {
+          "Option": "Yes, please.",
+          "Tag": "route-a"
+        },
+        {
+          "Option": "I'd rather go by myself.",
+          "Tag": "route-b"
+        }
+      ]
+    }
+  ]
+}

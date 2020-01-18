@@ -35,6 +35,19 @@ namespace PovertySTG.ECS.Systems
                 d *= 6f;
                 body.DX = d.X;
                 body.DY = d.Y;
+                SpriteComponent sprite = sys.SpriteComponents.GetByOwner(component.Owner);
+                if (d.X < 0)
+                {
+                    sprite.CurrentAnimation = "left";
+                }
+                else if (d.X > 0)
+                {
+                    sprite.CurrentAnimation = "right";
+                }
+                else
+                {
+                    sprite.CurrentAnimation = "up";
+                }
 
                 if (component.Timer > 0)
                 {

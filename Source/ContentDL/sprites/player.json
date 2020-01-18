@@ -1,0 +1,86 @@
+{
+    "CollisionBox": {
+        "Radius": 8
+    },
+    "DefaultFrame": {
+        "Spritesheet": "player.png",
+        "Width": 91,
+        "Height": 145,
+        "AnchorX": 41,
+        "AnchorY": 58
+    },
+    "Animations": [
+        {
+            "Name": "up",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "AnchorX": 40
+                },
+                {
+                    "X": 91,
+                    "Y": 0
+                },
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "AnchorX": 42
+                },
+                {
+                    "X": 182,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 145,
+                    "AnchorX": 40
+                },
+                {
+                    "X": 91,
+                    "Y": 145
+                },
+                {
+                    "X": 0,
+                    "Y": 145,
+                    "AnchorX": 42
+                },
+                {
+                    "X": 182,
+                    "Y": 145
+                }
+            ]
+        },
+        {
+            "Name": "right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 290,
+                    "AnchorX": 40
+                },
+                {
+                    "X": 91,
+                    "Y": 290
+                },
+                {
+                    "X": 0,
+                    "Y": 290,
+                    "AnchorX": 42
+                },
+                {
+                    "X": 182,
+                    "Y": 290
+                }
+            ]
+        }
+    ]
+}

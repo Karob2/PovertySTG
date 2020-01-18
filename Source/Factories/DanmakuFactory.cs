@@ -16,7 +16,7 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(20, 0, true));
-            SpriteComponent sc = new SpriteComponent(scene.GS, "s_sanny");
+            SpriteComponent sc = new SpriteComponent(scene.GS, "player");
             /*
             Frame frame = sc.Sprite.DefaultAnimationObject.Frames[0];
             sc.Width = frame.Width / 2;
@@ -29,6 +29,7 @@ namespace PovertySTG.Factories
             body.Pen = new Vector4(0, 0, 1, 1);
             entity.AddComponent(body);
             entity.Enable();
+            entity.AddTag("player");
         }
 
         public static void MakeBullet(Scene scene, int type, float x, float y, float targetX, float targetY, float speed)
