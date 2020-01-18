@@ -29,7 +29,13 @@ namespace PovertySTG.Factories
             body.Pen = new Vector4(0, 0, 1, 1);
             entity.AddComponent(body);
             entity.Enable();
-            entity.AddTag("player");
+            entity.AddToGroup("player");
+
+            entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(2, 0, true));
+            entity.AddComponent(new SpriteComponent(scene.GS, "s_hitbox"));
+            entity.Enable();
+            entity.AddToGroup("hitbox");
         }
 
         public static void MakeEnemy(Scene scene, int type, float x, float y, float targetX, float targetY)

@@ -451,6 +451,14 @@ namespace Engine.ECS
             return listByOwner.TryGetValue(owner, out component);
         }
 
+        public bool TryGetByOwner(string ownerName, out T component)
+        {
+            Entity owner = scene.GetEntity(ownerName);
+            component = null;
+            if (owner == null) return false;
+            return listByOwner.TryGetValue(owner, out component);
+        }
+
         public bool TryGetEnabled(Entity owner, out T component)
         {
             if (listByOwner.TryGetValue(owner, out component))

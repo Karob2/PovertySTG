@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Engine.Input;
 
 namespace PovertySTG.ECS.Systems
 {
@@ -22,6 +23,18 @@ namespace PovertySTG.ECS.Systems
         {
             int index = 0;
             renderList.Clear();
+
+            //if (sys.RenderComponents.TryGetByOwner("player", out RenderComponent player))
+            Entity playerEntity = scene.GetEntity("player");
+            if (playerEntity != null)
+            {
+                RenderComponent player = sys.RenderComponents.GetByOwner(playerEntity);
+                RenderComponent hitbox = sys.RenderComponents.GetByOwner("hitbox");
+                hitbox.X = player.X;
+                hitbox.Y = player.Y;
+                if (InputManager.Held(GameCommand.Action3)) hitbox.Enabled = true;
+                else hitbox.Enabled = false;
+            }
 
             if (sys.CameraComponents.TryGetFirstEnabled(out CameraComponent cameraComponent))
             {
