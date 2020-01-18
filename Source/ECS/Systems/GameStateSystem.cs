@@ -42,6 +42,16 @@ namespace PovertySTG.ECS.Systems
             {
                 gs.Game.Exit();
             }
+            /*
+            string[] parts = request.Split(' ');
+            if (parts.Length >= 2)
+            {
+                if (parts[0] == "talk")
+                {
+                    scene.AddScene(SceneFactory.NewTalkScene(gs, "talk", parts[1])).Enable();
+                }
+            }
+            */
             gsc.Command = null;
         }
     }

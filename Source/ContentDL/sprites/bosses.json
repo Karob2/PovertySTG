@@ -1,6 +1,6 @@
 {
     "CollisionBox": {
-        "Radius": 8
+        "Radius": 14
     },
     "DefaultFrame": {
         "Spritesheet": "bosses.png",

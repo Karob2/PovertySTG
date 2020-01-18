@@ -103,8 +103,34 @@ namespace PovertySTG.Factories
             //MakeRect(Config.LevelWidth, 0, 1440, 1080, new Color(30, 60, 120));
             MakeLevelGui();
 
+            MakeGraphic("textbox", 90, 144, 0, 1).AddToGroup("talk_box");
+            MakeGraphic("textbox2", 117, 155, 0, 1).AddToGroup("talk_box2");
+            MakeGraphic("talk_sanae", 2, 258, 0, 1).AddToGroup("talk");
+            MakeGraphic("talk_sanae", 338, 260, 0, 1).AddToGroup("talk2");
+
             return scene;
         }
+
+        /*
+        public static Scene NewTalkScene(GameServices gs, string name, string storyName)
+        {
+            NewScene(gs, name, out Scene scene, out SystemReferences sys);
+
+            Entity entity = scene.NewEntity();
+            //entity.AddComponent(new StoryComponent(scene, "stage1"));
+            entity.Enable();
+
+            //scene.AddUpdateSystem(new TalkSystem(sys));
+            scene.AddRenderSystem(new RenderSystem(sys));
+
+            MakeGraphic("textbox", 90, 144, 0, 0).AddToGroup("talk_box");
+            MakeGraphic("textbox", 117, 155, 0, 0).AddToGroup("talk_box2");
+            MakeGraphic("talk_sanae", 2, 258, 0, 0).AddToGroup("talk");
+            MakeGraphic("talk_sanae", 338, 260, 0, 0).AddToGroup("talk2");
+
+            return scene;
+        }
+        */
 
         public static void MakeCursor()
         {
@@ -131,9 +157,14 @@ namespace PovertySTG.Factories
 
         public static Entity MakeGraphic(string image, float x, float y, int layer, float depth)
         {
+            return MakeGraphic(image, null, x, y, layer, depth);
+        }
+
+        public static Entity MakeGraphic(string image, string animation, float x, float y, int layer, float depth)
+        {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, layer, depth));
-            entity.AddComponent(new SpriteComponent(gs, image));
+            entity.AddComponent(new SpriteComponent(gs, image, animation));
             entity.Enable();
             return entity;
         }

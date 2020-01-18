@@ -2,16 +2,8 @@
     "Lines": [
         "loop",
         "summon cute",
-        "wait 0.5",
-        "summon cute",
-        "wait 0.5",
-        "summon cute",
-        "wait 0.5",
-        "summon cute",
-        "wait 0.5",
-        "summon cute",
-        "wait 0.5",
         "wait leave",
+        "talk test",
 
         "summon cute",
         "wait 0.5",

@@ -11,7 +11,8 @@ namespace PovertySTG
         Timer,
         Clear,
         Leave,
-        Loop
+        Loop,
+        Forever
     }
 
     public enum Alignment

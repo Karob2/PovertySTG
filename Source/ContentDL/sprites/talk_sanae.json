@@ -1,0 +1,63 @@
+{
+    "DefaultFrame": {
+        "Spritesheet": "talk_sanae.png",
+        "Width": 244,
+        "Height": 330
+    },
+    "Animations": [
+        {
+            "Name": "sanae_serious",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sanae_annoyed",
+            "FrameRanges": [
+                {
+                    "X": 244,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sanae_determined",
+            "FrameRanges": [
+                {
+                    "X": 488,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sanae_happy",
+            "FrameRanges": [
+                {
+                    "X": 732,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sanae_scary",
+            "FrameRanges": [
+                {
+                    "X": 976,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sanae_wut",
+            "FrameRanges": [
+                {
+                    "X": 1220,
+                    "Y": 0
+                }
+            ]
+        }
+    ]
+}

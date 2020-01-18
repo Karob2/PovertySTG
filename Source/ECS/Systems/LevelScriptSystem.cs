@@ -118,6 +118,11 @@ namespace PovertySTG.ECS.Systems
                             return;
                         }
                         break;
+                    case "talk":
+                        //sys.GetGameState().Request(lines[level.Progress]);
+                        //scene.AddScene(SceneFactory.NewTalkScene(gs, "talk", line[1])).Enable();
+                        level.WaitMode = LevelWaitMode.Forever;
+                        return;
                 }
             }
 
