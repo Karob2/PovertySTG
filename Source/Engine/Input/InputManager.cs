@@ -12,7 +12,7 @@ namespace Engine.Input
     /// </summary>
     public static class InputManager
     {
-        const string inputConfigVersion = "b";
+        const string inputConfigVersion = "c";
 
         static GameServices gs;
 

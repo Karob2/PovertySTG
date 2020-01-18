@@ -16,6 +16,7 @@ namespace PovertySTG.ECS.Components
         public int Width { get; set; }
         public int Height { get; set; }
         public Color Color { get; set; }
+        public float Border { get; set; } = 1f;
 
         public TextComponent() { }
 

@@ -23,6 +23,16 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/bitter-bold.spritefont
 
+#begin fonts/ciscopic license.txt
+/copy:fonts/ciscopic license.txt
+
+#begin fonts/ciscopic.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/ciscopic.spritefont
+
 #begin fonts/nunito license.txt
 /copy:fonts/nunito license.txt
 
@@ -32,4 +42,14 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:fonts/nunito-exbold.spritefont
+
+#begin fonts/open sans license.txt
+/copy:fonts/open sans license.txt
+
+#begin fonts/open sans.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/open sans.spritefont
 
