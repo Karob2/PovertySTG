@@ -14,6 +14,9 @@ namespace PovertySTG.ECS.Components
         public LevelWaitMode WaitMode { get; set; }
         public int LoopPoint { get; set; }
 
+        public Story Story { get; set; }
+        public int StoryProgress { get; set; }
+
         public LevelScriptComponent() { }
 
         public LevelScriptComponent(Scene scene, string level)

@@ -21,17 +21,13 @@ namespace Engine.Resource
     public class StoryLine
     {
         [JsonProperty]
-        public string LeftSpeaker { get; set; }
+        public string Left { get; set; }
         [JsonProperty]
-        public string LeftExpression { get; set; }
+        public string Right { get; set; }
         [JsonProperty]
-        public string RightSpeaker { get; set; }
+        public string LeftMessage { get; set; }
         [JsonProperty]
-        public string RightExpression { get; set; }
-        [JsonProperty]
-        public string ActiveSpeaker { get; set; }
-        [JsonProperty]
-        public string Message { get; set; }
+        public string RightMessage { get; set; }
         [JsonProperty]
         public List<StoryAction> Actions { get; set; }
         [JsonProperty]

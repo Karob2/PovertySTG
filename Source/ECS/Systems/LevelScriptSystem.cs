@@ -121,6 +121,8 @@ namespace PovertySTG.ECS.Systems
                     case "talk":
                         //sys.GetGameState().Request(lines[level.Progress]);
                         //scene.AddScene(SceneFactory.NewTalkScene(gs, "talk", line[1])).Enable();
+                        level.Story = gs.ResourceManager.Stories.Get(line[1]);
+                        level.StoryProgress = -1;
                         level.WaitMode = LevelWaitMode.Forever;
                         return;
                 }
