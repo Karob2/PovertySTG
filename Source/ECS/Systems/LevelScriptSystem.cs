@@ -121,6 +121,8 @@ namespace PovertySTG.ECS.Systems
                             DanmakuFactory.MakeEnemy(scene, 101, x, 0, x, y);
                         else if (line[1] == "joon")
                             DanmakuFactory.MakeEnemy(scene, 102, x, 0, x, y);
+                        else if (line[1] == "shion")
+                            DanmakuFactory.MakeEnemy(scene, 103, x, 0, x, y);
                         break;
                     case "wait":
                         if (line[1] == "clear")

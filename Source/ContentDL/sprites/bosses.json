@@ -68,14 +68,14 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 250,
+                    "X": 125,
                     "Y": 0,
                     "AnchorX": 45,
                     "AnchorY": 90,
                     "Frametime": 22
                 },
                 {
-                    "X": 375,
+                    "X": 250,
                     "Y": 0,
                     "AnchorX": 45,
                     "AnchorY": 90,
@@ -88,7 +88,7 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 250,
+                    "X": 125,
                     "Y": 0,
                     "AnchorX": 45,
                     "AnchorY": 90,
@@ -96,7 +96,7 @@
                     "FlipX": true
                 },
                 {
-                    "X": 375,
+                    "X": 250,
                     "Y": 0,
                     "AnchorX": 45,
                     "AnchorY": 90,
@@ -110,14 +110,14 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 250,
+                    "X": 125,
                     "Y": 174,
                     "AnchorX": 45,
                     "AnchorY": 90,
                     "Frametime": 22
                 },
                 {
-                    "X": 375,
+                    "X": 250,
                     "Y": 174,
                     "AnchorX": 45,
                     "AnchorY": 90,
@@ -130,7 +130,7 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 250,
+                    "X": 125,
                     "Y": 174,
                     "AnchorX": 45,
                     "AnchorY": 90,
@@ -138,7 +138,7 @@
                     "FlipX": true
                 },
                 {
-                    "X": 375,
+                    "X": 250,
                     "Y": 174,
                     "AnchorX": 45,
                     "AnchorY": 90,
@@ -153,14 +153,14 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 500,
+                    "X": 375,
                     "Y": 0,
                     "AnchorX": 50,
                     "AnchorY": 94,
                     "Frametime": 22
                 },
                 {
-                    "X": 625,
+                    "X": 500,
                     "Y": 0,
                     "AnchorX": 50,
                     "AnchorY": 94,
@@ -173,7 +173,7 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 500,
+                    "X": 375,
                     "Y": 0,
                     "AnchorX": 50,
                     "AnchorY": 94,
@@ -181,7 +181,7 @@
                     "FlipX": true
                 },
                 {
-                    "X": 625,
+                    "X": 500,
                     "Y": 0,
                     "AnchorX": 50,
                     "AnchorY": 94,
@@ -195,14 +195,14 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 500,
+                    "X": 375,
                     "Y": 174,
                     "AnchorX": 50,
                     "AnchorY": 94,
                     "Frametime": 22
                 },
                 {
-                    "X": 625,
+                    "X": 500,
                     "Y": 174,
                     "AnchorX": 50,
                     "AnchorY": 94,
@@ -215,7 +215,7 @@
             "Speed": 12,
             "FrameRanges": [
                 {
-                    "X": 500,
+                    "X": 375,
                     "Y": 174,
                     "AnchorX": 50,
                     "AnchorY": 94,
@@ -223,10 +223,103 @@
                     "FlipX": true
                 },
                 {
-                    "X": 625,
+                    "X": 500,
                     "Y": 174,
                     "AnchorX": 50,
                     "AnchorY": 94,
+                    "Frametime": 1,
+                    "FlipX": true
+                }
+            ]
+        },
+
+        {
+            "Name": "shion_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 625,
+                    "Y": 0,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 22
+                },
+                {
+                    "X": 815,
+                    "Y": 0,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 1
+                }
+            ]
+        },
+        {
+            "Name": "shion_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 625,
+                    "Y": 0,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 22,
+                    "FlipX": true
+                },
+                {
+                    "X": 815,
+                    "Y": 0,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 1,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "shion_move_left",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 625,
+                    "Y": 174,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 22
+                },
+                {
+                    "X": 815,
+                    "Y": 174,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 1
+                }
+            ]
+        },
+        {
+            "Name": "shion_move_right",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 625,
+                    "Y": 174,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
+                    "Frametime": 22,
+                    "FlipX": true
+                },
+                {
+                    "X": 815,
+                    "Y": 174,
+                    "Width": 185,
+                    "AnchorX": 71,
+                    "AnchorY": 96,
                     "Frametime": 1,
                     "FlipX": true
                 }

@@ -1,5 +1,11 @@
 {
     "Lines": [
+        "summon yoshika",
+        "summon fuyu",
+        "summon joon",
+        "summon shion",
+        "wait clear",
+
         "summon cute",
         "wait leave",
         "clear",
@@ -12,9 +18,6 @@
         "leave",
         "wait leave",
 
-        "summon yoshika",
-        "summon fuyu",
-        "summon joon",
         "level stage2"
     ]
 }

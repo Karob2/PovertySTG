@@ -129,6 +129,7 @@ namespace PovertySTG.ECS.Systems
             if (type == 100) name = "yoshika";
             else if (type == 101) name = "fuyu";
             else if (type == 102) name = "joon";
+            else if (type == 103) name = "shion";
             else name = "";
             if (dx < 0) ed.component.Direction = Direction.Left;
             if (dx > 0) ed.component.Direction = Direction.Right;

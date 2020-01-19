@@ -49,6 +49,7 @@ namespace PovertySTG.Factories
                 if (type == 100) animationName = "yoshika_left";
                 if (type == 101) animationName = "fuyu_left";
                 if (type == 102) animationName = "joon_left";
+                if (type == 103) animationName = "shion_left";
                 entity.AddComponent(new SpriteComponent(scene.GS, "bosses", animationName));
             }
             entity.AddComponent(new EnemyComponent(type, targetX, targetY));
