@@ -166,6 +166,18 @@ namespace PovertySTG.ECS.Systems
                         level.LoopPoint = 0;
                         level.WaitMode = LevelWaitMode.Start;
                         return;
+                    case "music":
+                        if (line[1] == "stop")
+                        {
+                            SoundManager.StopMusic();
+                            break;
+                        }
+                        SoundManager.PlayMusic(line[1]);
+                        break;
+                    case "sound":
+                        if (line.Length == 3 && line[2] == "stop") SoundManager.StopSound(line[1]);
+                        else SoundManager.PlaySound(line[1]);
+                        break;
                 }
                 level.Progress++;
             }

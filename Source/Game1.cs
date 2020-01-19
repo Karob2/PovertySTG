@@ -74,6 +74,7 @@ namespace PovertySTG
             gs.RootScene.AddUpdateSystem(new GameStateSystem());
             gs.RootScene.NewEntity().AddComponent(new GameStateComponent()).Enable();
             gs.RootScene.AddScene(SceneFactory.NewMenuScene(gs, "menu")).Enable();
+            SoundManager.PlayMusic("Dance_Plague_of_2020");
             //SoundManager.PlayMusic("");
             InputManager.Reset();
         }

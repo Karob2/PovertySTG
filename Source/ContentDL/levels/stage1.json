@@ -1,6 +1,10 @@
 {
     "Lines": [
+        "music stop",
+        "sound wind",
+        "music Skahou",
         "talk script_part_1",
+        "music Skahou",
         "summon brave_fairy",
         "summon yoshika",
         "wait clear",
