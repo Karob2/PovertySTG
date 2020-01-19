@@ -1,5 +1,8 @@
 {
     "Lines": [
+        "summon moneybag",
+        "summon moneybag",
+        "summon moneybag",
         "summon yoshika",
         "wait clear",
         "summon fuyu",
@@ -7,14 +10,17 @@
         "summon shion",
         "wait clear",
 
-        "summon cute",
+        "summon fairy",
+        "summon moneybag",
+        "summon moneybag",
+        "summon moneybag",
         "wait leave",
         "clear",
 
-        "summon dork",
-        "summon dork",
-        "summon dork",
-        "summon dork",
+        "summon brave_fairy",
+        "summon brave_fairy",
+        "summon brave_fairy",
+        "summon brave_fairy",
         "wait 2",
         "leave",
         "wait leave",

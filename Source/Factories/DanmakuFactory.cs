@@ -42,7 +42,6 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 30, 0, true));
-            if (type < 100) entity.AddComponent(new SpriteComponent(scene.GS, "s_fair"));
             if (type >= 100)
             {
                 string animationName = null;
@@ -52,6 +51,10 @@ namespace PovertySTG.Factories
                 if (type == 103) animationName = "shion_left";
                 entity.AddComponent(new SpriteComponent(scene.GS, "bosses", animationName));
             }
+            else if (type == 2)
+                entity.AddComponent(new SpriteComponent(scene.GS, "s_moneybag"));
+            else
+                entity.AddComponent(new SpriteComponent(scene.GS, "s_fairy"));
             entity.AddComponent(new EnemyComponent(type, targetX, targetY));
             BodyComponent body = new BodyComponent(x, y);
             if (type < 100) body.DeathMargin = 100f;
@@ -98,7 +101,7 @@ namespace PovertySTG.Factories
         public static void MakeCoin(Scene scene, float x, float y)
         {
             Random r = new Random();
-            MakeBullet(scene, -100, x, y, ((float)r.NextDouble() - 0.5f) * 4f, -8f);
+            MakeBullet(scene, -100, x, y, ((float)r.NextDouble() - 0.5f) * 4f, ((float)r.NextDouble() - 0.5f) * 2f - 8f);
         }
         public static void MakePointItem(Scene scene, float x, float y)
         {

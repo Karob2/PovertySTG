@@ -105,21 +105,7 @@ namespace PovertySTG.ECS.Systems
                 foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
                 {
                     BodyComponent body = sys.BodyComponents.GetByOwner(enemy.Owner);
-                    //DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
-                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
-                    enemy.Health -= 30f;
-                    if (enemy.Health <= 0)
-                    {
-                        DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
-                        DanmakuFactory.MakePointItem(scene, body.X, body.Y);
-                        DanmakuFactory.MakePointItem(scene, body.X, body.Y);
-                        DanmakuFactory.MakePointItem(scene, body.X, body.Y);
-                        DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
-                        DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
-                        DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
-                        enemy.Owner.Delete();
-                        player.Score += 50;
-                    }
+                    DamageEnemy(player, enemy, body, null, 1);
                 }
             }
 
@@ -138,6 +124,11 @@ namespace PovertySTG.ECS.Systems
                 {
                     body.DY = -body.DY * 0.5f;
                     component.Type = -101;
+                }
+                if (component.Type == -100 || component.Type == -101)
+                {
+                    if (body.X < 0 && body.DX < 0) body.DX = -body.DX;
+                    if (body.X > Config.LevelWidth && body.DX > 0) body.DX = -body.DX;
                 }
                 if (body.X > -radius && body.X < Config.LevelWidth + radius
                     && body.Y > -radius && body.Y < Config.LevelHeight + radius)
@@ -188,26 +179,7 @@ namespace PovertySTG.ECS.Systems
                             float distanceSquared = dx * dx + dy * dy;
                             if (distanceSquared < dd * dd)
                             {
-                                DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
-                                DanmakuFactory.MakeCoin(scene, body.X, body.Y);
-                                component.Owner.Delete();
-                                enemy.Health -= component.Power;
-                                if (enemy.Health <= 0)
-                                {
-                                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
-                                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
-                                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
-                                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
-                                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
-                                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
-                                    enemy.Owner.Delete();
-                                    player.Score += 50;
-                                }
-                                else
-                                {
-                                    player.Score += 1;
-                                    //player.Power += 0.1f;
-                                }
+                                DamageEnemy(player, enemy, body, component);
                                 continue;
                             }
                         }
@@ -234,6 +206,46 @@ namespace PovertySTG.ECS.Systems
             }
 
             player.Power = Math.Min(Math.Max(player.Power, 0), 1);
+        }
+
+        void DamageEnemy(PlayerComponent player, EnemyComponent enemy, BodyComponent body, BulletComponent component, int mode = 0)
+        {
+            if (mode == 0) DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
+            if (enemy.Type == 2) DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+            if (component != null)
+            {
+                component.Owner.Delete();
+                enemy.Health -= component.Power;
+            }
+            if (mode == 1) enemy.Health -= 30f;
+            if (enemy.Health <= 0)
+            {
+                if (enemy.Type == 2)
+                {
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                }
+                else
+                {
+                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                }
+                enemy.Owner.Delete();
+                player.Score += 50;
+            }
+            else
+            {
+                player.Score += 1;
+                //player.Power += 0.1f;
+            }
         }
     }
 }

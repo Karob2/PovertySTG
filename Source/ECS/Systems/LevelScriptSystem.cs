@@ -111,10 +111,12 @@ namespace PovertySTG.ECS.Systems
                         Random r = new Random();
                         float x = (float)r.NextDouble() * Config.LevelWidth;
                         float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
-                        if (line[1] == "cute")
+                        if (line[1] == "fairy")
                             DanmakuFactory.MakeEnemy(scene, 0, x, 0, x, y);
-                        else if (line[1] == "dork")
+                        else if (line[1] == "brave_fairy")
                             DanmakuFactory.MakeEnemy(scene, 1, x, 0, x, y);
+                        else if (line[1] == "moneybag")
+                            DanmakuFactory.MakeEnemy(scene, 2, x, 0, x, y);
                         else if (line[1] == "yoshika")
                             DanmakuFactory.MakeEnemy(scene, 100, x, 0, x, y);
                         else if (line[1] == "fuyu")
