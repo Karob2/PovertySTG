@@ -31,7 +31,7 @@ namespace PovertySTG.ECS.Components
         public string LeftCommand { get; set; }
         public string RightCommand { get; set; }
 
-        public Color DefaultTextColor { get; set; } = Color.Yellow;
+        public Color DefaultTextColor { get; set; } = Color.DarkCyan;
         public Color FocusedTextColor { get; set; } = Color.White;
         public Color PressedTextColor { get; set; } = Color.Blue;
         public Color DisabledTextColor { get; set; } = Color.Gray;

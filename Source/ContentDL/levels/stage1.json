@@ -1,5 +1,8 @@
 {
     "Lines": [
+        "summon fuyu",
+        "wait clear",
+
         "music Skahou",
         "talk script_part_1",
         "music Dance_Plague_of_2020",

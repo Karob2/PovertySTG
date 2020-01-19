@@ -13,7 +13,7 @@ namespace PovertySTG
     public class Game1 : Game
     {
         // Save, config, and log files will go in %localappdata%/game/ or %localappdata%/company/game/
-        const string gameName = "PovertySTG";
+        const string gameName = "Dance of the Poverty Gods";
         const string companyName = "Lantern House";
         // Game resolution.
         //const int gameWidth = 1440;

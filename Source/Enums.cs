@@ -51,6 +51,8 @@ namespace PovertySTG
         PowerShot = -10,
         HomingShot = -1,
         PlayerShot = 0,
-        EnemyShot = 1
+        EnemyShot = 1,
+        FRed = 2,
+        FBlue = 3
     }
 }

@@ -63,6 +63,9 @@ namespace PovertySTG.Factories
             if (type >= EnemyType.Boss) enemyComponent.MaxHealth = 200;
             enemyComponent.Health = enemyComponent.MaxHealth;
             if (type == EnemyType.Yoshika) enemyComponent.Lives = 2;
+            if (type == EnemyType.Fuyu) enemyComponent.Lives = 2;
+            if (type == EnemyType.Joon) enemyComponent.Lives = 3;
+            if (type == EnemyType.Shion) enemyComponent.Lives = 4;
             entity.AddComponent(enemyComponent);
             BodyComponent body = new BodyComponent(x, y);
             if (type == EnemyType.MoneyBag) body.DX = 0.4f + (float)r.NextDouble() * 0.05f;
@@ -101,6 +104,8 @@ namespace PovertySTG.Factories
             if (type == BulletType.PowerShot) sprite = "s_coin";
             if (type == BulletType.HomingShot) sprite = "s_star";
             if (type >= BulletType.EnemyShot) layer = 19;
+            if (type == BulletType.FRed) sprite = "s_fred";
+            if (type == BulletType.FBlue) sprite = "s_fblue";
 
             if (type == BulletType.PowerShot) power = 4f;
 

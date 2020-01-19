@@ -27,9 +27,11 @@ namespace PovertySTG.Factories
             //MakeCursor();
 
             StartButtonList(true);
-            MakeButton(64, 64, "Start", "start");
-            MakeButton(64, 104, "Options", "options");
-            MakeButton(64, 144, "Quit", "quit");
+            MakeButton(343, 266, "Start", "start");
+            MakeButton(343, 266 + 40, "Options", "options");
+            MakeButton(343, 266 + 80, "Quit", "quit");
+
+            MakeGraphic("menubg", 0, 0, 1000, 0);
 
             return scene;
         }
@@ -239,7 +241,7 @@ namespace PovertySTG.Factories
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 0, 0));
-            entity.AddComponent(new TextComponent(gs, "menufont", text, Color.White));
+            entity.AddComponent(new TextComponent(gs, "menufont", text, Color.Black));
             ButtonComponent button = new ButtonComponent(entity, command, leftCommand, rightCommand);
             button.X = x; button.Y = y;
             entity.AddComponent(button);

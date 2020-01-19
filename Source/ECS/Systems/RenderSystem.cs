@@ -103,7 +103,7 @@ namespace PovertySTG.ECS.Systems
             }
 
 #if DEBUG
-            RenderDebugInfo();
+            //RenderDebugInfo();
 #endif
         }
 

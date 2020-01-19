@@ -140,11 +140,37 @@ namespace PovertySTG.ECS.Systems
                                 DanmakuFactory.MakeDirBullet(scene, BulletType.EnemyShot, ed.body.X - bx, ed.body.Y + 100 + by, ed.playerBody.X, ed.playerBody.Y, speed, accel);
                             }
                         }
+                        else if (component.Type == EnemyType.Fuyu)
+                        {
+                            float wait = 5f;
+                            float speed = 4f;
+                            float accel = 0.01f;
+                            WaitPhase(ed, wait);
+                            component.Timer2 += ed.seconds;
+                            if (component.Timer2 > 0.12f)
+                            {
+                                component.Timer2 = 0;
+                                float dd = (float)component.Timer / wait * 0.8f;
+                                float bx = 0 + (body.X - 0) * dd;
+                                float bx2 = Config.LevelWidth + (body.X - Config.LevelWidth) * dd;
+                                float by = -40;
+                                DanmakuFactory.MakeDirBullet(scene, BulletType.FBlue, bx, by, bx, by + 1, speed, accel);
+                                DanmakuFactory.MakeDirBullet(scene, BulletType.FBlue, bx2, by, bx2, by + 1, speed, accel);
+                                DanmakuFactory.MakeDirBullet(scene, BulletType.FRed, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, speed, accel);
+                            }
+                        }
                         else component.Phase = 2;
                         //DanmakuFactory.MakeBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
                     }
                     else if (component.Phase == 2)
                     {
+                        if (component.Type == EnemyType.Fuyu)
+                        {
+                            Random r = new Random();
+                            component.TargetX = (float)r.NextDouble() * Config.LevelWidth;
+                            component.TargetY = body.Y;
+                            component.Phase = 0;
+                        }
                         component.Phase = 0;
                     }
                     else
