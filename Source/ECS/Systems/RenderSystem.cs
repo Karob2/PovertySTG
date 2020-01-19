@@ -25,6 +25,7 @@ namespace PovertySTG.ECS.Systems
             renderList.Clear();
 
             //if (sys.RenderComponents.TryGetByOwner("player", out RenderComponent player))
+            /*
             Entity playerEntity = scene.GetEntity("player");
             if (playerEntity != null)
             {
@@ -32,9 +33,8 @@ namespace PovertySTG.ECS.Systems
                 RenderComponent hitbox = sys.RenderComponents.GetByOwner("hitbox");
                 hitbox.X = player.X;
                 hitbox.Y = player.Y;
-                if (InputManager.Held(GameCommand.Action3)) hitbox.Enabled = true;
-                else hitbox.Enabled = false;
             }
+            */
 
             if (sys.CameraComponents.TryGetFirstEnabled(out CameraComponent cameraComponent))
             {
@@ -43,6 +43,11 @@ namespace PovertySTG.ECS.Systems
 
             foreach (RenderComponent renderComponent in sys.RenderComponents.EnabledList)
             {
+                if (renderComponent.Leader != null)
+                {
+                    renderComponent.X = renderComponent.Leader.X;
+                    renderComponent.Y = renderComponent.Leader.Y;
+                }
                 renderComponent.DisplayX = renderComponent.X;
                 renderComponent.DisplayY = renderComponent.Y;
                 if (renderComponent.Camera)

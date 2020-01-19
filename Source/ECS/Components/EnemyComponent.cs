@@ -21,6 +21,9 @@ namespace PovertySTG.ECS.Components
         */
         public float Health { get; set; } = 100f;
 
+        public Entity Shield { get; set; }
+        public float ShieldHealth { get; set; }
+
         public EnemyComponent() { }
 
         public EnemyComponent(EnemyType type, float targetX, float targetY)

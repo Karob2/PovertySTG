@@ -27,6 +27,7 @@ namespace PovertySTG.ECS.Systems
             foreach (EnemyComponent component in sys.EnemyComponents.EnabledList)
             {
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
+
                 if (level.Story != null && component.Phase > 0)
                 {
                     body.DX = 0;
@@ -47,7 +48,12 @@ namespace PovertySTG.ECS.Systems
                     }
                     else if (component.Phase >= 5)
                     {
-                        if (component.Type == 0) component.Phase = -1;
+                        if (component.Type == EnemyType.Fairy) component.Phase = -1;
+                        else if (component.Type == EnemyType.BraveFairy)
+                        {
+                            component.Phase = 1;
+                            if (component.Shield == null) AddShield(component);
+                        }
                         else component.Phase = 1;
                     }
                     else
@@ -174,6 +180,16 @@ namespace PovertySTG.ECS.Systems
             if (dx != 0 || dy != 0) motion = "_move";
 
             sys.SpriteComponents.GetByOwner(ed.component.Owner).CurrentAnimation = name + motion + direction;
+        }
+
+        void AddShield(EnemyComponent component)
+        {
+            Entity entity = scene.NewEntity();
+            entity.AddComponent(new RenderComponent(0, 0, 1, -100, true) { Leader = sys.RenderComponents.GetByOwner(component.Owner) });
+            entity.AddComponent(new SpriteComponent(gs, "s_shield") { Color = Color.Yellow });
+            entity.Enable();
+            component.Shield = entity;
+            component.ShieldHealth = 100f;
         }
     }
 

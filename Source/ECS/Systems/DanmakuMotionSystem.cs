@@ -167,12 +167,13 @@ namespace PovertySTG.ECS.Systems
                             body.DY = body.DY + (4f - body.DY) * 0.08f;
                         }
                     }
-                    if (component.Type == 0)
+                    if (component.Type == BulletType.PlayerShot || component.Type == BulletType.PowerShot)
                     {
                         foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
                         {
                             BodyComponent targetBody = sys.BodyComponents.GetByOwner(enemy.Owner);
                             float targetRadius = sys.SpriteComponents.GetByOwner(enemy.Owner).Sprite.CollisionBox.Radius;
+                            if (enemy.Shield != null) targetRadius = 100;
                             float dx = targetBody.X - body.X;
                             float dy = targetBody.Y - body.Y;
                             float dd = radius + targetRadius;
@@ -211,12 +212,41 @@ namespace PovertySTG.ECS.Systems
 
         void DamageEnemy(PlayerComponent player, EnemyComponent enemy, BodyComponent body, BulletComponent component, int mode = 0)
         {
+            if (enemy.Shield != null)
+            {
+                if (component != null && component.Type == BulletType.PowerShot)
+                {
+
+                }
+                else
+                {
+                    //component.Owner.Delete();
+                    if (body.DY < 0) body.DY = -body.DY / 2;
+                    Random r = new Random();
+                    body.DX = (float)(r.NextDouble() - 0.5) * 5f;
+                    component.Type = BulletType.EnemyShot;
+                    return;
+                }
+            }
             if (mode == 0) DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
             if (enemy.Type == EnemyType.MoneyBag) DanmakuFactory.MakeCoin(scene, body.X, body.Y);
             if (component != null)
             {
                 component.Owner.Delete();
-                enemy.Health -= component.Power;
+                if (enemy.Shield != null)
+                {
+                    enemy.ShieldHealth -= component.Power;
+                    sys.SpriteComponents.GetByOwner(enemy.Shield).Scale = (enemy.ShieldHealth + 200) / 300;
+                    if (enemy.ShieldHealth <= 0)
+                    {
+                        enemy.Shield.Delete();
+                        enemy.Shield = null;
+                    }
+                }
+                else
+                {
+                    enemy.Health -= component.Power;
+                }
             }
             if (mode == 1) enemy.Health -= 30f;
             if (enemy.Health <= 0)

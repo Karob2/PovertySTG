@@ -114,7 +114,7 @@ namespace PovertySTG.Factories
             MakeTalkText(110 + 27, 169 + 11, "Yes, I can feel the misfortune.", color1, 330, 5.5f)
                 .AddToGroup("talk_text2").AddToGroup("talk").Disable();
 
-            MakeRect(0, 0, 612, 600, new Color(128, 128, 128, 128), 0, -99999f).AddToGroup("flash").Disable();
+            MakeRect(0, 0, 612, 600, new Color(128, 128, 128, 128), 0, 999f).AddToGroup("flash").Disable();
 
             return scene;
         }

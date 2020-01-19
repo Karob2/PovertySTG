@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using PovertySTG.ECS.Components;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Text;
 
 namespace PovertySTG.Factories
@@ -15,7 +14,8 @@ namespace PovertySTG.Factories
         public static void MakePlayer(Scene scene, float x, float y)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(20, 0, true));
+            RenderComponent renderComponent = new RenderComponent(20, 0, true);
+            entity.AddComponent(renderComponent);
             SpriteComponent sc = new SpriteComponent(scene.GS, "player");
             /*
             Frame frame = sc.Sprite.DefaultAnimationObject.Frames[0];
@@ -32,7 +32,7 @@ namespace PovertySTG.Factories
             entity.AddToGroup("player");
 
             entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(2, 0, true));
+            entity.AddComponent(new RenderComponent(2, 0, true) { Leader = renderComponent });
             entity.AddComponent(new SpriteComponent(scene.GS, "s_hitbox"));
             entity.Enable();
             entity.AddToGroup("hitbox");
@@ -88,17 +88,27 @@ namespace PovertySTG.Factories
             if (type == BulletType.PointItem) sprite = "s_pointitem";
             if (type == BulletType.PowerItem) sprite = "s_poweritem";
             if (type == BulletType.PlayerShot) sprite = "s_pshot";
+            if (type == BulletType.PowerShot) sprite = "s_pshot";
             if (type >= BulletType.EnemyShot) layer = 19;
 
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, layer, 0, true));
-            entity.AddComponent(new SpriteComponent(scene.GS, sprite, animation));
+            RenderComponent rc = new RenderComponent(x, y, layer, 0, true);
+            entity.AddComponent(rc);
+            SpriteComponent sc = new SpriteComponent(scene.GS, sprite, animation);
+            if (type == BulletType.PowerShot)
+            {
+                //sc.Rotation = (float)Math.PI / 2;
+                sc.Rotation = (float)(new Random().NextDouble() * Math.PI);
+                sc.Scale = 0.5f;
+                sc.Color = Color.Yellow;
+            }
+            entity.AddComponent(sc);
             entity.AddComponent(new BulletComponent(type));
             BodyComponent body = new BodyComponent(x, y, dx, dy);
             body.DeathMargin = 100f;
             if (type == BulletType.Coin) body.DDY = 0.3f;
             entity.AddComponent(body);
-            if (type == 0) entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
+            if (type == BulletType.PlayerShot || type == BulletType.PowerShot) entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
             entity.Enable();
         }
 

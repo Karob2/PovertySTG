@@ -14,6 +14,7 @@ namespace PovertySTG.ECS.Components
         public bool Camera { get; set; }
         public float DisplayX { get; set; }
         public float DisplayY { get; set; }
+        public RenderComponent Leader { get; set; }
         // render bounding box?
         // spacial collection?
         // visible bool?
