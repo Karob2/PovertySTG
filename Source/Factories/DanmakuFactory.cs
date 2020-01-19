@@ -40,6 +40,7 @@ namespace PovertySTG.Factories
 
         public static void MakeEnemy(Scene scene, int type, float x, float y, float targetX, float targetY)
         {
+            Random r = new Random();
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 30, 0, true));
             if (type >= 100)
@@ -55,8 +56,11 @@ namespace PovertySTG.Factories
                 entity.AddComponent(new SpriteComponent(scene.GS, "s_moneybag"));
             else
                 entity.AddComponent(new SpriteComponent(scene.GS, "s_fairy"));
-            entity.AddComponent(new EnemyComponent(type, targetX, targetY));
+            EnemyComponent enemyComponent = new EnemyComponent(type, targetX, targetY);
+            if (type == 2) enemyComponent.Timer = r.NextDouble() * 100f;
+            entity.AddComponent(enemyComponent);
             BodyComponent body = new BodyComponent(x, y);
+            if (type == 2) body.DX = 0.4f + (float)r.NextDouble() * 0.05f;
             if (type < 100) body.DeathMargin = 100f;
             entity.AddComponent(body);
             entity.Enable();

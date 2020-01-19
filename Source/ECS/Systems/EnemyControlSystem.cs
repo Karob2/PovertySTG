@@ -35,7 +35,7 @@ namespace PovertySTG.ECS.Systems
                 }
                 ed.component = component;
                 ed.body = body;
-                if (component.Type < 100)
+                if (component.Type <= 1)
                 {
                     if (component.Phase == 0)
                     {
@@ -55,7 +55,41 @@ namespace PovertySTG.ECS.Systems
                         body.DY = -2.2f;
                     }
                 }
-                else
+                else if (component.Type == 2)
+                {
+                    if (component.Phase == 0)
+                    {
+                        if (body.X < 0 && body.DX < 0) body.DX = -body.DX;
+                        if (body.X > Config.LevelWidth && body.DX > 0) body.DX = -body.DX;
+                        component.Timer += ed.seconds;
+                        body.DY = (float)Math.Sin(component.Timer) / 2;
+                        if (Math.Abs(body.X - component.TargetX) < 10)
+                        {
+                            component.Phase = 1;
+                            component.Timer = 0;
+                        }
+                    }
+                    if (component.Phase == 1)
+                    {
+                        component.Timer += ed.seconds;
+                        body.DY = (float)Math.Sin(component.Timer) / 2;
+                        body.DX = (float)Math.Cos(component.Timer) / 4;
+                        if (component.Timer > 12f)
+                        {
+                            component.Phase = 2;
+                            Random r = new Random();
+                            body.DX = 0.4f + (float)r.NextDouble() * 0.05f;
+                            if (body.X < Config.LevelWidth / 2) body.DX = -body.DX;
+                            //if (r.NextDouble() < 0.5) body.DX = -body.DX;
+                        }
+                    }
+                    if (component.Phase == 2)
+                    {
+                        component.Timer += ed.seconds;
+                        body.DY = (float)Math.Sin(component.Timer) / 2;
+                    }
+                }
+                else if (component.Type >= 100)
                 {
                     if (component.Phase == 0)
                     {

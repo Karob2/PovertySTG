@@ -116,7 +116,12 @@ namespace PovertySTG.ECS.Systems
                         else if (line[1] == "brave_fairy")
                             DanmakuFactory.MakeEnemy(scene, 1, x, 0, x, y);
                         else if (line[1] == "moneybag")
-                            DanmakuFactory.MakeEnemy(scene, 2, x, 0, x, y);
+                        {
+                            float x2;
+                            if (x > Config.LevelWidth / 2) x2 = 0 - 50;
+                            else x2 = Config.LevelWidth + 50;
+                            DanmakuFactory.MakeEnemy(scene, 2, x2, y, x, y);
+                        }
                         else if (line[1] == "yoshika")
                             DanmakuFactory.MakeEnemy(scene, 100, x, 0, x, y);
                         else if (line[1] == "fuyu")
