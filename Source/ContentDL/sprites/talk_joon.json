@@ -1,13 +1,13 @@
 {
     "DefaultFrame": {
-        "Spritesheet": "talk_sanae.png",
-        "Width": 244,
+        "Spritesheet": "talk_joon.png",
+        "Width": 282,
         "Height": 330,
         "AnchorX": 124
     },
     "Animations": [
         {
-            "Name": "sanae_serious",
+            "Name": "joon_annoyed",
             "FrameRanges": [
                 {
                     "X": 0,
@@ -16,63 +16,44 @@
             ]
         },
         {
-            "Name": "sanae_annoyed",
+            "Name": "joon_apologizing",
             "FrameRanges": [
                 {
-                    "X": 244,
+                    "X": 282,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_determined",
+            "Name": "joon_happy",
             "FrameRanges": [
                 {
-                    "X": 488,
+                    "X": 564,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_happy",
+            "Name": "joon_smug",
             "FrameRanges": [
                 {
-                    "X": 732,
+                    "X": 846,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_scary",
+            "Name": "joon_wut",
             "FrameRanges": [
                 {
-                    "X": 976,
-                    "Y": 0
-                }
-            ]
-        },
-        {
-            "Name": "sanae_wut",
-            "FrameRanges": [
-                {
-                    "X": 1220,
-                    "Y": 0
-                }
-            ]
-        },
-        {
-            "Name": "sanae_concerned",
-            "FrameRanges": [
-                {
-                    "X": 1464,
+                    "X": 1128,
                     "Y": 0
                 }
             ]
         },
 
-
         {
-            "Name": "sanae_serious_flip",
+            "Name": "joon_annoyed_flip",
             "FrameRanges": [
                 {
                     "X": 0,
@@ -82,60 +63,40 @@
             ]
         },
         {
-            "Name": "sanae_annoyed_flip",
+            "Name": "joon_apologizing_flip",
             "FrameRanges": [
                 {
-                    "X": 244,
+                    "X": 282,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_determined_flip",
+            "Name": "joon_happy_flip",
             "FrameRanges": [
                 {
-                    "X": 488,
+                    "X": 564,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_happy_flip",
+            "Name": "joon_smug_flip",
             "FrameRanges": [
                 {
-                    "X": 732,
+                    "X": 846,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_scary_flip",
+            "Name": "joon_wut_flip",
             "FrameRanges": [
                 {
-                    "X": 976,
-                    "Y": 0,
-                    "FlipX": true
-                }
-            ]
-        },
-        {
-            "Name": "sanae_wut_flip",
-            "FrameRanges": [
-                {
-                    "X": 1220,
-                    "Y": 0,
-                    "FlipX": true
-                }
-            ]
-        },
-        {
-            "Name": "sanae_concerned_flip",
-            "FrameRanges": [
-                {
-                    "X": 1464,
+                    "X": 1128,
                     "Y": 0,
                     "FlipX": true
                 }

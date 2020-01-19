@@ -1,0 +1,87 @@
+{
+    "DefaultFrame": {
+        "Spritesheet": "talk_sango.png",
+        "Width": 244,
+        "Height": 330,
+        "AnchorX": 136
+    },
+    "Animations": [
+        {
+            "Name": "sango_agape",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sango_defeated",
+            "FrameRanges": [
+                {
+                    "X": 244,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sango_happy",
+            "FrameRanges": [
+                {
+                    "X": 488,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "sango_wut",
+            "FrameRanges": [
+                {
+                    "X": 732,
+                    "Y": 0
+                }
+            ]
+        },
+
+        {
+            "Name": "sango_agape_flip",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "sango_defeated_flip",
+            "FrameRanges": [
+                {
+                    "X": 244,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "sango_happy_flip",
+            "FrameRanges": [
+                {
+                    "X": 488,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "sango_wut_flip",
+            "FrameRanges": [
+                {
+                    "X": 732,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+    ]
+}

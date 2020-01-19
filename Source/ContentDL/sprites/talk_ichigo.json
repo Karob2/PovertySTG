@@ -1,0 +1,68 @@
+{
+    "DefaultFrame": {
+        "Spritesheet": "talk_ichigo.png",
+        "Width": 270,
+        "Height": 330,
+        "AnchorX": 136
+    },
+    "Animations": [
+        {
+            "Name": "ichigo_annoyed",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "ichigo_defeated",
+            "FrameRanges": [
+                {
+                    "X": 270,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "ichigo_smug",
+            "FrameRanges": [
+                {
+                    "X": 540,
+                    "Y": 0
+                }
+            ]
+        },
+
+        {
+            "Name": "ichigo_annoyed_flip",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "ichigo_defeated_flip",
+            "FrameRanges": [
+                {
+                    "X": 270,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "ichigo_smug_flip",
+            "FrameRanges": [
+                {
+                    "X": 540,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        }
+    ]
+}

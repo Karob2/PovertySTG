@@ -1,0 +1,87 @@
+{
+    "DefaultFrame": {
+        "Spritesheet": "talk_yoshika.png",
+        "Width": 262,
+        "Height": 320,
+        "AnchorX": 150
+    },
+    "Animations": [
+        {
+            "Name": "yoshika_chillin",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_happy",
+            "FrameRanges": [
+                {
+                    "X": 262,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_sad",
+            "FrameRanges": [
+                {
+                    "X": 524,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_smile",
+            "FrameRanges": [
+                {
+                    "X": 786,
+                    "Y": 0
+                }
+            ]
+        },
+
+        {
+            "Name": "yoshika_chillin_flip",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_happy_flip",
+            "FrameRanges": [
+                {
+                    "X": 262,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_sad_flip",
+            "FrameRanges": [
+                {
+                    "X": 524,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "yoshika_smile_flip",
+            "FrameRanges": [
+                {
+                    "X": 786,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+    ]
+}

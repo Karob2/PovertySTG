@@ -1,13 +1,13 @@
 {
     "DefaultFrame": {
-        "Spritesheet": "talk_sanae.png",
-        "Width": 244,
-        "Height": 330,
-        "AnchorX": 124
+        "Spritesheet": "talk_shion.png",
+        "Width": 327,
+        "Height": 335,
+        "AnchorX": 181
     },
     "Animations": [
         {
-            "Name": "sanae_serious",
+            "Name": "shion_determined",
             "FrameRanges": [
                 {
                     "X": 0,
@@ -16,63 +16,53 @@
             ]
         },
         {
-            "Name": "sanae_annoyed",
+            "Name": "shion_expositioning",
             "FrameRanges": [
                 {
-                    "X": 244,
+                    "X": 327,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_determined",
+            "Name": "shion_nervous",
             "FrameRanges": [
                 {
-                    "X": 488,
+                    "X": 654,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_happy",
+            "Name": "shion_pained",
             "FrameRanges": [
                 {
-                    "X": 732,
+                    "X": 981,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_scary",
+            "Name": "shion_smug",
             "FrameRanges": [
                 {
-                    "X": 976,
+                    "X": 1308,
                     "Y": 0
                 }
             ]
         },
         {
-            "Name": "sanae_wut",
+            "Name": "shion_wut",
             "FrameRanges": [
                 {
-                    "X": 1220,
-                    "Y": 0
-                }
-            ]
-        },
-        {
-            "Name": "sanae_concerned",
-            "FrameRanges": [
-                {
-                    "X": 1464,
+                    "X": 1635,
                     "Y": 0
                 }
             ]
         },
 
-
         {
-            "Name": "sanae_serious_flip",
+            "Name": "shion_determined_flip",
             "FrameRanges": [
                 {
                     "X": 0,
@@ -82,64 +72,54 @@
             ]
         },
         {
-            "Name": "sanae_annoyed_flip",
+            "Name": "shion_expositioning_flip",
             "FrameRanges": [
                 {
-                    "X": 244,
+                    "X": 327,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_determined_flip",
+            "Name": "shion_nervous_flip",
             "FrameRanges": [
                 {
-                    "X": 488,
+                    "X": 654,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_happy_flip",
+            "Name": "shion_pained_flip",
             "FrameRanges": [
                 {
-                    "X": 732,
+                    "X": 981,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_scary_flip",
+            "Name": "shion_smug_flip",
             "FrameRanges": [
                 {
-                    "X": 976,
+                    "X": 1308,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
         {
-            "Name": "sanae_wut_flip",
+            "Name": "shion_wut_flip",
             "FrameRanges": [
                 {
-                    "X": 1220,
+                    "X": 1635,
                     "Y": 0,
                     "FlipX": true
                 }
             ]
         },
-        {
-            "Name": "sanae_concerned_flip",
-            "FrameRanges": [
-                {
-                    "X": 1464,
-                    "Y": 0,
-                    "FlipX": true
-                }
-            ]
-        }
     ]
 }

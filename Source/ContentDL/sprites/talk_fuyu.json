@@ -1,0 +1,68 @@
+{
+    "DefaultFrame": {
+        "Spritesheet": "talk_fuyu.png",
+        "Width": 278,
+        "Height": 330,
+        "AnchorX": 144
+    },
+    "Animations": [
+        {
+            "Name": "fuyu_annoyed",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_concerned",
+            "FrameRanges": [
+                {
+                    "X": 278,
+                    "Y": 0
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_determined",
+            "FrameRanges": [
+                {
+                    "X": 556,
+                    "Y": 0
+                }
+            ]
+        },
+
+        {
+            "Name": "fuyu_annoyed_flip",
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_concerned_flip",
+            "FrameRanges": [
+                {
+                    "X": 278,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        },
+        {
+            "Name": "fuyu_determined_flip",
+            "FrameRanges": [
+                {
+                    "X": 556,
+                    "Y": 0,
+                    "FlipX": true
+                }
+            ]
+        }
+    ]
+}
