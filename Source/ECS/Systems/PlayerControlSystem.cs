@@ -16,6 +16,12 @@ namespace PovertySTG.ECS.Systems
         SystemReferences sys;
         public PlayerControlSystem(SystemReferences sys) { this.sys = sys; }
 
+        Vector2 starPoint1 = new Vector2(36, 234);
+        Vector2 starPoint2 = new Vector2(573, 234);
+        Vector2 starPoint3 = new Vector2(139, 549);
+        Vector2 starPoint4 = new Vector2(305, 39);
+        Vector2 starPoint5 = new Vector2(470, 549);
+
         public override void Update(GameTime gameTime)
         {
             sys.LevelScriptComponents.TryGetFirstEnabled(out LevelScriptComponent level);
@@ -62,7 +68,14 @@ namespace PovertySTG.ECS.Systems
 
                 if (component.SpecialState < 3)
                 {
-                    if (InputManager.JustPressed(GameCommand.Action1))
+                    if (InputManager.JustPressed(GameCommand.Action2) && component.Bombs > 0)
+                    {
+                        component.SpecialState = 4;
+                        component.SpecialTimer = 0f;
+                        component.SpecialTimer2 = 0f;
+                        component.Bombs--;
+                    }
+                    else if (InputManager.JustPressed(GameCommand.Action1))
                     {
                         component.SpecialTimer = 0f;
                     }
@@ -108,6 +121,58 @@ namespace PovertySTG.ECS.Systems
                         component.Wealth = 0f;
                         component.SpecialState = 0;
                         component.SpecialTimer = 0f;
+                    }
+                }
+            }
+            if (component.SpecialState >= 4)
+            {
+                component.SpecialTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (component.SpecialTimer > 0.02f)
+                {
+                    component.SpecialTimer = 0f;
+                    Vector2 point1, point2;
+                    switch (component.SpecialState)
+                    {
+                        case 4:
+                            point1 = starPoint1;
+                            point2 = starPoint2;
+                            break;
+                        case 5:
+                            point1 = starPoint2;
+                            point2 = starPoint3;
+                            break;
+                        case 6:
+                            point1 = starPoint3;
+                            point2 = starPoint4;
+                            break;
+                        case 7:
+                            point1 = starPoint4;
+                            point2 = starPoint5;
+                            break;
+                        default:
+                            point1 = starPoint5;
+                            point2 = starPoint1;
+                            break;
+                    }
+                    float x = point1.X + (point2.X - point1.X) * component.SpecialTimer2;
+                    float y = point1.Y + (point2.Y - point1.Y) * component.SpecialTimer2;
+                    Random r = new Random();
+                    //DanmakuFactory.MakeBullet(scene, 0, x, y, ((float)r.NextDouble() - 0.5f) * 1f, ((float)r.NextDouble() - 0.5f) * 1f);
+                    DanmakuFactory.MakeStar(scene, x, y);
+                    DanmakuFactory.MakeSlash(scene, 2, x, y);
+                    DanmakuFactory.MakeSlash(scene, 2, x, y);
+                    if (component.SpecialTimer2 >= 1f)
+                    {
+                        component.SpecialState++;
+                        component.SpecialTimer2 = 0f;
+                        if (component.SpecialState > 8)
+                        {
+                            component.SpecialState = 0;
+                        }
+                    }
+                    else
+                    {
+                        component.SpecialTimer2 += 0.1f;
                     }
                 }
             }

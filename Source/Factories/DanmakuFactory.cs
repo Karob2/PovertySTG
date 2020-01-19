@@ -111,16 +111,28 @@ namespace PovertySTG.Factories
             MakeBullet(scene, -103, x, y, ((float)r.NextDouble() - 0.5f) * 8f, ((float)r.NextDouble() - 0.5f) * 8f);
         }
 
+        public static void MakeStar(Scene scene, float x, float y)
+        {
+            MakeSlash(scene, 10, x, y);
+        }
+
         public static void MakeSlash(Scene scene, int type, float x, float y)
         {
             float alpha = 0.5f;
-            float scale = 0.5f;
-            if (type == 1) scale = 1f;
-            float lifespan = 0.4f;
+            float scale = 1f;
+            if (type == 0) scale = 0.5f;
+            if (type == 2) scale = 0.25f;
+            if (type == 10) alpha = 1f;
+            float lifespan = 2f;
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 5, 0f, true));
-            SpriteComponent sprite = new SpriteComponent(scene.GS, "s_slash");
-            sprite.Rotation = (float)(new Random().NextDouble() * Math.PI);
+            SpriteComponent sprite;
+            if (type == 10) sprite = new SpriteComponent(scene.GS, "s_pshot");
+            else
+            {
+                sprite = new SpriteComponent(scene.GS, "s_slash");
+                sprite.Rotation = (float)(new Random().NextDouble() * Math.PI);
+            }
             sprite.Alpha = alpha;
             sprite.Scale = scale;
             entity.AddComponent(sprite);
