@@ -18,6 +18,8 @@ namespace PovertySTG.ECS.Systems
 
         public override void Update(GameTime gameTime)
         {
+            sys.LevelScriptComponents.TryGetFirstEnabled(out LevelScriptComponent level);
+
             sys.PlayerComponents.TryGetFirstEnabled(out PlayerComponent player);
             BodyComponent playerBody = sys.BodyComponents.GetByOwner(player.Owner);
             EnemyData ed = new EnemyData() { playerBody = playerBody, seconds = (float)gameTime.ElapsedGameTime.TotalSeconds };
@@ -25,6 +27,12 @@ namespace PovertySTG.ECS.Systems
             foreach (EnemyComponent component in sys.EnemyComponents.EnabledList)
             {
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
+                if (level.Story != null && component.Phase > 0)
+                {
+                    body.DX = 0;
+                    body.DY = 0;
+                    continue;
+                }
                 ed.component = component;
                 ed.body = body;
                 if (component.Type < 100)
