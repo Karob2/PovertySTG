@@ -38,13 +38,11 @@ namespace PovertySTG
             Config.path = path;
 
             commandName = new Dictionary<GameCommand, string>();
-            //commandName.Add(GameCommand.Action1, "Attack");
-            //commandName.Add(GameCommand.Action2, "Bomb");
-            //commandName.Add(GameCommand.Action3, "Talk");
+            commandName.Add(GameCommand.Action1, "Shoot");
+            commandName.Add(GameCommand.Action2, "Bomb");
+            commandName.Add(GameCommand.Action3, "Focus");
 
-#if !DEBUG
             LoadConfig();
-#endif
         }
 
         public static string GetCommandName(GameCommand command)

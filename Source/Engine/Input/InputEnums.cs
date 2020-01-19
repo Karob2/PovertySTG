@@ -13,7 +13,6 @@ namespace Engine.Input
         Action2,
         Action3,
         //Action4,
-        Skip,
 
         MenuUp,
         MenuDown,
@@ -21,6 +20,8 @@ namespace Engine.Input
         MenuRight,
         MenuConfirm,
         MenuCancel,
+
+        Skip,
 
         Save,
         Load,

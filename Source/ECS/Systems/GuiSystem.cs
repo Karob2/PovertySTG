@@ -281,6 +281,9 @@ namespace PovertySTG.ECS.Systems
                     case "controls":
                         gameState.Request("controls");
                         break;
+                    case "controls-r":
+                        InputManager.Default();
+                        break;
                     case "return":
                         Config.SaveConfig();
                         gameState.Request("return");

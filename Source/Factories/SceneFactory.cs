@@ -49,7 +49,8 @@ namespace PovertySTG.Factories
             MakeButton(64, 144, "Fullscreen:", "fs", "fs", "fs");
             MakeButton(64, 184, "Zoom:", "zoom-up", "zoom-dn", "zoom-up");
             MakeButton(64, 224, "Configure Controls", "controls");
-            MakeButton(74, 264, "Save and Return", "return");
+            MakeButton(64, 264, "Reset Controls", "controls-r");
+            MakeButton(74, 304, "Save and Return", "return");
 
             return scene;
         }
@@ -62,7 +63,7 @@ namespace PovertySTG.Factories
             scene.AddUpdateSystem(new KeyConfigSystem(sys));
             scene.AddRenderSystem(new RenderSystem(sys));
 
-            MakeCursor();
+            //MakeCursor();
             MakeText(20, 20, "Press escape to go back.");
             MakeText(20, gs.DisplayManager.GameHeight / 2, "Press").AddToGroup("press");
             MakeText(20, gs.DisplayManager.GameHeight - 20, "Conflicts with a previously set key.").AddToGroup("error");
