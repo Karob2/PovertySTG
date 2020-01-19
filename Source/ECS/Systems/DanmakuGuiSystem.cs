@@ -14,7 +14,8 @@ namespace PovertySTG.ECS.Systems
         SystemReferences sys;
         public DanmakuGuiSystem(SystemReferences sys) { this.sys = sys; }
 
-        int powerX, powerY, powerWidth, powerHeight;
+        int powerX, powerWidth;
+        int wealthX, wealthWidth;
 
         public override void Update(GameTime gameTime)
         {
@@ -27,6 +28,8 @@ namespace PovertySTG.ECS.Systems
             List<Entity> bombs = scene.GetGroup("bombs");
             SpriteComponent power = sys.SpriteComponents.GetByOwner("power");
             RenderComponent powerRC = sys.RenderComponents.GetByOwner("power");
+            SpriteComponent wealth = sys.SpriteComponents.GetByOwner("wealth");
+            RenderComponent wealthRC = sys.RenderComponents.GetByOwner("wealth");
 
             score.Text = player.Score.ToString();
             //lives.Text = "Lives: " + player.Lives;
@@ -59,6 +62,15 @@ namespace PovertySTG.ECS.Systems
             int newWidth = (int)Math.Min(Math.Max((1 - player.Power) * powerWidth, 0), powerWidth);
             power.Width = newWidth;
             powerRC.X = powerX + powerWidth - newWidth;
+
+            if (wealthWidth == 0)
+            {
+                wealthX = (int)wealthRC.X;
+                wealthWidth = (int)wealth.Width;
+            }
+            newWidth = (int)Math.Min(Math.Max((1 - player.Wealth) * wealthWidth, 0), wealthWidth);
+            wealth.Width = newWidth;
+            wealthRC.X = wealthX + wealthWidth - newWidth;
         }
     }
 }

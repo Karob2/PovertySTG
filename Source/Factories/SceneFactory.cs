@@ -310,6 +310,12 @@ namespace PovertySTG.Factories
             topMargin += topSpacing;
             MakeText(sideMargin, topMargin, "Point:", color3, "scorefont");
             MakeText(sideMargin2, topMargin, "0", color3, "scorefont", Alignment.Right).AddToGroup("point");
+
+            sideMargin = 26;
+            topMargin = 560;
+            //MakeText(sideMargin, topMargin, "Power:", color3, "scorefont");
+            MakeGraphic("wealth", sideMargin, topMargin, -1, 0);
+            MakeRect(sideMargin + 2, topMargin + 2, sideMargin + 122, topMargin + 15, new Color(0, 0, 0), -2).AddToGroup("wealth");
         }
 
         public static void NewScene(GameServices gs, string name, out Scene scene, out SystemReferences sys)

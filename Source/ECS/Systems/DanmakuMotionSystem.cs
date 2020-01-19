@@ -125,8 +125,10 @@ namespace PovertySTG.ECS.Systems
                         float distanceSquared = dx * dx + dy * dy;
                         if (distanceSquared < dd2 * dd2)
                         {
+                            if (component.Type == -102) player.Point += 1;
+                            else if (component.Type == -103) player.Power += 0.05f;
+                            else player.Wealth += 0.05f;
                             component.Owner.Delete();
-                            player.Power += 0.1f;
                             continue;
                         }
                         if (distanceSquared < dd * dd)
@@ -175,7 +177,7 @@ namespace PovertySTG.ECS.Systems
                                 else
                                 {
                                     player.Score += 1;
-                                    player.Power += 0.1f;
+                                    //player.Power += 0.1f;
                                 }
                                 continue;
                             }

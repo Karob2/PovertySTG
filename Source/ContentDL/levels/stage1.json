@@ -1,6 +1,7 @@
 {
     "Lines": [
         "summon yoshika",
+        "wait clear",
         "summon fuyu",
         "summon joon",
         "summon shion",
