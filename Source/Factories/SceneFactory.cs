@@ -114,6 +114,8 @@ namespace PovertySTG.Factories
             MakeTalkText(110 + 27, 169 + 11, "Yes, I can feel the misfortune.", color1, 330, 5.5f)
                 .AddToGroup("talk_text2").AddToGroup("talk").Disable();
 
+            MakeRect(0, 0, 612, 600, new Color(128, 128, 128, 128), 0, -99999f).AddToGroup("flash").Disable();
+
             return scene;
         }
 
@@ -147,10 +149,10 @@ namespace PovertySTG.Factories
             entity.Enable();
         }
 
-        public static Entity MakeRect(float x, float y, float x2, float y2, Color color, int layer = 0)
+        public static Entity MakeRect(float x, float y, float x2, float y2, Color color, int layer = 0, float depth = 0f)
         {
             Entity entity = scene.NewEntity();
-            entity.AddComponent(new RenderComponent(x, y, layer, 0));
+            entity.AddComponent(new RenderComponent(x, y, layer, depth));
             SpriteComponent sc = new SpriteComponent(gs, "pixel");
             sc.Color = color;
             sc.Width = x2 - x;

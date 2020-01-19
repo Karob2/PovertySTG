@@ -100,10 +100,39 @@ namespace PovertySTG.ECS.Systems
                 }
             }
 
+            if (player.SpecialState >= 4 && player.SpecialTimer == 0f && player.SpecialTimer2 == 0f)
+            {
+                foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+                {
+                    BodyComponent body = sys.BodyComponents.GetByOwner(enemy.Owner);
+                    //DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
+                    DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+                    enemy.Health -= 30f;
+                    if (enemy.Health <= 0)
+                    {
+                        DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
+                        DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                        DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                        DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                        DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                        DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                        DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                        enemy.Owner.Delete();
+                        player.Score += 50;
+                    }
+                }
+            }
+
             foreach (BulletComponent component in sys.BulletComponents.EnabledList)
             {
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
                 // Check for collisions.
+                if (component.Type >= 1 && player.SpecialState >= 4)
+                {
+                    //DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
+                    component.Owner.Delete();
+                    continue;
+                }
                 float radius = sys.SpriteComponents.GetByOwner(component.Owner).Sprite.CollisionBox.Radius;
                 if (component.Type == -100 && body.Y > Config.LevelHeight && body.DY > 0)
                 {
@@ -183,7 +212,7 @@ namespace PovertySTG.ECS.Systems
                             }
                         }
                     }
-                    if (component.Type == 1)
+                    if (component.Type >= 1)
                     {
                         BodyComponent targetBody = sys.BodyComponents.GetByOwner(player.Owner);
                         float targetRadius = sys.SpriteComponents.GetByOwner(player.Owner).Sprite.CollisionBox.Radius;

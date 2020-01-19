@@ -25,6 +25,7 @@ namespace PovertySTG.ECS.Systems
         public override void Update(GameTime gameTime)
         {
             sys.LevelScriptComponents.TryGetFirstEnabled(out LevelScriptComponent level);
+            sys.SpriteComponents.TryGetByOwner("flash", out SpriteComponent flash);
 
             PlayerComponent component = sys.PlayerComponents.First();
             BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
@@ -74,6 +75,7 @@ namespace PovertySTG.ECS.Systems
                         component.SpecialTimer = 0f;
                         component.SpecialTimer2 = 0f;
                         component.Bombs--;
+                        flash.Owner.Enable();
                     }
                     else if (InputManager.JustPressed(GameCommand.Action1))
                     {
@@ -126,6 +128,10 @@ namespace PovertySTG.ECS.Systems
             }
             if (component.SpecialState >= 4)
             {
+                float alpha = Math.Abs(component.SpecialTimer2 - 0.5f) - 0.5f;
+                if (component.SpecialState == 4 && component.SpecialTimer2 < 0.5f || component.SpecialState == 8 && component.SpecialTimer2 > 0.5f) alpha = alpha * alpha * 4f * (0.25f / 5f + 0.125f);
+                else alpha = alpha * alpha / 5 + 0.125f;
+                flash.Color = new Color(alpha, alpha, alpha, alpha);
                 component.SpecialTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (component.SpecialTimer > 0.02f)
                 {
@@ -168,6 +174,7 @@ namespace PovertySTG.ECS.Systems
                         if (component.SpecialState > 8)
                         {
                             component.SpecialState = 0;
+                            flash.Owner.Disable();
                         }
                     }
                     else
