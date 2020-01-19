@@ -36,7 +36,7 @@ namespace PovertySTG.ECS.Systems
                 ShowTalker2(line.Right, line.RightMessage);
                 foreach (BulletComponent bullet in sys.BulletComponents.EnabledList)
                 {
-                    bullet.Owner.Disable();
+                    bullet.Owner.Delete();
                 }
             }
             else if (InputManager.JustPressed(GameCommand.Action1) && level.WaitTimer >= 0.5f)
@@ -70,7 +70,7 @@ namespace PovertySTG.ECS.Systems
 
         void ShowTalker1(string expression = null, string text = null)
         {
-            if (text == null)
+            if (text == null || text == "")
             {
                 talkBox.Disable();
                 talkText.Owner.Disable();
@@ -81,7 +81,7 @@ namespace PovertySTG.ECS.Systems
                 talkBox.Enable();
                 talkText.Owner.Enable();
             }
-            if (expression == null)
+            if (expression == null || expression == "")
             {
                 talkPortrait.Owner.Disable();
             }
@@ -96,7 +96,7 @@ namespace PovertySTG.ECS.Systems
 
         void ShowTalker2(string expression = null, string text = null)
         {
-            if (text == null)
+            if (text == null || text == "")
             {
                 talkBox2.Disable();
                 talkText2.Owner.Disable();
@@ -107,7 +107,7 @@ namespace PovertySTG.ECS.Systems
                 talkBox2.Enable();
                 talkText2.Owner.Enable();
             }
-            if (expression == null)
+            if (expression == null || expression == "")
             {
                 talkPortrait2.Owner.Disable();
             }

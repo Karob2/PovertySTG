@@ -313,6 +313,11 @@ namespace PovertySTG.ECS.Systems
             string text = "Entities: " + activeEntities + "/" + entities + " Free: " + scene.FreeEntities.Count + " Visible: " + renderList.Count;
             text += "\nComponents: " + activeComponents + "/" + components;
             text += "\nBullets: " + activeBulletComponents + "/" + bulletComponents;
+            sys.LevelScriptComponents.TryGetFirstEnabled(out LevelScriptComponent level);
+            if (level != null && level.Level != null)
+            {
+                text += "\n" + level.Level.Lines[level.Progress];
+            }
             gs.ResourceManager.Fonts.Get("sysfont").Render(text, 0, 0, Color.White);
         }
 #endif

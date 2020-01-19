@@ -65,12 +65,13 @@ namespace PovertySTG.ECS.Systems
         {
             List<string> lines = levelScript.Lines;
 
-            while (level.Progress < lines.Count - 1)
+            while (level.Progress < lines.Count)
             {
-                level.Progress++;
+                //level.Owner.Scene.GS.Error.DebugPrint(lines[level.Progress]);
                 string[] line = lines[level.Progress].Split(' ');
                 if (line.Length < 1)
                 {
+                    level.Progress++;
                     continue;
                 }
                 switch (line[0])
@@ -79,10 +80,31 @@ namespace PovertySTG.ECS.Systems
                         level.LoopPoint = level.Progress + 1;
                         break;
                     case "repeat":
-                        level.Progress = level.LoopPoint - 1;
+                        level.Progress = level.LoopPoint; // TODO: This can cause an infinite loop.
+                        level.Progress++;
                         continue;
+                    case "leave":
+                        foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+                        {
+                            enemy.Phase = -1;
+                        }
+                        break;
+                    case "clear":
+                        foreach (BulletComponent bullet in sys.BulletComponents.EnabledList)
+                        {
+                            bullet.Owner.Delete();
+                        }
+                        foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+                        {
+                            enemy.Owner.Delete();
+                        }
+                        break;
                 }
-                if (line.Length < 2) continue;
+                if (line.Length < 2)
+                {
+                    level.Progress++;
+                    continue;
+                }
                 switch (line[0])
                 {
                     case "summon":
@@ -104,17 +126,20 @@ namespace PovertySTG.ECS.Systems
                         if (line[1] == "clear")
                         {
                             level.WaitMode = LevelWaitMode.Clear;
+                            level.Progress++;
                             return;
                         }
                         else if (line[1] == "leave")
                         {
                             level.WaitMode = LevelWaitMode.Leave;
+                            level.Progress++;
                             return;
                         }
                         else if (float.TryParse(line[1], out float time))
                         {
                             level.WaitMode = LevelWaitMode.Timer;
                             level.WaitTimer = time;
+                            level.Progress++;
                             return;
                         }
                         break;
@@ -122,10 +147,12 @@ namespace PovertySTG.ECS.Systems
                         //sys.GetGameState().Request(lines[level.Progress]);
                         //scene.AddScene(SceneFactory.NewTalkScene(gs, "talk", line[1])).Enable();
                         level.Story = gs.ResourceManager.Stories.Get(line[1]);
-                        level.StoryProgress = -1;
+                        level.StoryProgress = 0;
                         level.WaitMode = LevelWaitMode.Forever;
+                        level.Progress++;
                         return;
                 }
+                level.Progress++;
             }
 
             // Reached end of script with no remaining action. Go dormant.

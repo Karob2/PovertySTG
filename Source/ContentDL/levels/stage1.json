@@ -1,9 +1,15 @@
 {
     "Lines": [
-        "loop",
         "summon cute",
         "wait leave",
-        "talk test",
+        "clear",
+
+        "summon dork",
+        "summon dork",
+        "summon dork",
+        "summon dork",
+        "wait 2",
+        "leave",
 
         "summon cute",
         "wait 0.5",
@@ -12,6 +18,8 @@
         "summon dork",
         "wait 0.5",
         "wait clear",
+
+        "talk test",
 
         "summon yoshika",
         "summon fuyu",
