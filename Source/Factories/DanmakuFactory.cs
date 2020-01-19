@@ -54,11 +54,13 @@ namespace PovertySTG.Factories
             }
             else if (type == EnemyType.MoneyBag)
                 entity.AddComponent(new SpriteComponent(scene.GS, "s_moneybag"));
+            else if (type == EnemyType.Fairy)
+                entity.AddComponent(new SpriteComponent(scene.GS, "fairy"));
             else
-                entity.AddComponent(new SpriteComponent(scene.GS, "s_fairy"));
+                entity.AddComponent(new SpriteComponent(scene.GS, "fairy", "fairy2"));
             EnemyComponent enemyComponent = new EnemyComponent(type, targetX, targetY);
             if (type == EnemyType.MoneyBag) enemyComponent.Timer = r.NextDouble() * 100f;
-            if (type >= EnemyType.Boss) enemyComponent.MaxHealth = 400;
+            if (type >= EnemyType.Boss) enemyComponent.MaxHealth = 200;
             enemyComponent.Health = enemyComponent.MaxHealth;
             if (type == EnemyType.Yoshika) enemyComponent.Lives = 2;
             entity.AddComponent(enemyComponent);
@@ -87,7 +89,7 @@ namespace PovertySTG.Factories
         public static void MakeBullet(Scene scene, BulletType type, float x, float y, float dx, float dy, float ax = 0f, float ay = 0f)
         {
             int layer = 21;
-            string sprite = "s_shot";
+            string sprite = "s_bullet_generic";
             string animation = null;
             float power = 10f;
             if (type == BulletType.BG) layer = 100;
@@ -122,13 +124,13 @@ namespace PovertySTG.Factories
             }
             if (type == BulletType.HomingShot)
             {
-                sc.Scale = 0.5f;
+                //sc.Scale = 0.5f;
                 sc.Color = new Color(200, 200, 84);
                 sc.Alpha = 0.7f;
             }
             if (type == BulletType.EnemyShot)
             {
-                sc.Scale = 0.75f;
+                //sc.Scale = 0.75f;
             }
             entity.AddComponent(sc);
             entity.AddComponent(new BulletComponent(type, power));

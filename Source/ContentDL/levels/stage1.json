@@ -1,5 +1,7 @@
 {
     "Lines": [
+        "summon fairy",
+        "summon brave_fairy",
         "music stop",
         "sound wind",
         "music Skahou",
@@ -21,7 +23,6 @@
         "wait leave",
         "clear",
 
-        "summon brave_fairy",
         "summon brave_fairy",
         "summon brave_fairy",
         "summon brave_fairy",

@@ -1,0 +1,36 @@
+{
+    "CollisionBox": {
+        "Radius": 14
+    },
+    "DefaultFrame": {
+        "Spritesheet": "fairy.png",
+        "Width": 80,
+        "Height": 95,
+        "AnchorX": 40,
+        "AnchorY": 54
+    },
+    "Animations": [
+        {
+            "Name": "fairy",
+            "Speed": 5,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "Count": 2
+                }
+            ]
+        },
+        {
+            "Name": "fairy2",
+            "Speed": 5,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 95,
+                    "Count": 2
+                }
+            ]
+        }
+    ]
+}
