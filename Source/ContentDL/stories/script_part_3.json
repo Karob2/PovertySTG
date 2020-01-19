@@ -1,0 +1,245 @@
+{
+    "Lines": [
+        {
+            "Left": "sanae_serious",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "Sango? Distract them while I go to get Ichigo."
+        },
+        {
+            "Left": "sanae_scary",
+            "Right": "yoshika_wut",
+            "LeftMessage": "",
+            "RightMessage": "Oh, uhhhh. Uhhhh. Mm...."
+        },
+        {
+            "Left": "sanae_scary",
+            "Right": "yoshika_wut",
+            "LeftMessage": "",
+            "RightMessage": "Is there anything you, uh, want?"
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "yoshika_wut",
+            "LeftMessage": "A Sega Genesis, actually.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "yoshika_wut",
+            "LeftMessage": "Rinnosuke hasn't seemed to find one yet.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "I want my sister...",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "Maybe she's not so nice to me...",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "And maybe she isn't sure I can accomplish much...",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "And maybe she turned my room into storage...",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "But she gave me a nice futon in her room!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "And she makes sure I have stuff to eat!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "And she's been trying to be nicer lately.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "yoshika_sad",
+            "LeftMessage": "...I want to know she's okay.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_sad",
+            "LeftMessage": "",
+            "RightMessage": "Shouldn't we be going to find her?"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_nervous",
+            "LeftMessage": "It's better to wait. They'll keep coming at us.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_nervous",
+            "LeftMessage": "Eventually we'll have beat everyone, and their boss will come.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_nervous",
+            "LeftMessage": "",
+            "RightMessage": "And you like fighting?"
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "shion_nervous",
+            "LeftMessage": "Yes!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "shion_wut",
+            "LeftMessage": "I get to kick 'em in the rear, like Chun-Li!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_wut",
+            "Right": "joon_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "Who's been bothering my sisters?"
+        },
+        {
+            "Left": "shion_scared",
+            "Right": "joon_wut",
+            "LeftMessage": "Jo'on!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_scared",
+            "Right": "joon_wut",
+            "LeftMessage": "Are you okay?",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_scared",
+            "Right": "joon_wut",
+            "LeftMessage": "",
+            "RightMessage": "Jo'on? Is that whose body this is?"
+        },
+        {
+            "Left": "shion_scared",
+            "Right": "joon_wut",
+            "LeftMessage": "",
+            "RightMessage": "I've been wondering who she is."
+        },
+        {
+            "Left": "shion_scared",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "She was strong, and it took a while, but I managed to possess her body."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "joon_smug",
+            "LeftMessage": "So you're who I have to beat to end this?",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "You think you can beat me?"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "I'm Ichigo, the first born."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "When the Teru Teru Bozu fail to stop the rain---"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "When the Ame-onna bring the rain to flood the fields---"
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "When the Yuki-onna freeze the morning dew, killing the crops---"
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "that's me!"
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "I'm the murderer of fortunes, and the killer of the harvest."
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "(Jerk...)",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "How troublesome for you to interrupt our doings."
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "Nico, Sango, wait to the side."
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "I'll kill her myself!"
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "Does that mean we fight now?",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "joon_smug",
+            "LeftMessage": "",
+            "RightMessage": "Yes."
+        },
+        {
+            "Left": "sanae_scary",
+            "Right": "joon_smug",
+            "LeftMessage": "Great.",
+            "RightMessage": ""
+        }
+    ]  
+}
+

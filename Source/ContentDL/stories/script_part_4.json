@@ -1,0 +1,148 @@
+{
+    "Lines": [
+        {
+            "Left": "sanae_happy",
+            "Right": "joon_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "So now you three'll leave their bodies?"
+        },
+        {
+            "Left": "sanae_scary",
+            "Right": "joon_annoyed",
+            "LeftMessage":"",
+            "RightMessage": "..."
+        },
+        {
+            "Left": "sanae_scary",
+            "Right": "joon_annoyed",
+            "LeftMessage":"",
+            "RightMessage": "..."
+        },
+        {
+            "Left": "sanae_scary",
+            "Right": "joon_happy",
+            "LeftMessage":"",
+            "RightMessage": "Ah."
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "joon_apologizing",
+            "LeftMessage":"",
+            "RightMessage": "It appears I've been beaten."
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "joon_apologizing",
+            "LeftMessage":"",
+            "RightMessage": "It seems I'll have to shake your hand."
+        },
+        {
+            "Left": "sanae_wut",
+            "Right": "joon_apologizing",
+            "LeftMessage":"Shake my... hand...?",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_wut",
+            "Right": "joon_apologizing",
+            "LeftMessage":"",
+            "RightMessage": "I'm too proud to bow to you."
+        },
+        {
+            "Left": "sanae_wut",
+            "Right": "joon_apologizing",
+            "LeftMessage":"",
+            "RightMessage": "But you've won. I want to acknowledge it."
+        },
+        {
+            "Left": "shion_nervous",
+            "Right": "joon_apologizing",
+            "LeftMessage":"So it's over?",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_nervous",
+            "Right": "joon_apologizing",
+            "LeftMessage":"",
+            "RightMessage": "As soon as you shake my hand!"
+        },
+        {
+            "Left": "shion_nervous",
+            "Right": "joon_apologizing",
+            "LeftMessage":"A-alright then.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_nervous",
+            "Right": "joon_apologizing",
+            "LeftMessage":"*shake*",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_nervous",
+            "Right": "joon_apologizing",
+            "LeftMessage":"",
+            "RightMessage": "*shake*"
+        },
+        {
+            "Left": "shion_pained",
+            "Right": "joon_happy",
+            "LeftMessage": "Aaarrggghhhh",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_pained",
+            "Right": "ichigo_smug",
+            "LeftMessage": "",
+            "RightMessage": "And now you take your sister's place---"
+        },
+        {
+            "Left": "shion_pained",
+            "Right": "ichigo_smug",
+            "LeftMessage": "",
+            "RightMessage": "AS MY PUPPET!"
+        },
+        {
+            "Left": "",
+            "Right": "shion_smug",
+            "LeftMessage":"",
+            "RightMessage": "Ah, this body fits me well."
+        },
+        {
+            "Left": "",
+            "Right": "shion_sad",
+            "LeftMessage":"",
+            "RightMessage": "Although I am hungry and miserable."
+        },
+        {
+            "Left": "",
+            "Right": "shion_sad",
+            "LeftMessage":"",
+            "RightMessage": "Moreso than expected."
+        },
+        {
+            "Left": "",
+            "Right": "shion_sad",
+            "LeftMessage":"",
+            "RightMessage": "This girl has a rough time of it, doesn't she?"
+        },
+        {
+            "Left": "sango_happy",
+            "Right": "shion_smug",
+            "LeftMessage":"Ha! Nice trick Ichigo!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_smug",
+            "LeftMessage": "",
+            "RightMessage": "And what do you intend to do, shrine maiden?"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_smug",
+            "LeftMessage": "I. Will. Stop. You.",
+            "RightMessage": ""
+        }
+    ]
+}

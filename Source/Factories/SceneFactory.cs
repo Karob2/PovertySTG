@@ -107,13 +107,16 @@ namespace PovertySTG.Factories
 
             MakeGraphic("textbox", 90, 144, 0, 5).AddToGroup("talk_box").AddToGroup("talk").Disable();
             MakeGraphic("textbox2", 117, 155, 0, 6).AddToGroup("talk_box2").AddToGroup("talk").Disable();
-            MakeGraphic("talk_sanae", 2, 258, 0, 10).AddToGroup("talk_portrait").AddToGroup("talk").Disable();
-            MakeGraphic("talk_sanae", 338, 260, 0, 10).AddToGroup("talk_portrait2").AddToGroup("talk").Disable();
+            MakeGraphic("textbox-c", (90 + 117) / 2 - 55, 160 - 19, 0, 1).AddToGroup("talk_box-c").AddToGroup("talk").Disable();
+            MakeGraphic("talk_sanae", 126, 258, 0, 10).AddToGroup("talk_portrait").AddToGroup("talk").Disable();
+            MakeGraphic("talk_sanae", 462, 260, 0, 10, true).AddToGroup("talk_portrait2").AddToGroup("talk").Disable();
             Color color1 = ColorHelper.FromHex("#fff3e5");
             MakeTalkText(110, 169, "This is the place where they took your sisters and the others?", color1, 330, 4.5f)
                 .AddToGroup("talk_text").AddToGroup("talk").Disable();
             MakeTalkText(110 + 27, 169 + 11, "Yes, I can feel the misfortune.", color1, 330, 5.5f)
                 .AddToGroup("talk_text2").AddToGroup("talk").Disable();
+            MakeTalkText(110 + 27 / 2, 160 + 16, "Just chillin'", color1, 330, 0.5f)
+                .AddToGroup("talk_text-c").AddToGroup("talk").Disable();
 
             MakeRect(0, 0, 612, 600, new Color(128, 128, 128, 128), 0, 999f).AddToGroup("flash").Disable();
 
@@ -164,12 +167,12 @@ namespace PovertySTG.Factories
             return entity;
         }
 
-        public static Entity MakeGraphic(string image, float x, float y, int layer, float depth)
+        public static Entity MakeGraphic(string image, float x, float y, int layer, float depth, bool flip = false)
         {
-            return MakeGraphic(image, null, x, y, layer, depth);
+            return MakeGraphic(image, null, x, y, layer, depth, flip);
         }
 
-        public static Entity MakeGraphic(string image, string animation, float x, float y, int layer, float depth)
+        public static Entity MakeGraphic(string image, string animation, float x, float y, int layer, float depth, bool flip = false)
         {
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, layer, depth));

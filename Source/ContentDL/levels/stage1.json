@@ -1,5 +1,6 @@
 {
     "Lines": [
+        "talk script_part_1",
         "summon brave_fairy",
         "summon yoshika",
         "wait clear",

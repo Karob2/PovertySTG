@@ -1,0 +1,155 @@
+{
+    "Lines": 
+    [
+        {
+            "Left": "sanae_serious",
+            "Right": "yoshika_sad",
+            "LeftMessage": "",
+            "RightMessage": "Owie. I'm only a little girl you know."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "yoshika_sad",
+            "LeftMessage": "Now leave that body.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "yoshika_sad",
+            "LeftMessage": "",
+            "RightMessage": "But I can't! Sis'll get mad at me if I do."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "yoshika_happy",
+            "LeftMessage": "",
+            "RightMessage": "Ooh, lookie lookadee, there's Nico!"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "Ichigo, what have you done now?"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_wut",
+            "LeftMessage": "",
+            "RightMessage": "Who's body is that?"
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "shion_wut",
+            "LeftMessage": "It's Fuyu. She's a lamp tsukumogami",
+            "RightMessage": ""
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "Are you done eating all the miso?",
+            "RightMessage": ""
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "I didn't eat all of the miso."
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "But last time you did! You ate all the miso!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "My sister really loves her miso!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "That's not important."
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "It is! Last time we got caught because that lady left out the miso!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "yoshika_happy",
+            "Right": "fuyu_annoyed",
+            "LeftMessage": "And you couldn't resist going to get a bite!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_wut",
+            "Right": "shion_expositioning",
+            "LeftMessage": "",
+            "RightMessage": "We poverty gods really love miso."
+        },
+        {
+            "Left": "sanae_wut",
+            "Right": "shion_expositioning",
+            "LeftMessage": "",
+            "RightMessage": "I love the smell of it."
+        },
+        {
+            "Left": "sanae_concerned",
+            "Right": "shion_sad",
+            "LeftMessage": "",
+            "RightMessage": "I haven't had any, not even when Tenshi's had it."
+        },
+        {
+            "Left": "sanae_concerned",
+            "Right": "shion_sad",
+            "LeftMessage": "",
+            "RightMessage": "Because my bad luck makes it impossible for me to eat it."
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "fuyu_concerned",
+            "LeftMessage": "",
+            "RightMessage": "Poor, poor girl."
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "fuyu_concerned",
+            "LeftMessage": "",
+            "RightMessage": "We'll let you have some with us if you help us out."
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "fuyu_concerned",
+            "LeftMessage": "I'm tempted, but it wouldn't end well.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "fuyu_concerned",
+            "LeftMessage": "And I'm scared of Sanae.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "shion_sad",
+            "Right": "fuyu_determined",
+            "LeftMessage": "",
+            "RightMessage": "Then I'll defeat her for you."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "fuyu_determined",
+            "LeftMessage": "",
+            "RightMessage": "I'm the second sister of the family, Nico."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "fuyu_determined",
+            "LeftMessage": "",
+            "RightMessage": "I will devastate you!"
+        }
+    ]
+}

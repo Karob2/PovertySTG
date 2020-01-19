@@ -1,0 +1,71 @@
+{
+    "Lines": [
+        {
+            "Left": "sanae_serious",
+            "Right": "ichigo_defeated",
+            "LeftMessage": "",
+            "RightMessage": "Fine, you win."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "ichigo_defeated",
+            "LeftMessage": "",
+            "RightMessage": "We'll go home."
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "ichigo_defeated",
+            "LeftMessage": "",
+            "RightMessage": "Nico, Sango, come on."
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "ichigo_annoyed",
+            "LeftMessage": "No! Clean this place up!",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "ichigo_annoyed",
+            "LeftMessage": "If you don't I'll call Lady Kanako and Lady Suwako to destroy you.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_annoyed",
+            "Right": "ichigo_annoyed",
+            "LeftMessage": "",
+            "RightMessage": "Alright. I won't complain. But you'll make dinner for us."
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "ichigo_smug",
+            "LeftMessage": "That can be arranged.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_serious",
+            "Right": "sango_agape",
+            "LeftMessage": "",
+            "RightMessage": "Ooh, smart. We ran out of miso at home."
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "sango_happy",
+            "LeftMessage": "We can make miso for you all.",
+            "RightMessage": ""
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "shion_nervous",
+            "LeftMessage": "",
+            "RightMessage": "C-can I try to have some too?"
+        },
+        {
+            "Left": "sanae_happy",
+            "Right": "shion_nervous",
+            "LeftMessage": "Of course!",
+            "RightMessage": ""
+        }
+
+    ]
+}

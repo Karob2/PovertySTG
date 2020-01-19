@@ -1,0 +1,270 @@
+{
+    "Lines": 
+    [
+        {
+            "Left": "",
+            "Right": "",
+            "LeftMessage": "",
+            "RightMessage": "",
+            "Message": "There are stories about gods of poverty."
+    
+        },
+        {
+            "Left": "",
+            "Right": "",
+            "LeftMessage": "",
+            "RightMessage": "",
+            "Message": "These gods will linger around people."
+    
+        },
+        {
+            "Left": "",
+            "Right": "",
+            "LeftMessage": "",
+            "RightMessage": "",
+            "Message": "As they linger, they bestow misfortune."
+        }, 
+        {
+            "Left": "",
+            "Right": "",
+            "LeftMessage": "",
+            "RightMessage": "",
+            "Message": "Some say they also can bestow luck."
+
+    
+        },
+        {
+            "Left": "",
+            "Right": "",
+            "LeftMessage": "",
+            "RightMessage": "",
+            "Message": "This is a story about the poverty gods called binbougami."
+    
+        }, 
+    {
+        "Left": "sanae_concerned",
+        "Right": "",
+        "LeftMessage": "So this is where they took your sister?",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_concerned",
+        "Right": "shion_nervous",
+        "LeftMessage": "",
+        "RightMessage": "Yes."
+    },
+    {
+        "Left": "sanae_concerned",
+        "Right": "shion_nervous",
+        "LeftMessage": "",
+        "RightMessage": "I can feel the misfortune."
+
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "Oh, whoa, what's this?"
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "Are you a servant of the Mansion?"
+
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "No, I'm the miko of the Moriya shrine.",
+        "RightMessage": ""
+
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "That makes sense!"
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "you're too well dressed to be a servant!"
+
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "And we've dismissed them all anyhow."
+
+    },
+    {
+        "Left": "shion_nervous",
+        "Right": "yoshika_happy",
+        "LeftMessage": "This is her, one of the poverty gods.",
+        "RightMessage": ""
+
+    },
+    {
+        "Left": "sanae_determined",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "It seems I've discovered my target!",
+        "RightMessage": ""
+
+    },
+    {
+        "Left": "sanae_determined",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "Prepare to be exterminated!",
+        "RightMessage": ""
+
+    },
+    {
+        "Left": "sanae_determined",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "",
+        "RightMessage": "Wait! I'm not a god! I'm just a human!"
+
+    },
+    {
+        "Left": "sanae_wut",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "",
+        "RightMessage": "I'm a... a... a thief!"
+
+    },
+    {
+        "Left": "sanae_wut",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "",
+        "RightMessage": "That's it! I'm a human thief!"
+
+    },
+    {
+        "Left": "sanae_wut",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "...",
+        "RightMessage": ""
+
+    },
+    {
+        "Left": "sanae_wut",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "you know you're possessing a zombie, don't you?",
+        "RightMessage": ""
+
+    },
+    {
+        "Left": "sanae_annoyed",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "",
+        "RightMessage": "Possessing? No, no. Not me. I'm just chilling."
+    },
+    {
+        "Left": "sanae_annoyed",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "I'm not that, naive.",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_annoyed",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "",
+        "RightMessage": "Then it's useless ot argue."
+    },
+    {
+        "Left": "sanae_annoyed",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "How 'bout you give me some money and I'll promise you good luck!"
+    },
+    {
+        "Left": "sanae_annoyed",
+        "Right": "shion_nervous",
+        "LeftMessage": "",
+        "RightMessage": "Don't listen to her."
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "shion_nervous",
+        "LeftMessage": "",
+        "RightMessage": "Poverty gods like us hoard the good luck of others."
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "shion_nervous",
+        "LeftMessage": "",
+        "RightMessage": "And if you agree, she'll keep on taking your good luck."
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "shion_nervous",
+        "LeftMessage": "",
+        "RightMessage": "But she'll only give it back to you if you pay her."
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "shion_nervous",
+        "LeftMessage": "Why don't you do that?",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_concerned",
+        "Right": "shion_sad",
+        "LeftMessage": "If you can steal good luck, why don't you have any yourself?",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_concerned",
+        "Right": "shion_sad",
+        "LeftMessage": "",
+        "RightMessage": "All good luck I steal turns to bad."
+    },
+    {
+        "Left": "sanae_concerned",
+        "Right": "shion_sad",
+        "LeftMessage": "",
+        "RightMessage": "And I can't figure out how to stop that."
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "And I bet, miss Miko, that you don't want to hurt this person's body!"
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_happy",
+        "LeftMessage": "",
+        "RightMessage": "So you won't attack me!"
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "Luckily for me, she's not my friend.",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_serious",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "So I'll have no problem fighting you.",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_scary",
+        "Right": "yoshika_sweating",
+        "LeftMessage": "you are already dead!",
+        "RightMessage": ""
+    },
+    {
+        "Left": "sanae_scary",
+        "Right": "shion_nervous",
+        "LeftMessage": "I'll just. Hide behind you.",
+        "RightMessage": ""
+    }
+
+    ]
+}
+

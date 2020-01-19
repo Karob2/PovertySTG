@@ -25,6 +25,8 @@ namespace Engine.Resource
         [JsonProperty]
         public string Right { get; set; }
         [JsonProperty]
+        public string Message { get; set; }
+        [JsonProperty]
         public string LeftMessage { get; set; }
         [JsonProperty]
         public string RightMessage { get; set; }

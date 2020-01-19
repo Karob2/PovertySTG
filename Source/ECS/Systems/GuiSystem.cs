@@ -283,6 +283,9 @@ namespace PovertySTG.ECS.Systems
                         break;
                     case "controls-r":
                         InputManager.Default();
+                        InputManager.AskSetControls = false;
+                        InputManager.SaveConfig();
+                        InputManager.UpdateAliases();
                         break;
                     case "return":
                         Config.SaveConfig();

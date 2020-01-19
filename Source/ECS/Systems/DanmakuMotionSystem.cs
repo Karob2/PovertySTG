@@ -244,7 +244,7 @@ namespace PovertySTG.ECS.Systems
                     enemy.Health -= component.Power;
                 }
             }
-            if (mode == 1) enemy.Health -= 30f;
+            if (mode == 1 && enemy.Shield == null) enemy.Health -= 30f;
             if (enemy.Health <= 0)
             {
                 if (enemy.Type == EnemyType.MoneyBag)
