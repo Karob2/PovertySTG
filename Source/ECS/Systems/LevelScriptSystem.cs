@@ -92,7 +92,7 @@ namespace PovertySTG.ECS.Systems
                     case "clear":
                         foreach (BulletComponent bullet in sys.BulletComponents.EnabledList)
                         {
-                            if (bullet.Type > -100) bullet.Owner.Delete();
+                            if (bullet.Type > BulletType.Items) bullet.Owner.Delete();
                         }
                         foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
                         {
@@ -112,24 +112,24 @@ namespace PovertySTG.ECS.Systems
                         float x = (float)r.NextDouble() * Config.LevelWidth;
                         float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
                         if (line[1] == "fairy")
-                            DanmakuFactory.MakeEnemy(scene, 0, x, 0, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.Fairy, x, 0, x, y);
                         else if (line[1] == "brave_fairy")
-                            DanmakuFactory.MakeEnemy(scene, 1, x, 0, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.BraveFairy, x, 0, x, y);
                         else if (line[1] == "moneybag")
                         {
                             float x2;
                             if (x > Config.LevelWidth / 2) x2 = 0 - 50;
                             else x2 = Config.LevelWidth + 50;
-                            DanmakuFactory.MakeEnemy(scene, 2, x2, y, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.MoneyBag, x2, y, x, y);
                         }
                         else if (line[1] == "yoshika")
-                            DanmakuFactory.MakeEnemy(scene, 100, x, 0, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.Yoshika, x, 0, x, y);
                         else if (line[1] == "fuyu")
-                            DanmakuFactory.MakeEnemy(scene, 101, x, 0, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.Fuyu, x, 0, x, y);
                         else if (line[1] == "joon")
-                            DanmakuFactory.MakeEnemy(scene, 102, x, 0, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.Joon, x, 0, x, y);
                         else if (line[1] == "shion")
-                            DanmakuFactory.MakeEnemy(scene, 103, x, 0, x, y);
+                            DanmakuFactory.MakeEnemy(scene, EnemyType.Shion, x, 0, x, y);
                         break;
                     case "wait":
                         if (line[1] == "clear")

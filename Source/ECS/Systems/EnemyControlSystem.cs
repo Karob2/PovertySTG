@@ -35,7 +35,7 @@ namespace PovertySTG.ECS.Systems
                 }
                 ed.component = component;
                 ed.body = body;
-                if (component.Type <= 1)
+                if (component.Type <= EnemyType.BraveFairy)
                 {
                     if (component.Phase == 0)
                     {
@@ -55,7 +55,7 @@ namespace PovertySTG.ECS.Systems
                         body.DY = -2.2f;
                     }
                 }
-                else if (component.Type == 2)
+                else if (component.Type == EnemyType.MoneyBag)
                 {
                     if (component.Phase == 0)
                     {
@@ -89,7 +89,7 @@ namespace PovertySTG.ECS.Systems
                         body.DY = (float)Math.Sin(component.Timer) / 2;
                     }
                 }
-                else if (component.Type >= 100)
+                else if (component.Type >= EnemyType.Boss)
                 {
                     if (component.Phase == 0)
                     {
@@ -149,21 +149,21 @@ namespace PovertySTG.ECS.Systems
             if (ed.component.Timer > cooldown)
             {
                 ed.component.Timer -= cooldown;
-                DanmakuFactory.MakeBullet(scene, 1, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
+                DanmakuFactory.MakeBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
                 ed.component.Phase++;
             }
         }
 
         void UpdateSprite(EnemyData ed)
         {
-            int type = ed.component.Type;
+            EnemyType type = ed.component.Type;
             float dx = ed.body.DX;
             float dy = ed.body.DY;
             string name;
-            if (type == 100) name = "yoshika";
-            else if (type == 101) name = "fuyu";
-            else if (type == 102) name = "joon";
-            else if (type == 103) name = "shion";
+            if (type == EnemyType.Yoshika) name = "yoshika";
+            else if (type == EnemyType.Fuyu) name = "fuyu";
+            else if (type == EnemyType.Joon) name = "joon";
+            else if (type == EnemyType.Shion) name = "shion";
             else name = "";
             if (dx < 0) ed.component.Direction = Direction.Left;
             if (dx > 0) ed.component.Direction = Direction.Right;

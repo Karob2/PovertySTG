@@ -31,7 +31,7 @@ namespace PovertySTG.ECS.Systems
                 timer -= 0.2;
                 float x = (float)r.NextDouble() * Config.LevelWidth;
                 float dy = (float)r.NextDouble() * 3 + 1;
-                DanmakuFactory.MakeBullet(scene, -1000, x, 0, 0, dy);
+                DanmakuFactory.MakeBullet(scene, BulletType.BG, x, 0, 0, dy);
             }
 
             /*
@@ -113,19 +113,19 @@ namespace PovertySTG.ECS.Systems
             {
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
                 // Check for collisions.
-                if (component.Type >= 1 && player.SpecialState >= 4)
+                if (component.Type >= BulletType.EnemyShot && player.SpecialState >= 4)
                 {
                     //DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
                     component.Owner.Delete();
                     continue;
                 }
                 float radius = sys.SpriteComponents.GetByOwner(component.Owner).Sprite.CollisionBox.Radius;
-                if (component.Type == -100 && body.Y > Config.LevelHeight && body.DY > 0)
+                if (component.Type == BulletType.Coin && body.Y > Config.LevelHeight && body.DY > 0)
                 {
                     body.DY = -body.DY * 0.5f;
-                    component.Type = -101;
+                    component.Type = BulletType.Coin2;
                 }
-                if (component.Type == -100 || component.Type == -101)
+                if (component.Type == BulletType.Coin || component.Type == BulletType.Coin2)
                 {
                     if (body.X < 0 && body.DX < 0) body.DX = -body.DX;
                     if (body.X > Config.LevelWidth && body.DX > 0) body.DX = -body.DX;
@@ -133,7 +133,7 @@ namespace PovertySTG.ECS.Systems
                 if (body.X > -radius && body.X < Config.LevelWidth + radius
                     && body.Y > -radius && body.Y < Config.LevelHeight + radius)
                 {
-                    if (component.Type <= -100 && component.Type > -1000)
+                    if (component.Type <= BulletType.Items && component.Type > BulletType.BG)
                     {
                         BodyComponent targetBody = sys.BodyComponents.GetByOwner(player.Owner);
                         float targetRadius = 100;
@@ -145,8 +145,8 @@ namespace PovertySTG.ECS.Systems
                         float distanceSquared = dx * dx + dy * dy;
                         if (distanceSquared < dd2 * dd2)
                         {
-                            if (component.Type == -102) player.Point += 1;
-                            else if (component.Type == -103) player.Power += 0.05f;
+                            if (component.Type == BulletType.PointItem) player.Point += 1;
+                            else if (component.Type == BulletType.PowerItem) player.Power += 0.05f;
                             else player.Wealth += 0.05f;
                             component.Owner.Delete();
                             continue;
@@ -161,7 +161,7 @@ namespace PovertySTG.ECS.Systems
                             body.DY = body.DY + (dy / distance - body.DY) * 0.3f;
                             continue;
                         }
-                        else if (component.Type == -102 || component.Type == -103)
+                        else if (component.Type == BulletType.PointItem || component.Type == BulletType.PowerItem)
                         {
                             body.DX = body.DX * (1 - 0.08f);
                             body.DY = body.DY + (4f - body.DY) * 0.08f;
@@ -184,7 +184,7 @@ namespace PovertySTG.ECS.Systems
                             }
                         }
                     }
-                    if (component.Type >= 1)
+                    if (component.Type >= BulletType.EnemyShot)
                     {
                         BodyComponent targetBody = sys.BodyComponents.GetByOwner(player.Owner);
                         float targetRadius = sys.SpriteComponents.GetByOwner(player.Owner).Sprite.CollisionBox.Radius;
@@ -206,12 +206,13 @@ namespace PovertySTG.ECS.Systems
             }
 
             player.Power = Math.Min(Math.Max(player.Power, 0), 1);
+            player.Wealth = Math.Min(Math.Max(player.Wealth, 0), 1);
         }
 
         void DamageEnemy(PlayerComponent player, EnemyComponent enemy, BodyComponent body, BulletComponent component, int mode = 0)
         {
             if (mode == 0) DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
-            if (enemy.Type == 2) DanmakuFactory.MakeCoin(scene, body.X, body.Y);
+            if (enemy.Type == EnemyType.MoneyBag) DanmakuFactory.MakeCoin(scene, body.X, body.Y);
             if (component != null)
             {
                 component.Owner.Delete();
@@ -220,7 +221,7 @@ namespace PovertySTG.ECS.Systems
             if (mode == 1) enemy.Health -= 30f;
             if (enemy.Health <= 0)
             {
-                if (enemy.Type == 2)
+                if (enemy.Type == EnemyType.MoneyBag)
                 {
                     DanmakuFactory.MakeCoin(scene, body.X, body.Y);
                     DanmakuFactory.MakeCoin(scene, body.X, body.Y);

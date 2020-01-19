@@ -7,7 +7,7 @@ namespace PovertySTG.ECS.Components
 {
     public class BulletComponent : Component
     {
-        public int Type { get; set; }
+        public BulletType Type { get; set; }
         /*
         public float X { get; set; }
         public float Y { get; set; }
@@ -18,7 +18,7 @@ namespace PovertySTG.ECS.Components
 
         public BulletComponent() { }
 
-        public BulletComponent(int type, float power = 10f)
+        public BulletComponent(BulletType type, float power = 10f)
         {
             Type = type;
             Power = power;

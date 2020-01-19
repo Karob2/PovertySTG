@@ -7,7 +7,7 @@ namespace PovertySTG.ECS.Components
 {
     public class EnemyComponent : Component
     {
-        public int Type { get; set; }
+        public EnemyType Type { get; set; }
         public float TargetX { get; set; }
         public float TargetY { get; set; }
         public double Timer { get; set; }
@@ -23,7 +23,7 @@ namespace PovertySTG.ECS.Components
 
         public EnemyComponent() { }
 
-        public EnemyComponent(int type, float targetX, float targetY)
+        public EnemyComponent(EnemyType type, float targetX, float targetY)
         {
             Type = type;
             TargetX = targetX;
