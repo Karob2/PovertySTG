@@ -47,7 +47,7 @@ namespace PovertySTG.ECS.Systems
         {
             foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
             {
-                return false;
+                if (enemy.Type != EnemyType.MoneyBag) return false;
             }
             return true;
         }
@@ -56,7 +56,7 @@ namespace PovertySTG.ECS.Systems
         {
             foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
             {
-                if (enemy.Phase >= 0) return false;
+                if (enemy.Type != EnemyType.MoneyBag && enemy.Phase >= 0) return false;
             }
             return true;
         }

@@ -21,7 +21,7 @@ cmd_ref = [
     ["icon", 0]
     ]
 
-program_name = "The Heart's Illumination"
+program_name = "PovertySTG"
 
 root = os.getcwd()
 

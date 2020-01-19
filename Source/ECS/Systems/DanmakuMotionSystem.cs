@@ -197,9 +197,28 @@ namespace PovertySTG.ECS.Systems
                         {
                             DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
                             component.Owner.Delete();
-                            player.Lives--;
-                            player.Power -= 0.1f;
-                            if (player.Lives < 0) player.Lives = 8;
+                            if (player.Invuln <= 0)
+                            {
+                                player.Lives--;
+                                BodyComponent playerBody = sys.BodyComponents.GetByOwner(player.Owner);
+                                playerBody.X = Config.LevelWidth / 2; ;
+                                playerBody.Y = Config.LevelHeight * 3 / 4;
+                                player.Invuln = 1;
+                                if (player.Lives < 0)
+                                {
+                                    player.Lives = 5;
+                                    sys.LevelScriptComponents.TryGetFirst(out LevelScriptComponent level);
+                                    level.Progress = level.LoopPoint;
+                                    foreach (BulletComponent bullet in sys.BulletComponents.EnabledList)
+                                    {
+                                        if (bullet.Type > BulletType.Items) bullet.Owner.Delete();
+                                    }
+                                    foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
+                                    {
+                                        enemy.Owner.Delete();
+                                    }
+                                }
+                            }
                             continue;
                         }
                     }

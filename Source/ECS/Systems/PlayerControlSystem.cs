@@ -31,6 +31,8 @@ namespace PovertySTG.ECS.Systems
             BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
             SpriteComponent sprite = sys.SpriteComponents.GetByOwner(component.Owner);
 
+            component.Invuln -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (sys.RenderComponents.TryGetByOwner("hitbox", out RenderComponent hitbox))
             {
                 if (InputManager.Held(GameCommand.Action3)) hitbox.Enabled = true;

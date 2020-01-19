@@ -33,7 +33,7 @@ namespace Engine.Util
 
 #if !DEBUG
             // Log errors to %localappdata%/[company]/[game]/log.txt
-            logPath = ResourceManager.GetSaveDirectory("log.txt");
+            logPath = gs.ResourceManager.GetSaveDirectory("log.txt");
             File.Delete(logPath);
 #else
             // While debugging, keep all previous log data.

@@ -64,8 +64,8 @@ namespace PovertySTG.Factories
             enemyComponent.Health = enemyComponent.MaxHealth;
             if (type == EnemyType.Yoshika) enemyComponent.Lives = 2;
             if (type == EnemyType.Fuyu) enemyComponent.Lives = 2;
-            if (type == EnemyType.Joon) enemyComponent.Lives = 3;
-            if (type == EnemyType.Shion) enemyComponent.Lives = 4;
+            if (type == EnemyType.Joon) enemyComponent.Lives = 2;
+            if (type == EnemyType.Shion) enemyComponent.Lives = 2;
             entity.AddComponent(enemyComponent);
             BodyComponent body = new BodyComponent(x, y);
             if (type == EnemyType.MoneyBag) body.DX = 0.4f + (float)r.NextDouble() * 0.05f;

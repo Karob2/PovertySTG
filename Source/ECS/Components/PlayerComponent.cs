@@ -21,6 +21,7 @@ namespace PovertySTG.ECS.Components
         public int Alternate { get; set; }
         public int Alternate2 { get; set; }
         public double Timer2 { get; set; }
+        public float Invuln { get; set; }
 
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
         public override void Remove() { Owner.RemoveComponent(this); }
