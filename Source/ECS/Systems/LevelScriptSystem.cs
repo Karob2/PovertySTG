@@ -147,9 +147,15 @@ namespace PovertySTG.ECS.Systems
                         //sys.GetGameState().Request(lines[level.Progress]);
                         //scene.AddScene(SceneFactory.NewTalkScene(gs, "talk", line[1])).Enable();
                         level.Story = gs.ResourceManager.Stories.Get(line[1]);
-                        level.StoryProgress = 0;
+                        level.StoryProgress = -1;
                         level.WaitMode = LevelWaitMode.Forever;
                         level.Progress++;
+                        return;
+                    case "level":
+                        level.Level = gs.ResourceManager.LevelScripts.Get(line[1]);
+                        level.Progress = 0;
+                        level.LoopPoint = 0;
+                        level.WaitMode = LevelWaitMode.Start;
                         return;
                 }
                 level.Progress++;

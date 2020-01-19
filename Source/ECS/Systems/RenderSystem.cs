@@ -314,9 +314,9 @@ namespace PovertySTG.ECS.Systems
             text += "\nComponents: " + activeComponents + "/" + components;
             text += "\nBullets: " + activeBulletComponents + "/" + bulletComponents;
             sys.LevelScriptComponents.TryGetFirstEnabled(out LevelScriptComponent level);
-            if (level != null && level.Level != null)
+            if (level != null && level.Level != null && level.Progress > 0)
             {
-                text += "\n" + level.Level.Lines[level.Progress];
+                text += "\n" + level.Level.Lines[level.Progress - 1];
             }
             gs.ResourceManager.Fonts.Get("sysfont").Render(text, 0, 0, Color.White);
         }

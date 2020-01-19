@@ -10,19 +10,11 @@
         "summon dork",
         "wait 2",
         "leave",
-
-        "summon cute",
-        "wait 0.5",
-        "summon dork",
-        "wait 0.5",
-        "summon dork",
-        "wait 0.5",
-        "wait clear",
-
-        "talk test",
+        "wait leave",
 
         "summon yoshika",
         "summon fuyu",
-        "summon joon"
+        "summon joon",
+        "level stage2"
     ]
 }
