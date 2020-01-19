@@ -31,7 +31,7 @@ namespace PovertySTG.ECS.Systems
                 timer -= 0.2;
                 float x = (float)r.NextDouble() * Config.LevelWidth;
                 float dy = (float)r.NextDouble() * 3 + 1;
-                DanmakuFactory.MakeBullet(scene, -1, x, 0, 0, dy);
+                DanmakuFactory.MakeBullet(scene, -1000, x, 0, 0, dy);
             }
 
             /*
@@ -49,6 +49,8 @@ namespace PovertySTG.ECS.Systems
             {
                 component.X += component.DX;
                 component.Y += component.DY;
+                component.DX += component.DDX;
+                component.DY += component.DDY;
 
                 if (component.Pen != Vector4.Zero)
                 {
@@ -103,9 +105,46 @@ namespace PovertySTG.ECS.Systems
                 BodyComponent body = sys.BodyComponents.GetByOwner(component.Owner);
                 // Check for collisions.
                 float radius = sys.SpriteComponents.GetByOwner(component.Owner).Sprite.CollisionBox.Radius;
+                if (component.Type == -100 && body.Y > Config.LevelHeight && body.DY > 0)
+                {
+                    body.DY = -body.DY * 0.5f;
+                    component.Type = -101;
+                }
                 if (body.X > -radius && body.X < Config.LevelWidth + radius
                     && body.Y > -radius && body.Y < Config.LevelHeight + radius)
                 {
+                    if (component.Type <= -100 && component.Type > -1000)
+                    {
+                        BodyComponent targetBody = sys.BodyComponents.GetByOwner(player.Owner);
+                        float targetRadius = 100;
+                        float targetRadius2 = sys.SpriteComponents.GetByOwner(player.Owner).Sprite.CollisionBox.Radius;
+                        float dx = targetBody.X - body.X;
+                        float dy = targetBody.Y - body.Y;
+                        float dd = radius + targetRadius;
+                        float dd2 = radius + targetRadius2;
+                        float distanceSquared = dx * dx + dy * dy;
+                        if (distanceSquared < dd2 * dd2)
+                        {
+                            component.Owner.Delete();
+                            player.Power += 0.1f;
+                            continue;
+                        }
+                        if (distanceSquared < dd * dd)
+                        {
+                            //body.DX = body.DX * 0.7f;
+                            //body.DY = body.DY * 0.7f;
+                            float speed = 8f;
+                            float distance = (float)Math.Sqrt(distanceSquared) / speed;
+                            body.DX = body.DX + (dx / distance - body.DX) * 0.3f;
+                            body.DY = body.DY + (dy / distance - body.DY) * 0.3f;
+                            continue;
+                        }
+                        else if (component.Type == -102 || component.Type == -103)
+                        {
+                            body.DX = body.DX * (1 - 0.08f);
+                            body.DY = body.DY + (4f - body.DY) * 0.08f;
+                        }
+                    }
                     if (component.Type == 0)
                     {
                         foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
@@ -119,10 +158,17 @@ namespace PovertySTG.ECS.Systems
                             if (distanceSquared < dd * dd)
                             {
                                 DanmakuFactory.MakeSlash(scene, 0, body.X, body.Y);
+                                DanmakuFactory.MakeCoin(scene, body.X, body.Y);
                                 component.Owner.Delete();
                                 enemy.Health -= component.Power;
                                 if (enemy.Health <= 0)
                                 {
+                                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                                    DanmakuFactory.MakePointItem(scene, body.X, body.Y);
+                                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
+                                    DanmakuFactory.MakePowerItem(scene, body.X, body.Y);
                                     enemy.Owner.Delete();
                                     player.Score += 50;
                                 }
@@ -137,23 +183,20 @@ namespace PovertySTG.ECS.Systems
                     }
                     if (component.Type == 1)
                     {
-                        foreach (PlayerComponent enemy in sys.PlayerComponents.EnabledList)
+                        BodyComponent targetBody = sys.BodyComponents.GetByOwner(player.Owner);
+                        float targetRadius = sys.SpriteComponents.GetByOwner(player.Owner).Sprite.CollisionBox.Radius;
+                        float dx = targetBody.X - body.X;
+                        float dy = targetBody.Y - body.Y;
+                        float dd = radius + targetRadius;
+                        float distanceSquared = dx * dx + dy * dy;
+                        if (distanceSquared < dd * dd)
                         {
-                            BodyComponent targetBody = sys.BodyComponents.GetByOwner(enemy.Owner);
-                            float targetRadius = sys.SpriteComponents.GetByOwner(enemy.Owner).Sprite.CollisionBox.Radius;
-                            float dx = targetBody.X - body.X;
-                            float dy = targetBody.Y - body.Y;
-                            float dd = radius + targetRadius;
-                            float distanceSquared = dx * dx + dy * dy;
-                            if (distanceSquared < dd * dd)
-                            {
-                                DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
-                                component.Owner.Delete();
-                                player.Lives--;
-                                player.Power -= 0.1f;
-                                if (player.Lives < 0) player.Lives = 8;
-                                continue;
-                            }
+                            DanmakuFactory.MakeSlash(scene, 1, body.X, body.Y);
+                            component.Owner.Delete();
+                            player.Lives--;
+                            player.Power -= 0.1f;
+                            if (player.Lives < 0) player.Lives = 8;
+                            continue;
                         }
                     }
                 }

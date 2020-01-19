@@ -92,7 +92,7 @@ namespace PovertySTG.ECS.Systems
                     case "clear":
                         foreach (BulletComponent bullet in sys.BulletComponents.EnabledList)
                         {
-                            bullet.Owner.Delete();
+                            if (bullet.Type > -100) bullet.Owner.Delete();
                         }
                         foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
                         {

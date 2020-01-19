@@ -36,7 +36,7 @@ namespace PovertySTG.ECS.Systems
                 ShowTalker2(line.Right, line.RightMessage);
                 foreach (BulletComponent bullet in sys.BulletComponents.EnabledList)
                 {
-                    bullet.Owner.Delete();
+                    if (bullet.Type > -100) bullet.Owner.Delete();
                 }
             }
             else if (InputManager.JustPressed(GameCommand.Action1) && level.WaitTimer >= 0.5f)

@@ -75,8 +75,11 @@ namespace PovertySTG.Factories
             int layer = 21;
             string sprite = "s_shot";
             string animation = null;
-            if (type < 0) layer = 100;
-            if (type < 0) sprite = "pixel";
+            if (type == -1000) layer = 100;
+            if (type == -1000) sprite = "pixel";
+            if (type == -100) sprite = "s_coin";
+            if (type == -102) sprite = "s_pointitem";
+            if (type == -103) sprite = "s_poweritem";
             if (type == 0) sprite = "s_pshot";
             if (type > 0) layer = 19;
 
@@ -86,9 +89,26 @@ namespace PovertySTG.Factories
             entity.AddComponent(new BulletComponent(type));
             BodyComponent body = new BodyComponent(x, y, dx, dy);
             body.DeathMargin = 100f;
+            if (type == -100) body.DDY = 0.3f;
             entity.AddComponent(body);
             if (type == 0) entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
             entity.Enable();
+        }
+
+        public static void MakeCoin(Scene scene, float x, float y)
+        {
+            Random r = new Random();
+            MakeBullet(scene, -100, x, y, ((float)r.NextDouble() - 0.5f) * 4f, -8f);
+        }
+        public static void MakePointItem(Scene scene, float x, float y)
+        {
+            Random r = new Random();
+            MakeBullet(scene, -102, x, y, ((float)r.NextDouble() - 0.5f) * 8f, ((float)r.NextDouble() - 0.5f) * 8f);
+        }
+        public static void MakePowerItem(Scene scene, float x, float y)
+        {
+            Random r = new Random();
+            MakeBullet(scene, -103, x, y, ((float)r.NextDouble() - 0.5f) * 8f, ((float)r.NextDouble() - 0.5f) * 8f);
         }
 
         public static void MakeSlash(Scene scene, int type, float x, float y)

@@ -12,6 +12,8 @@ namespace PovertySTG.ECS.Components
         public float Y { get; set; }
         public float DX { get; set; }
         public float DY { get; set; }
+        public float DDX { get; set; }
+        public float DDY { get; set; }
         public float Lifespan { get; set; }
         public float Age { get; set; }
         public float DeathMargin { get; set; }
