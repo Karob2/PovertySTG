@@ -51,8 +51,10 @@ namespace PovertySTG.ECS.Systems
                         if (component.Type == EnemyType.Fairy) component.Phase = -1;
                         else if (component.Type == EnemyType.BraveFairy)
                         {
-                            component.Phase = 1;
-                            if (component.Shield == null) AddShield(component);
+                            //component.Phase = 1;
+                            //if (component.Shield == null) AddShield(component);
+                            component.Phase++;
+                            if (component.Phase >= 9) component.Phase = -1;
                         }
                         else component.Phase = 1;
                     }
@@ -97,6 +99,18 @@ namespace PovertySTG.ECS.Systems
                 }
                 else if (component.Type >= EnemyType.Boss)
                 {
+                    component.MoneyTimer -= ed.seconds;
+                    if (component.MoneyTimer < 0f)
+                    {
+                        Random r = new Random();
+                        float x = (float)r.NextDouble() * Config.LevelWidth;
+                        float y = (float)r.NextDouble() * Config.LevelHeight / 2 + 20;
+                        float x3;
+                        if (x > Config.LevelWidth / 2) x3 = 0 - 50;
+                        else x3 = Config.LevelWidth + 50;
+                        DanmakuFactory.MakeEnemy(scene, EnemyType.MoneyBag, x3, y, x, y);
+                        component.MoneyTimer = 16f;
+                    }
                     if (component.Phase == 0)
                     {
                         if (component.Type == EnemyType.Yoshika)
@@ -105,7 +119,7 @@ namespace PovertySTG.ECS.Systems
                             component.TargetY = playerBody.Y - 330;
                         }
                         //MovePhaseBoss(ed);
-                        MovePhase(ed, 3.8f, 1f, 1f);
+                        MovePhase(ed, 3.8f, 1.7f, 1.7f);
                     }
                     else if (component.Phase == 1)
                     {
@@ -163,11 +177,11 @@ namespace PovertySTG.ECS.Systems
             float dx = ed.component.TargetX - ed.body.X;
             float dy = ed.component.TargetY - ed.body.Y;
             Vector2 d = new Vector2(dx, dy);
+            ed.component.Timer += ed.seconds;
             if (d.LengthSquared() > speed * speed)
             {
                 d.Normalize();
                 d *= speed;
-                ed.component.Timer += ed.seconds;
                 if (ed.component.Timer > waitTime)
                 {
                     ed.component.Timer = 0;
@@ -205,7 +219,20 @@ namespace PovertySTG.ECS.Systems
             if (ed.component.Timer > cooldown)
             {
                 ed.component.Timer -= cooldown;
-                DanmakuFactory.MakeDirBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
+                if (ed.component.Type == EnemyType.BraveFairy)
+                {
+                    for (int i = 0; i < 12; i++)
+                    {
+                        double r = i * Math.PI * 2 / 12;
+                        float dx = (float)Math.Sin(r);
+                        float dy = (float)Math.Cos(r);
+                        DanmakuFactory.MakeBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, dx * 2f, dy * 2f);
+                    }
+                }
+                else
+                {
+                    DanmakuFactory.MakeDirBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
+                }
                 ed.component.Phase++;
             }
         }

@@ -12,6 +12,7 @@ namespace PovertySTG.ECS.Components
         public float TargetY { get; set; }
         public double Timer { get; set; }
         public double Timer2 { get; set; }
+        public double MoneyTimer { get; set; }
         public int Phase { get; set; }
         public Direction Direction { get; set; }
         /*
