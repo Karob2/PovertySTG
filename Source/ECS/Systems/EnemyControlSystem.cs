@@ -99,11 +99,39 @@ namespace PovertySTG.ECS.Systems
                 {
                     if (component.Phase == 0)
                     {
-                        MovePhase(ed, 3.8f);
+                        if (component.Type == EnemyType.Yoshika)
+                        {
+                            component.TargetX = playerBody.X;
+                            component.TargetY = playerBody.Y - 330;
+                        }
+                        //MovePhaseBoss(ed);
+                        MovePhase(ed, 3.8f, 1f, 1f);
                     }
                     else if (component.Phase == 1)
                     {
-                        WaitPhase(ed, 1f);
+                        if (component.Type == EnemyType.Yoshika)
+                        {
+                            float wait = 0.5f;
+                            float speed = 0.1f;
+                            float accel = 0.01f;
+                            WaitPhase(ed, wait);
+                            component.Timer2 += ed.seconds;
+                            if (component.Timer2 > 0.06f)
+                            {
+                                component.Timer2 = 0;
+                                float dd = ((float)component.Timer / wait - 0.5f) * 2f;
+                                float bx = dd * 200f;
+                                float by = dd * 100f;
+                                DanmakuFactory.MakeDirBullet(scene, BulletType.EnemyShot, ed.body.X + bx, ed.body.Y + 100 + by, ed.playerBody.X, ed.playerBody.Y, speed, accel);
+                                DanmakuFactory.MakeDirBullet(scene, BulletType.EnemyShot, ed.body.X - bx, ed.body.Y + 100 + by, ed.playerBody.X, ed.playerBody.Y, speed, accel);
+                            }
+                        }
+                        else component.Phase = 2;
+                        //DanmakuFactory.MakeBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
+                    }
+                    else if (component.Phase == 2)
+                    {
+                        component.Phase = 0;
                     }
                     else
                     {
@@ -124,13 +152,14 @@ namespace PovertySTG.ECS.Systems
             ed.component.Timer += ed.seconds;
             if (ed.component.Timer > waitTime)
             {
-                ed.component.Timer -= waitTime;
+                ed.component.Timer = 0;
                 ed.component.Phase++;
             }
         }
 
-        void MovePhase(EnemyData ed, float speed)
+        void MovePhase(EnemyData ed, float speed, float minWaitTime = 0f, float waitTime = 100f)
         {
+            if (ed.component.Type == EnemyType.Yoshika) speed = 2f;
             float dx = ed.component.TargetX - ed.body.X;
             float dy = ed.component.TargetY - ed.body.Y;
             Vector2 d = new Vector2(dx, dy);
@@ -138,14 +167,35 @@ namespace PovertySTG.ECS.Systems
             {
                 d.Normalize();
                 d *= speed;
+                ed.component.Timer += ed.seconds;
+                if (ed.component.Timer > waitTime)
+                {
+                    ed.component.Timer = 0;
+                    ed.component.Phase = 1;
+                }
             }
-            else
+            else if (ed.component.Timer > minWaitTime)
             {
+                ed.component.Timer = 0;
                 ed.component.Phase = 1;
             }
             ed.body.DX = d.X;
             ed.body.DY = d.Y;
         }
+
+        /*
+        void MovePhaseBoss(EnemyData ed)
+        {
+            float speed = 0f;
+            float duration = 5;
+            switch (ed.component.Type)
+            {
+                case EnemyType.Yoshika:
+                    speed = 3f;
+                    break;
+            }
+        }
+        */
 
         void ShootPhase(EnemyData ed, float cooldown)
         {
@@ -155,7 +205,7 @@ namespace PovertySTG.ECS.Systems
             if (ed.component.Timer > cooldown)
             {
                 ed.component.Timer -= cooldown;
-                DanmakuFactory.MakeBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
+                DanmakuFactory.MakeDirBullet(scene, BulletType.EnemyShot, ed.body.X, ed.body.Y, ed.playerBody.X, ed.playerBody.Y, 3f);
                 ed.component.Phase++;
             }
         }

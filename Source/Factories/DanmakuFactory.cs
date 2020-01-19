@@ -58,6 +58,9 @@ namespace PovertySTG.Factories
                 entity.AddComponent(new SpriteComponent(scene.GS, "s_fairy"));
             EnemyComponent enemyComponent = new EnemyComponent(type, targetX, targetY);
             if (type == EnemyType.MoneyBag) enemyComponent.Timer = r.NextDouble() * 100f;
+            if (type >= EnemyType.Boss) enemyComponent.MaxHealth = 400;
+            enemyComponent.Health = enemyComponent.MaxHealth;
+            if (type == EnemyType.Yoshika) enemyComponent.Lives = 2;
             entity.AddComponent(enemyComponent);
             BodyComponent body = new BodyComponent(x, y);
             if (type == EnemyType.MoneyBag) body.DX = 0.4f + (float)r.NextDouble() * 0.05f;
@@ -66,22 +69,27 @@ namespace PovertySTG.Factories
             entity.Enable();
         }
 
-        public static void MakeBullet(Scene scene, BulletType type, float x, float y, float targetX, float targetY, float speed)
+        public static void MakeDirBullet(Scene scene, BulletType type, float x, float y, float targetX, float targetY, float speed, float accel = 0f)
         {
             Vector2 d = new Vector2(targetX - x, targetY - y);
+            Vector2 a = new Vector2(0, 0);
             if (d.X != 0 || d.Y != 0)
             {
                 d.Normalize();
+                a = d;
                 d *= speed;
             }
-            MakeBullet(scene, type, x, y, d.X, d.Y);
+            a *= accel;
+            MakeBullet(scene, type, x, y, d.X, d.Y, a.X, a.Y);
         }
 
-        public static void MakeBullet(Scene scene, BulletType type, float x, float y, float dx, float dy)
+        //public static void MakeBullet(Scene scene, BulletType type, float x, float y, float dx, float dy)
+        public static void MakeBullet(Scene scene, BulletType type, float x, float y, float dx, float dy, float ax = 0f, float ay = 0f)
         {
             int layer = 21;
             string sprite = "s_shot";
             string animation = null;
+            float power = 10f;
             if (type == BulletType.BG) layer = 100;
             if (type == BulletType.BG) sprite = "pixel";
             if (type == BulletType.Coin) sprite = "s_coin";
@@ -91,6 +99,8 @@ namespace PovertySTG.Factories
             if (type == BulletType.PowerShot) sprite = "s_coin";
             if (type == BulletType.HomingShot) sprite = "s_star";
             if (type >= BulletType.EnemyShot) layer = 19;
+
+            if (type == BulletType.PowerShot) power = 4f;
 
             Entity entity = scene.NewEntity();
             RenderComponent rc = new RenderComponent(x, y, layer, 0, true);
@@ -116,10 +126,16 @@ namespace PovertySTG.Factories
                 sc.Color = new Color(200, 200, 84);
                 sc.Alpha = 0.7f;
             }
+            if (type == BulletType.EnemyShot)
+            {
+                sc.Scale = 0.75f;
+            }
             entity.AddComponent(sc);
-            entity.AddComponent(new BulletComponent(type));
+            entity.AddComponent(new BulletComponent(type, power));
             BodyComponent body = new BodyComponent(x, y, dx, dy);
             body.DeathMargin = 100f;
+            body.DDX = ax;
+            body.DDY = ay;
             if (type == BulletType.Coin) body.DDY = 0.3f;
             entity.AddComponent(body);
             if (sprite == "s_star") entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });

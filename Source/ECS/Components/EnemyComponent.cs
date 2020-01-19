@@ -11,6 +11,7 @@ namespace PovertySTG.ECS.Components
         public float TargetX { get; set; }
         public float TargetY { get; set; }
         public double Timer { get; set; }
+        public double Timer2 { get; set; }
         public int Phase { get; set; }
         public Direction Direction { get; set; }
         /*
@@ -20,6 +21,8 @@ namespace PovertySTG.ECS.Components
         public float DY { get; set; }
         */
         public float Health { get; set; } = 100f;
+        public float MaxHealth { get; set; } = 100f;
+        public int Lives { get; set; } = 1;
 
         public Entity Shield { get; set; }
         public float ShieldHealth { get; set; }
