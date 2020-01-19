@@ -104,6 +104,7 @@ namespace PovertySTG.ECS.Systems
                             flash.Owner.Enable();
                             flash.Color = Color.Transparent;
                             component.SpecialTimer2 = 0f;
+                            component.Power += 0.25f;
                         }
 #endif
                         component.SpecialTimer = 0f;
@@ -200,10 +201,28 @@ namespace PovertySTG.ECS.Systems
                         }
                     }
                 }
-                if (InputManager.Held(GameCommand.Action1) && component.Timer <= 0 && component.SpecialState < 3 && component.SpecialTimer >= holdTime / 2)
+                if (InputManager.Held(GameCommand.Action1) && component.SpecialState < 3 && component.SpecialTimer >= holdTime / 2)
                 {
-                    DanmakuFactory.MakeBullet(scene, 0, body.X, body.Y - 30, 0, -7);
-                    component.Timer = 0.16f;
+                    if (component.Timer <= 0)
+                    {
+                        int x = 12;
+                        component.Alternate = (component.Alternate + 1) % 16;
+                        bool odd = !(component.Alternate % 2 == 0);
+                        //bool odd2 = !(component.Alternate / 2 % 2 == 0);
+                        if (odd) x = -x;
+                        DanmakuFactory.MakeBullet(scene, BulletType.PlayerShot, body.X + x, body.Y - 30, 0, -11);
+                        component.Timer = 0.16f;
+                    }
+                    component.Timer2 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    float loop = 0.48f - component.Power * 0.36f;
+                    if (component.Timer2 > loop)
+                    {
+                        component.Alternate2 = (component.Alternate2 + 1) % 2;
+                        bool odd2 = component.Alternate2 == 0;
+                        if (odd2) DanmakuFactory.MakeBullet(scene, BulletType.HomingShot, body.X + 15, body.Y - 30, 1.5f, -7);
+                        else DanmakuFactory.MakeBullet(scene, BulletType.HomingShot, body.X - 15, body.Y - 30, -1.5f, -7);
+                        component.Timer2 = 0f;
+                    }
                 }
 
             }

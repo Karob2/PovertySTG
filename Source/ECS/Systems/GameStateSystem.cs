@@ -25,18 +25,22 @@ namespace PovertySTG.ECS.Systems
             if (request == "danmaku")
             {
                 scene.AddScene(SceneFactory.NewDanmakuScene(gs, "danmaku")).Enable();
+                InputManager.Reset();
             }
             if (request == "options")
             {
                 scene.AddScene(SceneFactory.NewOptionsScene(gs, "options")).Enable();
+                InputManager.Reset();
             }
             if (request == "controls")
             {
                 scene.AddScene(SceneFactory.NewControlsScene(gs, "controls")).Enable();
+                InputManager.Reset();
             }
             if (request == "return")
             {
                 scene.RemoveLastScene();
+                InputManager.Reset();
             }
             if (request == "quit")
             {

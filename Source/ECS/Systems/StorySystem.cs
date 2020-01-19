@@ -48,6 +48,7 @@ namespace PovertySTG.ECS.Systems
                     level.WaitMode = LevelWaitMode.Start;
                     ShowTalker1(null, null);
                     ShowTalker2(null, null);
+                    InputManager.Reset();
                 }
                 else
                 {

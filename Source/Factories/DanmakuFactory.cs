@@ -87,8 +87,9 @@ namespace PovertySTG.Factories
             if (type == BulletType.Coin) sprite = "s_coin";
             if (type == BulletType.PointItem) sprite = "s_pointitem";
             if (type == BulletType.PowerItem) sprite = "s_poweritem";
-            if (type == BulletType.PlayerShot) sprite = "s_pshot";
-            if (type == BulletType.PowerShot) sprite = "s_pshot";
+            if (type == BulletType.PlayerShot) sprite = "snakes";
+            if (type == BulletType.PowerShot) sprite = "s_coin";
+            if (type == BulletType.HomingShot) sprite = "s_star";
             if (type >= BulletType.EnemyShot) layer = 19;
 
             Entity entity = scene.NewEntity();
@@ -98,9 +99,22 @@ namespace PovertySTG.Factories
             if (type == BulletType.PowerShot)
             {
                 //sc.Rotation = (float)Math.PI / 2;
-                sc.Rotation = (float)(new Random().NextDouble() * Math.PI);
+                //sc.Rotation = (float)(new Random().NextDouble() * Math.PI);
+                //sc.Scale = 0.5f;
+                //sc.Color = Color.Yellow;
+                sc.Alpha = 0.9f;
+            }
+            if (type == BulletType.PlayerShot)
+            {
                 sc.Scale = 0.5f;
-                sc.Color = Color.Yellow;
+                sc.Color = new Color(84, 200, 84);
+                sc.Alpha = 0.7f;
+            }
+            if (type == BulletType.HomingShot)
+            {
+                sc.Scale = 0.5f;
+                sc.Color = new Color(200, 200, 84);
+                sc.Alpha = 0.7f;
             }
             entity.AddComponent(sc);
             entity.AddComponent(new BulletComponent(type));
@@ -108,7 +122,7 @@ namespace PovertySTG.Factories
             body.DeathMargin = 100f;
             if (type == BulletType.Coin) body.DDY = 0.3f;
             entity.AddComponent(body);
-            if (type == BulletType.PlayerShot || type == BulletType.PowerShot) entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
+            if (sprite == "s_star") entity.AddComponent(new VfxComponent() { RotateSpeed = 4f });
             entity.Enable();
         }
 
@@ -144,7 +158,7 @@ namespace PovertySTG.Factories
             Entity entity = scene.NewEntity();
             entity.AddComponent(new RenderComponent(x, y, 5, 0f, true));
             SpriteComponent sprite;
-            if (type == 10) sprite = new SpriteComponent(scene.GS, "s_pshot");
+            if (type == 10) sprite = new SpriteComponent(scene.GS, "s_star");
             else
             {
                 sprite = new SpriteComponent(scene.GS, "s_slash");

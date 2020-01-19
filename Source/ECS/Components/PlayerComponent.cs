@@ -18,6 +18,9 @@ namespace PovertySTG.ECS.Components
         public float SpecialTimer2 { get; set; }
         public int SpecialState { get; set; }
         //public bool SpecialActive { get; set; }
+        public int Alternate { get; set; }
+        public int Alternate2 { get; set; }
+        public double Timer2 { get; set; }
 
         public override void AttachTo(Entity entity) { entity.AddComponent(this); }
         public override void Remove() { Owner.RemoveComponent(this); }

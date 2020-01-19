@@ -1,0 +1,25 @@
+{
+    "CollisionBox": {
+        "Radius": 8
+    },
+    "DefaultFrame": {
+        "Spritesheet": "snakes.png",
+        "Width": 52,
+        "Height": 88,
+        "AnchorX": 26,
+        "AnchorY": 44
+    },
+    "Animations": [
+        {
+            "Name": "snakes",
+            "Speed": 12,
+            "FrameRanges": [
+                {
+                    "X": 0,
+                    "Y": 0,
+                    "Count": 4
+                }
+            ]
+        }
+    ]
+}

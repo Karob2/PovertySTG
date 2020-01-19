@@ -167,7 +167,7 @@ namespace PovertySTG.ECS.Systems
                             body.DY = body.DY + (4f - body.DY) * 0.08f;
                         }
                     }
-                    if (component.Type == BulletType.PlayerShot || component.Type == BulletType.PowerShot)
+                    if (component.Type == BulletType.PlayerShot || component.Type == BulletType.PowerShot || component.Type == BulletType.HomingShot)
                     {
                         foreach (EnemyComponent enemy in sys.EnemyComponents.EnabledList)
                         {
@@ -214,17 +214,13 @@ namespace PovertySTG.ECS.Systems
         {
             if (enemy.Shield != null)
             {
-                if (component != null && component.Type == BulletType.PowerShot)
-                {
-
-                }
-                else
+                if (component != null && component.Type != BulletType.PowerShot)
                 {
                     //component.Owner.Delete();
                     if (body.DY < 0) body.DY = -body.DY / 2;
                     Random r = new Random();
                     body.DX = (float)(r.NextDouble() - 0.5) * 5f;
-                    component.Type = BulletType.EnemyShot;
+                    component.Type = BulletType.BG;
                     return;
                 }
             }

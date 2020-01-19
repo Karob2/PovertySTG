@@ -48,7 +48,8 @@ namespace PovertySTG
         Coin2 = -101,
         PointItem = -102,
         PowerItem = -103,
-        PowerShot = -1,
+        PowerShot = -10,
+        HomingShot = -1,
         PlayerShot = 0,
         EnemyShot = 1
     }
