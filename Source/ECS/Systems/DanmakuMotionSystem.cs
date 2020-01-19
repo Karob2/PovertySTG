@@ -31,7 +31,7 @@ namespace PovertySTG.ECS.Systems
                 timer -= 0.2;
                 float x = (float)r.NextDouble() * Config.LevelWidth;
                 float dy = (float)r.NextDouble() * 3 + 1;
-                DanmakuFactory.MakeBullet(scene, BulletType.BG, x, 0, 0, dy);
+                //DanmakuFactory.MakeBullet(scene, BulletType.BG, x, 0, 0, dy);
             }
 
             /*

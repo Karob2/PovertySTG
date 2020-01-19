@@ -18,6 +18,7 @@ namespace PovertySTG.ECS.Systems
         public RenderSystem(SystemReferences sys) { this.sys = sys; }
         Vector2 camera = Vector2.Zero;
         List<RenderItem> renderList = new List<RenderItem>();
+        float motion = 0;
 
         public override void Update(GameTime gameTime)
         {
@@ -39,6 +40,13 @@ namespace PovertySTG.ECS.Systems
             if (sys.CameraComponents.TryGetFirstEnabled(out CameraComponent cameraComponent))
             {
                 camera = new Vector2(cameraComponent.X, cameraComponent.Y);
+                Sprite bg = gs.ResourceManager.Sprites.Get("bg");
+                Sprite clouds = gs.ResourceManager.Sprites.Get("clouds");
+                bg.Render(0, 0);
+                motion += 8;
+                if (motion >= 1281) motion -= 1281;
+                clouds.Render(0, motion);
+                clouds.Render(0, motion - 1281);
             }
 
             foreach (RenderComponent renderComponent in sys.RenderComponents.EnabledList)
